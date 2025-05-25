@@ -30,7 +30,7 @@ function Footer() {
             <ul>
               <li><a href="mailto: ochiengc753@gmail.com">Email</a></li>
               <li><a href="tel: +254718166201">Phone</a></li>
-              <li><a href="https://wa.me/254746315094" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+              <li><a href="https://wa.me/254718166201" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
             </ul>
           </div>
           <div className="footer-links-section">
