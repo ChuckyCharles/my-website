@@ -4,23 +4,83 @@ function Home() {
   return (
     <div style={{background: '#0a1623', minHeight: '100vh', padding: '0', margin: '0'}}>
       {/* Hero Section */}
-      <section className="hero-section" style={{minHeight: '60vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', background: 'linear-gradient(135deg, #0a1623 0%, #1a2332 100%)'}}>
-        <h1 style={{fontSize: '2.8rem', fontWeight: 700, color: '#fff', marginBottom: '0.5em'}}>Hello World! 👋</h1>
-        <h2 style={{fontSize: '2rem', fontWeight: 600, color: '#fff', marginBottom: '0.5em'}}>I'm Charles Ochieng</h2>
-        <p style={{maxWidth: 600, textAlign: 'center', fontSize: '1.2rem', color: '#bfc9da', marginBottom: '2em'}}>
-          A passionate Cloud Infrastructure engineer and DevOps  engineer, transforming ideas into elegant digital experiences. Based in Nairobi, working worldwide.
+      <section className="hero-section" style={{
+        minHeight: '60vh',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        background: 'linear-gradient(135deg, #0a1623 0%, #1a2332 100%)',
+        padding: '40px 20px'
+      }}>
+        <h1 style={{
+          fontSize: 'clamp(2rem, 5vw, 2.8rem)',
+          fontWeight: 700,
+          color: '#fff',
+          marginBottom: '0.5em',
+          textAlign: 'center'
+        }}>Hello World! 👋</h1>
+        <h2 style={{
+          fontSize: 'clamp(1.5rem, 4vw, 2rem)',
+          fontWeight: 600,
+          color: '#fff',
+          marginBottom: '0.5em',
+          textAlign: 'center'
+        }}>I'm Charles Ochieng</h2>
+        <p style={{
+          maxWidth: 600,
+          textAlign: 'center',
+          fontSize: 'clamp(1rem, 2vw, 1.2rem)',
+          color: '#bfc9da',
+          marginBottom: '2em',
+          padding: '0 20px'
+        }}>
+          A passionate Cloud Infrastructure engineer and DevOps engineer, transforming ideas into elegant digital experiences. Based in Nairobi, working worldwide.
         </p>
-        <div style={{display: 'flex', gap: '1.5em'}}>
-          <a href="#projects" className="cta" style={{background: '#6366f1', color: '#fff', fontWeight: 600, borderRadius: 8, padding: '12px 32px'}}>View My Work</a>
-          <a href="#contact" className="cta" style={{background: '#ff9900', color: '#fff', fontWeight: 600, borderRadius: 8, padding: '12px 32px'}}>Let's Connect</a>
+        <div style={{
+          display: 'flex',
+          gap: '1.5em',
+          flexWrap: 'wrap',
+          justifyContent: 'center'
+        }}>
+          <a href="#projects" className="cta" style={{
+            background: '#6366f1',
+            color: '#fff',
+            fontWeight: 600,
+            borderRadius: 8,
+            padding: 'clamp(10px, 2vw, 12px) clamp(24px, 4vw, 32px)',
+            fontSize: 'clamp(0.875rem, 2vw, 1rem)',
+            textAlign: 'center',
+            minWidth: '140px'
+          }}>View My Work</a>
+          <a href="#contact" className="cta" style={{
+            background: '#ff9900',
+            color: '#fff',
+            fontWeight: 600,
+            borderRadius: 8,
+            padding: 'clamp(10px, 2vw, 12px) clamp(24px, 4vw, 32px)',
+            fontSize: 'clamp(0.875rem, 2vw, 1rem)',
+            textAlign: 'center',
+            minWidth: '140px'
+          }}>Let's Connect</a>
         </div>
       </section>
 
       {/* About Me Section */}
-      <section id="about-main" className="about-main" style={{display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '3em', background: '#0a1623', padding: '60px 0'}}>
+      <section id="about-main" className="about-main" style={{
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        gap: '3em',
+        background: '#0a1623',
+        padding: '60px 20px',
+        flexWrap: 'wrap'
+      }}>
         <div style={{
-          width: 350,
-          height: 350,
+          width: 'min(350px, 100%)',
+          height: 'auto',
+          aspectRatio: '1/1',
           borderRadius: 16,
           overflow: 'hidden',
           boxShadow: '0 8px 32px rgba(0,0,0,0.18)',
@@ -29,65 +89,208 @@ function Home() {
           alignItems: 'center',
           justifyContent: 'center',
         }}>
-          <img src="/assets/images/profile.jpg" alt="Profile" style={{width: 400, height: 400, objectFit: 'cover', objectPosition: 'center top'}} />
+          <img 
+            src="/assets/images/profile.jpg" 
+            alt="Profile" 
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              objectPosition: 'center top'
+            }} 
+          />
         </div>
-        <div style={{maxWidth: 600}}>
-          <h2 style={{color: '#fff', fontWeight: 700, fontSize: '2.2rem', marginBottom: 16}}>About Me</h2>
-          <p style={{color: '#bfc9da', fontSize: '1.15rem', marginBottom: 32}}>
+        <div style={{
+          maxWidth: 600,
+          width: '100%',
+          padding: '0 20px'
+        }}>
+          <h2 style={{
+            color: '#fff',
+            fontWeight: 700,
+            fontSize: 'clamp(1.8rem, 4vw, 2.2rem)',
+            marginBottom: 16
+          }}>About Me</h2>
+          <p style={{
+            color: '#bfc9da',
+            fontSize: 'clamp(1rem, 2vw, 1.15rem)',
+            marginBottom: 32
+          }}>
             I'm a passionate Cloud Infrastructure engineer, DevOps Engineer, and product manager with a strong commitment to creating innovative solutions that enhance user experiences and drive business success. With expertise in Cloud Architecture, DevOps prectices, I create efficient, scalable solutions and enjoy solving complex problems.
           </p>
-          <div style={{display: 'flex', gap: 24, marginBottom: 32}}>
-            <div style={{background: '#232e41', color: '#bfc9da', borderRadius: 12, padding: '24px 32px', textAlign: 'center', minWidth: 120}}>
-              <div style={{fontWeight: 700, fontSize: '2rem', color: '#6366f1'}}>3+</div>
-              <div style={{fontSize: '1rem'}}>Years Experience</div>
+          <div style={{
+            display: 'flex',
+            gap: 24,
+            marginBottom: 32,
+            flexWrap: 'wrap'
+          }}>
+            <div style={{
+              background: '#232e41',
+              color: '#bfc9da',
+              borderRadius: 12,
+              padding: '24px 32px',
+              textAlign: 'center',
+              minWidth: 120,
+              flex: 1
+            }}>
+              <div style={{fontWeight: 700, fontSize: 'clamp(1.5rem, 3vw, 2rem)', color: '#6366f1'}}>3+</div>
+              <div style={{fontSize: 'clamp(0.875rem, 2vw, 1rem)'}}>Years Experience</div>
             </div>
-            <div style={{background: '#232e41', color: '#bfc9da', borderRadius: 12, padding: '24px 32px', textAlign: 'center', minWidth: 120}}>
-              <div style={{fontWeight: 700, fontSize: '2rem', color: '#6366f1'}}>10+</div>
-              <div style={{fontSize: '1rem'}}>Projects Completed</div>
+            <div style={{
+              background: '#232e41',
+              color: '#bfc9da',
+              borderRadius: 12,
+              padding: '24px 32px',
+              textAlign: 'center',
+              minWidth: 120,
+              flex: 1
+            }}>
+              <div style={{fontWeight: 700, fontSize: 'clamp(1.5rem, 3vw, 2rem)', color: '#6366f1'}}>10+</div>
+              <div style={{fontSize: 'clamp(0.875rem, 2vw, 1rem)'}}>Projects Completed</div>
             </div>
-            <div style={{background: '#232e41', color: '#bfc9da', borderRadius: 12, padding: '24px 32px', textAlign: 'center', minWidth: 120}}>
-              <div style={{fontWeight: 700, fontSize: '2rem', color: '#6366f1'}}>5+</div>
-              <div style={{fontSize: '1rem'}}>Technical Articles</div>
+            <div style={{
+              background: '#232e41',
+              color: '#bfc9da',
+              borderRadius: 12,
+              padding: '24px 32px',
+              textAlign: 'center',
+              minWidth: 120,
+              flex: 1
+            }}>
+              <div style={{fontWeight: 700, fontSize: 'clamp(1.5rem, 3vw, 2rem)', color: '#6366f1'}}>5+</div>
+              <div style={{fontSize: 'clamp(0.875rem, 2vw, 1rem)'}}>Technical Articles</div>
             </div>
           </div>
-          <a href="https://1drv.ms/b/c/e69819c0d7c33828/EcanBkVVZC5InN7rWPWif1EBWSoKu3CRwct_xeMT4WFgEA?e=1leGwT" target="_blank" rel="noopener noreferrer" className="cta" style={{background: '#6366f1', color: '#fff', fontWeight: 600, borderRadius: 8, padding: '14px 32px', textDecoration: 'none', display: 'inline-block'}}>
+          <a href="https://1drv.ms/b/c/e69819c0d7c33828/EcanBkVVZC5InN7rWPWif1EBWSoKu3CRwct_xeMT4WFgEA?e=1leGwT" 
+             target="_blank" 
+             rel="noopener noreferrer" 
+             className="cta" 
+             style={{
+               background: '#6366f1',
+               color: '#fff',
+               fontWeight: 600,
+               borderRadius: 8,
+               padding: '14px 32px',
+               textDecoration: 'none',
+               display: 'inline-block',
+               fontSize: 'clamp(0.875rem, 2vw, 1rem)'
+             }}>
             Download CV <span style={{marginLeft: 8}}>&#8681;</span>
           </a>
         </div>
       </section>
 
       {/* Skills Section */}
-      <section id="skills" style={{background: '#0a1623', padding: '60px 0 80px 0'}}>
-        <div style={{textAlign: 'center', marginBottom: 48}}>
-          <div style={{color: '#7b8cff', letterSpacing: 2, fontWeight: 700, fontSize: 14, marginBottom: 8}}>EXPERTISE</div>
-          <h2 style={{color: '#fff', fontWeight: 700, fontSize: '2.6rem', marginBottom: 8, letterSpacing: 1}}>My Skills</h2>
-          <div style={{width: 120, height: 4, background: '#7b8cff', margin: '0 auto 18px auto', borderRadius: 2}}></div>
-          <p style={{color: '#bfc9da', fontSize: '1.15rem', maxWidth: 700, margin: '0 auto'}}>Crafting digital experiences with a blend of technical expertise and creative design thinking.</p>
+      <section id="skills" style={{
+        background: '#0a1623',
+        padding: '60px 20px 80px 20px'
+      }}>
+        <div style={{
+          textAlign: 'center',
+          marginBottom: 48,
+          padding: '0 20px'
+        }}>
+          <div style={{
+            color: '#7b8cff',
+            letterSpacing: 2,
+            fontWeight: 700,
+            fontSize: 'clamp(12px, 2vw, 14px)',
+            marginBottom: 8
+          }}>EXPERTISE</div>
+          <h2 style={{
+            color: '#fff',
+            fontWeight: 700,
+            fontSize: 'clamp(2rem, 4vw, 2.6rem)',
+            marginBottom: 8,
+            letterSpacing: 1
+          }}>My Skills</h2>
+          <div style={{
+            width: 120,
+            height: 4,
+            background: '#7b8cff',
+            margin: '0 auto 18px auto',
+            borderRadius: 2
+          }}></div>
+          <p style={{
+            color: '#bfc9da',
+            fontSize: 'clamp(1rem, 2vw, 1.15rem)',
+            maxWidth: 700,
+            margin: '0 auto'
+          }}>Crafting digital experiences with a blend of technical expertise and creative design thinking.</p>
         </div>
-        <div style={{display: 'flex', justifyContent: 'center', gap: 48, flexWrap: 'wrap'}}>
+        <div style={{
+          display: 'flex',
+          justifyContent: 'center',
+          gap: 'clamp(24px, 4vw, 48px)',
+          flexWrap: 'wrap',
+          maxWidth: 1200,
+          margin: '0 auto'
+        }}>
           {/* Development Card */}
-          <div style={{background: '#192235', borderRadius: 18, padding: '36px 32px', minWidth: 340, maxWidth: 400, flex: 1, boxShadow: '0 4px 24px rgba(0,0,0,0.10)'}}>
-            <div style={{display: 'flex', alignItems: 'center', marginBottom: 24}}>
-              <span style={{background: '#6366f1', color: '#fff', borderRadius: 12, padding: 10, fontSize: 24, marginRight: 12}}>☁️</span>
-              <span style={{color: '#7b8cff', fontWeight: 700, fontSize: '1.5rem'}}>Cloud Infrastructure</span>
+          <div style={{
+            background: '#192235',
+            borderRadius: 18,
+            padding: 'clamp(24px, 4vw, 36px) clamp(20px, 3vw, 32px)',
+            width: 'min(100%, 400px)',
+            boxShadow: '0 4px 24px rgba(0,0,0,0.10)'
+          }}>
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              marginBottom: 24
+            }}>
+              <span style={{
+                background: '#6366f1',
+                color: '#fff',
+                borderRadius: 12,
+                padding: 10,
+                fontSize: 'clamp(20px, 3vw, 24px)',
+                marginRight: 12
+              }}>☁️</span>
+              <span style={{
+                color: '#7b8cff',
+                fontWeight: 700,
+                fontSize: 'clamp(1.2rem, 3vw, 1.5rem)'
+              }}>Cloud Infrastructure</span>
             </div>
-            <SkillBar label="Public and Private Cloud" color="#7b8cff" percent={80} icon={<span style={{fontSize: 18}}>☁️</span>} />
-            <SkillBar label="Virtualization" color="#7b8cff" percent={70} icon={<span style={{fontSize: 18}}>🖥️</span>} />
-            <SkillBar label="Networking & Security" color="#7b8cff" percent={75} icon={<span style={{fontSize: 18}}>🔒</span>} />
-            <SkillBar label="Storage Solutions" color="#7b8cff" percent={70} icon={<span style={{fontSize: 18}}>💾</span>} />
-            <SkillBar label="Cloud Migration & Optimization" color="#7b8cff" percent={90} icon={<span style={{fontSize: 18}}>🚀</span>} />
+            <SkillBar label="Public and Private Cloud" color="#7b8cff" percent={80} icon={<span style={{fontSize: 'clamp(16px, 2vw, 18px)'}}>☁️</span>} />
+            <SkillBar label="Virtualization" color="#7b8cff" percent={70} icon={<span style={{fontSize: 'clamp(16px, 2vw, 18px)'}}>🖥️</span>} />
+            <SkillBar label="Networking & Security" color="#7b8cff" percent={75} icon={<span style={{fontSize: 'clamp(16px, 2vw, 18px)'}}>🔒</span>} />
+            <SkillBar label="Storage Solutions" color="#7b8cff" percent={70} icon={<span style={{fontSize: 'clamp(16px, 2vw, 18px)'}}>💾</span>} />
+            <SkillBar label="Cloud Migration & Optimization" color="#7b8cff" percent={90} icon={<span style={{fontSize: 'clamp(16px, 2vw, 18px)'}}>🚀</span>} />
           </div>
           {/* Design Card */}
-          <div style={{background: '#192235', borderRadius: 18, padding: '36px 32px', minWidth: 340, maxWidth: 400, flex: 1, boxShadow: '0 4px 24px rgba(0,0,0,0.10)'}}>
-            <div style={{display: 'flex', alignItems: 'center', marginBottom: 24}}>
-              <span style={{background: '#a259f7', color: '#fff', borderRadius: 12, padding: 10, fontSize: 24, marginRight: 12}}>🛠️</span>
-              <span style={{color: '#a259f7', fontWeight: 700, fontSize: '1.5rem'}}>DevOps Engineering</span>
+          <div style={{
+            background: '#192235',
+            borderRadius: 18,
+            padding: 'clamp(24px, 4vw, 36px) clamp(20px, 3vw, 32px)',
+            width: 'min(100%, 400px)',
+            boxShadow: '0 4px 24px rgba(0,0,0,0.10)'
+          }}>
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              marginBottom: 24
+            }}>
+              <span style={{
+                background: '#a259f7',
+                color: '#fff',
+                borderRadius: 12,
+                padding: 10,
+                fontSize: 'clamp(20px, 3vw, 24px)',
+                marginRight: 12
+              }}>🛠️</span>
+              <span style={{
+                color: '#a259f7',
+                fontWeight: 700,
+                fontSize: 'clamp(1.2rem, 3vw, 1.5rem)'
+              }}>DevOps Engineering</span>
             </div>
-            <SkillBar label="Conteinerization and Orchestration" color="#a259f7" percent={95} icon={<span style={{fontSize: 18}}>🖥️</span>} />
-            <SkillBar label="Automation and Configuration" color="#a259f7" percent={85} icon={<span style={{fontSize: 18}}>🛠️</span>} />
-            <SkillBar label="Monitoring and Observability" color="#a259f7" percent={80} icon={<span style={{fontSize: 18}}>📈</span>} />
-            <SkillBar label="Programming and Scripting" color="#a259f7" percent={80} icon={<span style={{fontSize: 18}}>💻</span>} />
-            <SkillBar label="Development and CI/CD" color="#a259f7" percent={80} icon={<span style={{fontSize: 18}}>🔄</span>} />
+            <SkillBar label="Conteinerization and Orchestration" color="#a259f7" percent={95} icon={<span style={{fontSize: 'clamp(16px, 2vw, 18px)'}}>🖥️</span>} />
+            <SkillBar label="Automation and Configuration" color="#a259f7" percent={85} icon={<span style={{fontSize: 'clamp(16px, 2vw, 18px)'}}>🛠️</span>} />
+            <SkillBar label="Monitoring and Observability" color="#a259f7" percent={80} icon={<span style={{fontSize: 'clamp(16px, 2vw, 18px)'}}>📈</span>} />
+            <SkillBar label="Programming and Scripting" color="#a259f7" percent={80} icon={<span style={{fontSize: 'clamp(16px, 2vw, 18px)'}}>💻</span>} />
+            <SkillBar label="Development and CI/CD" color="#a259f7" percent={80} icon={<span style={{fontSize: 'clamp(16px, 2vw, 18px)'}}>🔄</span>} />
           </div>
         </div>
       </section>
@@ -262,13 +465,44 @@ function Home() {
 // SkillBar component
 function SkillBar({ label, color, percent, icon }) {
   return (
-    <div style={{marginBottom: 24}}>
-      <div style={{display: 'flex', alignItems: 'center', marginBottom: 6, gap: 8}}>
-        {icon}
-        <span style={{color: '#fff', fontWeight: 500, fontSize: 16}}>{label}</span>
+    <div style={{ marginBottom: 20 }}>
+      <div style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginBottom: 8
+      }}>
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: 8
+        }}>
+          {icon}
+          <span style={{
+            color: '#bfc9da',
+            fontSize: 'clamp(0.875rem, 2vw, 1rem)'
+          }}>{label}</span>
+        </div>
+        <span style={{
+          color: color,
+          fontWeight: 600,
+          fontSize: 'clamp(0.875rem, 2vw, 1rem)'
+        }}>{percent}%</span>
       </div>
-      <div style={{background: '#2c3446', borderRadius: 6, height: 7, width: '100%', marginBottom: 2}}>
-        <div style={{background: color, width: `${percent}%`, height: '100%', borderRadius: 6, transition: 'width 0.5s'}}></div>
+      <div style={{
+        width: '100%',
+        height: 'clamp(6px, 1vw, 8px)',
+        background: '#232e41',
+        borderRadius: 'clamp(3px, 0.5vw, 4px)',
+        overflow: 'hidden'
+      }}>
+        <div style={{
+          width: `${percent}%`,
+          height: '100%',
+          background: color,
+          borderRadius: 'clamp(3px, 0.5vw, 4px)',
+          transition: 'width 0.3s ease'
+        }} />
       </div>
     </div>
   );
