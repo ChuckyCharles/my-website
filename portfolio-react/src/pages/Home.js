@@ -1,6 +1,62 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
+import emailjs from '@emailjs/browser';
 
 function Home() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
+  const formRef = useRef();
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    try {
+      // Replace these with your actual EmailJS credentials
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        phone: formData.phone,
+        message: formData.message,
+        to_name: 'Charles Ochieng'
+      };
+
+      await emailjs.send(
+        'service_x9oq0pf ', // Replace with your EmailJS service ID
+        'template_se4q6he', // Replace with your EmailJS template ID
+        templateParams,
+        'VKdJ9CuLlJWxJNjp2' // Replace with your EmailJS public key
+      );
+
+      setSubmitStatus('success');
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        message: ''
+      });
+    } catch (error) {
+      console.error('Error sending email:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div style={{background: '#0a1623', minHeight: '100vh', padding: '0', margin: '0'}}>
       {/* Hero Section */}
@@ -434,25 +490,85 @@ function Home() {
           <div style={{flex: 1, minWidth: 340, maxWidth: 500, background: '#313d4f', borderRadius: 18, padding: '36px 32px', boxShadow: '0 4px 24px rgba(0,0,0,0.10)'}}>
             <div style={{color: '#fff', fontWeight: 700, fontSize: '1.3rem', marginBottom: 8}}>Send Message</div>
             <div style={{color: '#bfc9da', fontSize: 16, marginBottom: 24}}>Feel free to reach out to me for any inquiries or collaboration opportunities.</div>
-            <form>
+            <form ref={formRef} onSubmit={handleSubmit}>
               <div style={{display: 'flex', alignItems: 'center', background: '#232e41', borderRadius: 8, marginBottom: 18, padding: '0 12px'}}>
                 <span style={{color: '#7b8cff', fontSize: 18, marginRight: 8}}></span>
-                <input type="text" placeholder="Your Name" style={{background: 'transparent', border: 'none', outline: 'none', color: '#fff', fontSize: 16, padding: '16px 0', flex: 1}} />
+                <input 
+                  type="text" 
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder="Your Name" 
+                  required
+                  style={{background: 'transparent', border: 'none', outline: 'none', color: '#fff', fontSize: 16, padding: '16px 0', flex: 1}} 
+                />
               </div>
               <div style={{display: 'flex', alignItems: 'center', background: '#232e41', borderRadius: 8, marginBottom: 18, padding: '0 12px'}}>
                 <span style={{color: '#7b8cff', fontSize: 18, marginRight: 8}}></span>
-                <input type="email" placeholder="Your Email" style={{background: 'transparent', border: 'none', outline: 'none', color: '#fff', fontSize: 16, padding: '16px 0', flex: 1}} />
+                <input 
+                  type="email" 
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="Your Email" 
+                  required
+                  style={{background: 'transparent', border: 'none', outline: 'none', color: '#fff', fontSize: 16, padding: '16px 0', flex: 1}} 
+                />
               </div>
               <div style={{display: 'flex', alignItems: 'center', background: '#232e41', borderRadius: 8, marginBottom: 18, padding: '0 12px'}}>
                 <span style={{color: '#7b8cff', fontSize: 18, marginRight: 8}}></span>
-                <input type="text" placeholder="Your Number" style={{background: 'transparent', border: 'none', outline: 'none', color: '#fff', fontSize: 16, padding: '16px 0', flex: 1}} />
+                <input 
+                  type="tel" 
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  placeholder="Your Number" 
+                  required
+                  style={{background: 'transparent', border: 'none', outline: 'none', color: '#fff', fontSize: 16, padding: '16px 0', flex: 1}} 
+                />
               </div>
               <div style={{display: 'flex', alignItems: 'flex-start', background: '#232e41', borderRadius: 8, marginBottom: 24, padding: '12px'}}>
                 <span style={{color: '#7b8cff', fontSize: 18, marginRight: 8, marginTop: 4}}></span>
-                <textarea placeholder="Your Message" rows={4} style={{background: 'transparent', border: 'none', outline: 'none', color: '#fff', fontSize: 16, flex: 1, resize: 'none'}} />
+                <textarea 
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  placeholder="Your Message" 
+                  required
+                  rows={4} 
+                  style={{background: 'transparent', border: 'none', outline: 'none', color: '#fff', fontSize: 16, flex: 1, resize: 'none'}} 
+                />
               </div>
-              <button type="submit" style={{width: '100%', background: '#6366f1', color: '#fff', fontWeight: 600, fontSize: 18, border: 'none', borderRadius: 10, padding: '16px 0', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10}}>
-                Send Message <span style={{fontSize: 20}}></span>
+              {submitStatus === 'success' && (
+                <div style={{color: '#4CAF50', marginBottom: 16, textAlign: 'center'}}>
+                  Message sent successfully! I'll get back to you soon.
+                </div>
+              )}
+              {submitStatus === 'error' && (
+                <div style={{color: '#f44336', marginBottom: 16, textAlign: 'center'}}>
+                  Failed to send message. Please try again later.
+                </div>
+              )}
+              <button 
+                type="submit" 
+                disabled={isSubmitting}
+                style={{
+                  width: '100%', 
+                  background: isSubmitting ? '#4a4a4a' : '#6366f1', 
+                  color: '#fff', 
+                  fontWeight: 600, 
+                  fontSize: 18, 
+                  border: 'none', 
+                  borderRadius: 10, 
+                  padding: '16px 0', 
+                  cursor: isSubmitting ? 'not-allowed' : 'pointer',
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  justifyContent: 'center', 
+                  gap: 10
+                }}
+              >
+                {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>
             </form>
           </div>
