@@ -384,7 +384,7 @@ function Home() {
                 A containerised voting application deployed on Redhat OpenShift Service on AWS (ROSA).
               </div>
               <div style={{display: 'flex', gap: 10, flexWrap: 'wrap'}}>
-                <Tag>Portfolio</Tag>
+              <a href="https://github.com/ChuckyCharles/Voting_App_Openshift" target="_blank" rel="noopener noreferrer" style={{textDecoration: 'none'}}><Tag>React Native</Tag></a>
                 
               </div>
             </div>
