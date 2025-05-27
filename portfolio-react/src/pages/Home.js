@@ -36,7 +36,7 @@ function Home() {
       };
 
       await emailjs.send(
-        'service_x9oq0pf ', // Replace with your EmailJS service ID
+        'service_x9oq0pf', // Replace with your EmailJS service ID
         'template_se4q6he', // Replace with your EmailJS template ID
         templateParams,
         'VKdJ9CuLlJWxJNjp2' // Replace with your EmailJS public key
