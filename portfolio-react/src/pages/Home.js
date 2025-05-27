@@ -341,7 +341,7 @@ function Home() {
                 An automated hypervisor deployment solution for enterprise cloud environments.
               </div>
               <div style={{display: 'flex', gap: 10, flexWrap: 'wrap'}}>
-              <a href="https://gitlab.com/cloudchuck/kvm_deplyoment" target="_blank" rel="noopener noreferrer" style={{textDecoration: 'none'}}><Tag>React Native</Tag></a>
+              <a href="https://gitlab.com/cloudchuck/kvm_deplyoment" target="_blank" rel="noopener noreferrer" style={{textDecoration: 'none'}}><Tag>Link</Tag></a>
                 
                
               </div>
@@ -356,7 +356,7 @@ function Home() {
                 An interactive design system built with JavaScript that showcases modern UI patterns and animations.
               </div>
               <div style={{display: 'flex', gap: 10, flexWrap: 'wrap'}}>
-              <a href="https://github.com/ChuckyCharles/Chuch_Hybrid_Cloud_Manager" target="_blank" rel="noopener noreferrer" style={{textDecoration: 'none'}}><Tag>React Native</Tag></a>
+              <a href="https://github.com/ChuckyCharles/Chuch_Hybrid_Cloud_Manager" target="_blank" rel="noopener noreferrer" style={{textDecoration: 'none'}}><Tag>Link</Tag></a>
               
               
               </div>
@@ -371,7 +371,7 @@ function Home() {
                 A fast and automated way to deploy virtual machines in a private hybrid cloud environment.
               </div>
               <div style={{display: 'flex', gap: 10, flexWrap: 'wrap'}}>
-                <a href="https://gitlab.com/cloudchuck/terraform_vm_deployment" target="_blank" rel="noopener noreferrer" style={{textDecoration: 'none'}}><Tag>React Native</Tag></a>
+                <a href="https://gitlab.com/cloudchuck/terraform_vm_deployment" target="_blank" rel="noopener noreferrer" style={{textDecoration: 'none'}}><Tag>Link</Tag></a>
               </div>
             </div>
           </div>
@@ -384,7 +384,7 @@ function Home() {
                 A containerised voting application deployed on Redhat OpenShift Service on AWS (ROSA).
               </div>
               <div style={{display: 'flex', gap: 10, flexWrap: 'wrap'}}>
-              <a href="https://github.com/ChuckyCharles/Voting_App_Openshift" target="_blank" rel="noopener noreferrer" style={{textDecoration: 'none'}}><Tag>React Native</Tag></a>
+              <a href="https://github.com/ChuckyCharles/Voting_App_Openshift" target="_blank" rel="noopener noreferrer" style={{textDecoration: 'none'}}><Tag>Link</Tag></a>
                 
               </div>
             </div>
