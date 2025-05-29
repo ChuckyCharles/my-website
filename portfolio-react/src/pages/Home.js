@@ -409,10 +409,10 @@ function Home() {
             <div style={{padding: '28px 24px 18px 24px'}}>
               <div style={{color: '#fff', fontWeight: 700, fontSize: '1.25rem', marginBottom: 10}}>Multi/Hybrid Cloud Management Platform</div>
               <div style={{color: '#bfc9da', fontSize: 16, marginBottom: 18}}>
-                An interactive design system built with JavaScript that showcases modern UI patterns and animations.
+                An single platform for managing both on-premise and hybrid cloud Infrastructure.
               </div>
               <div style={{display: 'flex', gap: 10, flexWrap: 'wrap'}}>
-              <a href="https://github.com/ChuckyCharles/Chuch_Hybrid_Cloud_Manager" target="_blank" rel="noopener noreferrer" style={{textDecoration: 'none'}}><Tag>Link</Tag></a>
+              <a href="https://github.com/ChuckyCharles/Multi-Huybrid_Cloud_Manager.git"" target="_blank" rel="noopener noreferrer" style={{textDecoration: 'none'}}><Tag>Link</Tag></a>
               
               
               </div>
