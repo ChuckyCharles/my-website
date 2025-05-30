@@ -412,7 +412,7 @@ function Home() {
                 An single platform for managing both on-premise and hybrid cloud Infrastructure.
               </div>
               <div style={{display: 'flex', gap: 10, flexWrap: 'wrap'}}>
-              <a href="https://github.com/ChuckyCharles/Multi-Huybrid_Cloud_Manager.git"" target="_blank" rel="noopener noreferrer" style={{textDecoration: 'none'}}><Tag>Link</Tag></a>
+              <a href="https://github.com/ChuckyCharles/Multi-Huybrid_Cloud_Manager.git" target="_blank" rel="noopener noreferrer" style={{textDecoration: 'none'}}><Tag>Link</Tag></a>
               
               
               </div>
