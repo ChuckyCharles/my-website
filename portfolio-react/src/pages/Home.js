@@ -427,7 +427,7 @@ function Home() {
                 A fast and automated way to deploy virtual machines in a private hybrid cloud environment.
               </div>
               <div style={{display: 'flex', gap: 10, flexWrap: 'wrap'}}>
-                <a href="https://gitlab.com/cloudchuck/terraform_vm_deployment" target="_blank" rel="noopener noreferrer" style={{textDecoration: 'none'}}><Tag>Link</Tag></a>
+                <a href="https://github.com/ChuckyCharles/Multi-Huybrid_Cloud_Manager.git" target="_blank" rel="noopener noreferrer" style={{textDecoration: 'none'}}><Tag>Link</Tag></a>
               </div>
             </div>
           </div>
