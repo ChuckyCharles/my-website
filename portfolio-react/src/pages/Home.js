@@ -217,22 +217,7 @@ function Home() {
               <div style={{fontSize: 'clamp(0.875rem, 2vw, 1rem)'}}>Technical Articles</div>
             </div>
           </div>
-          <a href="https://1drv.ms/b/c/e69819c0d7c33828/EcanBkVVZC5InN7rWPWif1EBWSoKu3CRwct_xeMT4WFgEA?e=1leGwT" 
-             target="_blank" 
-             rel="noopener noreferrer" 
-             className="cta" 
-             style={{
-               background: '#6366f1',
-               color: '#fff',
-               fontWeight: 600,
-               borderRadius: 8,
-               padding: '14px 32px',
-               textDecoration: 'none',
-               display: 'inline-block',
-               fontSize: 'clamp(0.875rem, 2vw, 1rem)'
-             }}>
-            Download CV <span style={{marginLeft: 8}}>&#8681;</span>
-          </a>
+         
         </div>
       </section>
 
