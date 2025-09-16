@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
 
 function Home() {
@@ -11,6 +11,49 @@ function Home() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
   const formRef = useRef();
+  
+  // Add smooth scrolling effect for anchor links
+  useEffect(() => {
+    const handleSmoothScroll = (e) => {
+      const target = e.target.closest('a');
+      if (target && target.getAttribute('href')?.startsWith('#')) {
+        e.preventDefault();
+        const id = target.getAttribute('href').substring(1);
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      }
+    };
+    
+    document.addEventListener('click', handleSmoothScroll);
+    
+    // Intersection Observer for animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-in');
+        }
+      });
+    }, observerOptions);
+    
+    // Observe all sections
+    const sections = document.querySelectorAll('section');
+    sections.forEach((section) => observer.observe(section));
+    
+    return () => {
+      document.removeEventListener('click', handleSmoothScroll);
+      observer.disconnect();
+    };
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -58,561 +101,2210 @@ function Home() {
   };
 
   return (
-    <div style={{background: '#0a1623', minHeight: '100vh', padding: '0', margin: '0'}}>
-      {/* Hero Section */}
-      <section className="hero-section" style={{
-        minHeight: '60vh',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        background: 'linear-gradient(135deg, #0a1623 0%, #1a2332 100%)',
-        padding: '40px 20px'
+    <div style={{
+      background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.98) 0%, rgba(30, 41, 59, 0.96) 25%, rgba(51, 65, 85, 0.94) 50%, rgba(71, 85, 105, 0.92) 75%, rgba(100, 116, 139, 0.90) 100%)',
+      minHeight: '100vh', 
+      color: '#ffffff',
+      position: 'relative',
+      overflow: 'hidden'
+    }}>
+      {/* Floating Cloud Elements */}
+      <div style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        pointerEvents: 'none',
+        zIndex: -1,
+        overflow: 'hidden'
       }}>
-        <h1 style={{
-          fontSize: 'clamp(2rem, 5vw, 2.8rem)',
-          fontWeight: 700,
-          color: '#fff',
-          marginBottom: '0.5em',
-          textAlign: 'center'
-        }}>Hello World! 👋</h1>
-        <h2 style={{
-          fontSize: 'clamp(1.5rem, 4vw, 2rem)',
-          fontWeight: 600,
-          color: '#fff',
-          marginBottom: '0.5em',
-          textAlign: 'center'
-        }}>I'm Charles Ochieng</h2>
-        <p style={{
-          maxWidth: 600,
-          textAlign: 'center',
-          fontSize: 'clamp(1rem, 2vw, 1.2rem)',
-          color: '#bfc9da',
-          marginBottom: '2em',
-          padding: '0 20px'
-        }}>
-          A passionate Cloud Infrastructure engineer and DevOps engineer, transforming ideas into elegant digital experiences. Based in Nairobi, working worldwide.
-        </p>
+        {/* Cloud 1 */}
         <div style={{
+          position: 'absolute',
+          top: '10%',
+          left: '10%',
+          fontSize: '3rem',
+          opacity: 0.1,
+          animation: 'float 20s infinite linear'
+        }}>☁️</div>
+        
+        {/* Cloud 2 */}
+        <div style={{
+          position: 'absolute',
+          top: '20%',
+          right: '15%',
+          fontSize: '2.5rem',
+          opacity: 0.08,
+          animation: 'float 25s infinite linear reverse'
+        }}>☁️</div>
+        
+        {/* Cloud 3 */}
+        <div style={{
+          position: 'absolute',
+          top: '60%',
+          left: '5%',
+          fontSize: '2rem',
+          opacity: 0.12,
+          animation: 'float 30s infinite linear'
+        }}>☁️</div>
+        
+        {/* Cloud 4 */}
+        <div style={{
+          position: 'absolute',
+          top: '80%',
+          right: '20%',
+          fontSize: '2.5rem',
+          opacity: 0.1,
+          animation: 'float 22s infinite linear reverse'
+        }}>☁️</div>
+        
+        {/* Server Icons */}
+        <div style={{
+          position: 'absolute',
+          top: '30%',
+          left: '80%',
+          fontSize: '1.5rem',
+          opacity: 0.06,
+          animation: 'float 18s infinite linear reverse'
+        }}>🖥️</div>
+        
+        <div style={{
+          position: 'absolute',
+          top: '70%',
+          left: '85%',
+          fontSize: '1.2rem',
+          opacity: 0.08,
+          animation: 'float 24s infinite linear'
+        }}>⚙️</div>
+        
+        {/* Network Icons */}
+        <div style={{
+          position: 'absolute',
+          top: '40%',
+          left: '2%',
+          fontSize: '1.8rem',
+          opacity: 0.05,
+          animation: 'float 28s infinite linear reverse'
+        }}>🌐</div>
+      </div>
+      
+      {/* Add CSS animation */}
+      <style>{`
+        @keyframes float {
+          0% { transform: translateX(-10px) translateY(0px); }
+          25% { transform: translateX(10px) translateY(-10px); }
+          50% { transform: translateX(5px) translateY(-5px); }
+          75% { transform: translateX(-5px) translateY(-15px); }
+          100% { transform: translateX(-10px) translateY(0px); }
+        }
+        
+        .animate-in {
+          animation: slideInUp 0.8s ease-out;
+        }
+        
+        @keyframes slideInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        /* Mobile-first responsive improvements */
+        @media (max-width: 768px) {
+          .projects-grid {
+            grid-template-columns: 1fr !important;
+            gap: 1.5rem !important;
+          }
+          
+          .project-card {
+            min-height: 220px !important;
+            padding: 1.25rem !important;
+          }
+          
+          /* Touch targets for mobile */
+          .project-card:active {
+            transform: translateY(-2px) scale(0.98) !important;
+          }
+        }
+        
+        @media (min-width: 769px) and (max-width: 1024px) {
+          .projects-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+          }
+        }
+        
+        /* Improve image loading on mobile */
+        @media (prefers-reduced-motion: reduce) {
+          * {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+          }
+        }
+      `}</style>
+      {/* Navigation */}
+      <nav style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #334155 50%, #475569 75%, #64748b 100%)',
+        backdropFilter: 'blur(20px)',
+        borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+        zIndex: 1000,
+        padding: '1rem 0',
+        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)'
+      }}>
+        <div style={{
+          maxWidth: '1200px',
+          margin: '0 auto',
+          padding: '0 2rem',
           display: 'flex',
-          gap: '1.5em',
-          flexWrap: 'wrap',
-          justifyContent: 'center'
+          justifyContent: 'space-between',
+          alignItems: 'center'
         }}>
-          <a href="#projects" className="cta" style={{
-            background: '#6366f1',
-            color: '#fff',
-            fontWeight: 600,
-            borderRadius: 8,
-            padding: 'clamp(10px, 2vw, 12px) clamp(24px, 4vw, 32px)',
-            fontSize: 'clamp(0.875rem, 2vw, 1rem)',
-            textAlign: 'center',
-            minWidth: '140px'
-          }}>View My Work</a>
-          <a href="#contact" className="cta" style={{
-            background: '#ff9900',
-            color: '#fff',
-            fontWeight: 600,
-            borderRadius: 8,
-            padding: 'clamp(10px, 2vw, 12px) clamp(24px, 4vw, 32px)',
-            fontSize: 'clamp(0.875rem, 2vw, 1rem)',
-            textAlign: 'center',
-            minWidth: '140px'
-          }}>Let's Connect</a>
+          <div style={{
+            fontSize: '1.5rem',
+            fontWeight: 800,
+            color: '#ffffff',
+            background: 'linear-gradient(135deg, #60a5fa 0%, #3b82f6 50%, #2563eb 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text'
+          }}>Charles Ochieng</div>
+          
+          {/* Desktop Navigation */}
+          <div style={{
+            display: 'flex',
+            gap: '2.5rem',
+            alignItems: 'center'
+          }}>
+            <a href="#home" 
+               onMouseEnter={(e) => e.target.style.color = '#00f5ff'}
+               onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.9)'}
+               style={{
+              color: 'rgba(255, 255, 255, 0.9)', 
+              textDecoration: 'none', 
+              fontSize: '1rem',
+              fontWeight: 500,
+              padding: '0.5rem 0',
+              transition: 'color 0.3s ease'
+            }}>Home</a>
+            <a href="#about" 
+               onMouseEnter={(e) => e.target.style.color = '#00f5ff'}
+               onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.9)'}
+               style={{
+              color: 'rgba(255, 255, 255, 0.9)', 
+              textDecoration: 'none', 
+              fontSize: '1rem',
+              fontWeight: 500,
+              padding: '0.5rem 0',
+              transition: 'color 0.3s ease'
+            }}>About</a>
+            <a href="#experience" 
+               onMouseEnter={(e) => e.target.style.color = '#00f5ff'}
+               onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.9)'}
+               style={{
+              color: 'rgba(255, 255, 255, 0.9)', 
+              textDecoration: 'none', 
+              fontSize: '1rem',
+              fontWeight: 500,
+              padding: '0.5rem 0',
+              transition: 'color 0.3s ease'
+            }}>Experience</a>
+            <a href="#projects" 
+               onMouseEnter={(e) => e.target.style.color = '#00f5ff'}
+               onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.9)'}
+               style={{
+              color: 'rgba(255, 255, 255, 0.9)', 
+              textDecoration: 'none', 
+              fontSize: '1rem',
+              fontWeight: 500,
+              padding: '0.5rem 0',
+              transition: 'color 0.3s ease'
+            }}>Projects</a>
+            <a href="#contact" 
+               onMouseEnter={(e) => e.target.style.color = '#00f5ff'}
+               onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.9)'}
+               style={{
+              color: 'rgba(255, 255, 255, 0.9)', 
+              textDecoration: 'none', 
+              fontSize: '1rem',
+              fontWeight: 500,
+              padding: '0.5rem 0',
+              transition: 'color 0.3s ease'
+            }}>Contact</a>
+            
+            {/* Social Icons */}
+            <div style={{
+              display: 'flex',
+              gap: '1rem',
+              alignItems: 'center',
+              marginLeft: '1rem'
+            }}>
+               <a href="https://gitlab.com/CloudChuck"
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 style={{
+                   color: 'rgba(255, 255, 255, 0.8)',
+                   fontSize: '1.2rem',
+                   transition: 'color 0.3s ease'
+                 }}
+                 onMouseEnter={(e) => e.target.style.color = '#00f5ff'}
+                 onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.8)'}
+                 title="GitLab"
+              >
+                <i className="fab fa-gitlab"></i>
+              </a>
+              <a href="https://www.linkedin.com/in/charles-ochieng-177ba3253" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 style={{
+                   color: 'rgba(255, 255, 255, 0.8)',
+                   fontSize: '1.2rem',
+                   transition: 'color 0.3s ease'
+                 }}
+                 onMouseEnter={(e) => e.target.style.color = '#00f5ff'}
+                 onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.8)'}
+                 title="LinkedIn"
+              >
+                <i className="fab fa-linkedin"></i>
+              </a>
+                 <a href="https://github.com/ChuckyCharles" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 style={{
+                   color: 'rgba(255, 255, 255, 0.8)',
+                   fontSize: '1.2rem',
+                   transition: 'color 0.3s ease'
+                 }}
+                 onMouseEnter={(e) => e.target.style.color = '#00f5ff'}
+                 onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.8)'}
+                 title="GitHub"
+              >
+                <i className="fab fa-github"></i>
+              </a>
+              <a href="https://x.com/CharlesO21441" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 style={{
+                   color: 'rgba(255, 255, 255, 0.8)',
+                   fontSize: '1.2rem',
+                   transition: 'color 0.3s ease'
+                 }}
+                 onMouseEnter={(e) => e.target.style.color = '#00f5ff'}
+                 onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.8)'}
+                 title="Twitter"
+              >
+                <i className="fab fa-twitter"></i>
+              </a>
+              <a href="mailto:ochiengcharles531@gmail.com" 
+                 style={{
+                   color: 'rgba(255, 255, 255, 0.8)',
+                   fontSize: '1.2rem',
+                   transition: 'color 0.3s ease'
+                 }}
+                 onMouseEnter={(e) => e.target.style.color = '#00f5ff'}
+                 onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.8)'}
+                 title="Email"
+              >
+                <i className="fas fa-envelope"></i>
+              </a>
+            </div>
+            
+            <a href="https://1drv.ms/w/c/e69819c0d7c33828/EWlz9mH6g5JGhNcwaanH3H4BLMGsFg3Cne2t0KL4MMC0Qg?e=XmCYXp" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               style={{
+                 background: 'linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)',
+                 color: '#ffffff',
+                 padding: '0.75rem 1.5rem',
+                 borderRadius: '25px',
+                 textDecoration: 'none',
+                 fontSize: '0.95rem',
+                 fontWeight: 600,
+                 transition: 'all 0.3s ease',
+                 boxShadow: '0 4px 15px rgba(59, 130, 246, 0.4)',
+                 border: '1px solid rgba(255, 255, 255, 0.2)',
+                 display: 'flex',
+                 alignItems: 'center',
+                 gap: '0.5rem'
+               }}
+               onMouseEnter={(e) => {
+                 e.target.style.transform = 'translateY(-2px)';
+                 e.target.style.boxShadow = '0 8px 25px rgba(59, 130, 246, 0.6)';
+               }}
+               onMouseLeave={(e) => {
+                 e.target.style.transform = 'translateY(0)';
+                 e.target.style.boxShadow = '0 4px 15px rgba(59, 130, 246, 0.4)';
+               }}
+            >
+              <i className="fas fa-download"></i>
+              Download CV
+            </a>
+          </div>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section id="home" style={{
+        minHeight: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        padding: '0 2rem',
+        paddingTop: '80px',
+        background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(30, 41, 59, 0.75) 50%, rgba(51, 65, 85, 0.65) 100%)',
+        backdropFilter: 'blur(15px)',
+        borderBottom: '1px solid rgba(255, 255, 255, 0.1)'
+      }}>
+        <div style={{
+          maxWidth: '1200px',
+          margin: '0 auto',
+          width: '100%',
+          display: 'grid',
+          gridTemplateColumns: window.innerWidth > 768 ? '1fr 1fr' : '1fr',
+          gap: '4rem',
+          alignItems: 'center'
+        }}>
+          {/* Left Content */}
+          <div>
+            {/* Tech Stack Icons */}
+            <div style={{
+              display: 'flex',
+              gap: '0.75rem',
+              marginBottom: '2rem',
+              flexWrap: 'wrap'
+            }}>
+              <TechIcon>☁️</TechIcon>
+              <TechIcon>🐳</TechIcon>
+              <TechIcon>K8s</TechIcon>
+              <TechIcon>🐍</TechIcon>
+              <TechIcon>TF</TechIcon>
+              <TechIcon>🟢</TechIcon>
+              <TechIcon>VM</TechIcon>
+              <TechIcon>⚙️</TechIcon>
+              <TechIcon>📋</TechIcon>
+            </div>
+            
+            <div style={{
+              fontSize: '0.9rem',
+              color: '#64748b',
+              marginBottom: '0.5rem',
+              fontWeight: 500
+            }}>Cloud Infrastructure / DevOps </div>
+            
+            <h1 style={{
+              fontSize: 'clamp(2.5rem, 5vw, 4rem)',
+              fontWeight: 800,
+              color: '#ffffff',
+              marginBottom: '1rem',
+              lineHeight: 1.1
+            }}>Charles Ochieng</h1>
+            
+            <div style={{
+              fontSize: '1.25rem',
+              color: '#3b82f6',
+              fontWeight: 600,
+              marginBottom: '0.5rem'
+            }}>Cloud Infrastructure & DevOps Engineer</div>
+            
+            <div style={{
+              fontSize: '1rem',
+              color: '#64748b',
+              marginBottom: '2rem',
+              lineHeight: 1.6
+            }}>Specializing in hybrid cloud architectures, containerization, and infrastructure automation. Passionate about optimizing cloud costs and enhancing system reliability through DevOps practices.</div>
+            
+            <div style={{
+              display: 'flex',
+              gap: '1rem',
+              marginBottom: '2rem',
+              flexWrap: 'wrap'
+            }}>
+              <button 
+                onClick={() => document.getElementById('projects')?.scrollIntoView({behavior: 'smooth'})}
+                style={{
+                  background: '#3b82f6',
+                  color: '#ffffff',
+                  border: 'none',
+                  padding: '0.75rem 1.5rem',
+                  borderRadius: '6px',
+                  fontSize: '0.9rem',
+                  fontWeight: 600,
+                  cursor: 'pointer',
+                  transition: 'all 0.3s ease'
+                }}
+                onMouseEnter={(e) => {
+                  e.target.style.transform = 'translateY(-2px)';
+                  e.target.style.boxShadow = '0 8px 20px rgba(59, 130, 246, 0.4)';
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.transform = 'translateY(0)';
+                  e.target.style.boxShadow = 'none';
+                }}>
+                View My Work
+              </button>
+              <a href="https://charlesochieng.hashnode.dev" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 style={{
+                   background: 'transparent',
+                   color: '#ffffff',
+                   border: '1px solid #374151',
+                   padding: '0.75rem 1.5rem',
+                   borderRadius: '6px',
+                   fontSize: '0.9rem',
+                   fontWeight: 600,
+                   cursor: 'pointer',
+                   textDecoration: 'none',
+                   display: 'flex',
+                   alignItems: 'center',
+                   gap: '0.5rem',
+                   transition: 'all 0.3s ease'
+                 }}
+                 onMouseEnter={(e) => {
+                   e.target.style.borderColor = '#3b82f6';
+                   e.target.style.color = '#3b82f6';
+                 }}
+                 onMouseLeave={(e) => {
+                   e.target.style.borderColor = '#374151';
+                   e.target.style.color = '#ffffff';
+                 }}>
+                📝 Read My Blogs
+              </a>
+              <button 
+                onClick={() => document.getElementById('contact')?.scrollIntoView({behavior: 'smooth'})}
+                style={{
+                  background: 'transparent',
+                  color: '#ffffff',
+                  border: '1px solid #374151',
+                  padding: '0.75rem 1.5rem',
+                  borderRadius: '6px',
+                  fontSize: '0.9rem',
+                  fontWeight: 600,
+                  cursor: 'pointer',
+                  transition: 'all 0.3s ease'
+                }}
+                onMouseEnter={(e) => {
+                  e.target.style.borderColor = '#3b82f6';
+                  e.target.style.color = '#3b82f6';
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.borderColor = '#374151';
+                  e.target.style.color = '#ffffff';
+                }}>
+                Get In Touch
+              </button>
+            </div>
+            
+            {/* Tech Stack */}
+            <div style={{
+              fontSize: '0.875rem',
+              color: '#64748b'
+            }}>
+              <strong>Cloud Expertise:</strong> VMware vSphere, Kubernetes, OpenShift, Terraform, Ansible, AWS, Azure, <span style={{color: '#3b82f6'}}>+10 more tools</span>
+            </div>
+          </div>
+          
+          {/* Right Content - Code Editor */}
+          <div style={{
+            background: '#1a1a1a',
+            border: '1px solid #374151',
+            borderRadius: '8px',
+            overflow: 'hidden'
+          }}>
+            {/* Code Editor Header */}
+            <div style={{
+              background: '#2a2a2a',
+              padding: '0.75rem 1rem',
+              borderBottom: '1px solid #374151',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5rem'
+            }}>
+              <div style={{width: '12px', height: '12px', borderRadius: '50%', background: '#ef4444'}}></div>
+              <div style={{width: '12px', height: '12px', borderRadius: '50%', background: '#f59e0b'}}></div>
+              <div style={{width: '12px', height: '12px', borderRadius: '50%', background: '#10b981'}}></div>
+              <span style={{marginLeft: '1rem', fontSize: '0.875rem', color: '#9ca3af'}}>portfolio.tsx</span>
+            </div>
+            
+            {/* Code Content */}
+            <div style={{
+              padding: '1.5rem',
+              fontFamily: 'JetBrains Mono, Monaco, monospace',
+              fontSize: '0.875rem',
+              lineHeight: 1.6
+            }}>
+              <CodeLine number="01">const engineer = {'{'};</CodeLine>
+              <CodeLine number="02">  name: <span style={{color: '#10b981'}}>'Charles Ochieng'</span>,</CodeLine>
+              <CodeLine number="03">  role: <span style={{color: '#10b981'}}>'Cloud Infrastructure & DevOps Engineer'</span>,</CodeLine>
+              <CodeLine number="04">  company: <span style={{color: '#10b981'}}>'Angani Limited'</span>,</CodeLine>
+              <CodeLine number="05">  experience: <span style={{color: '#10b981'}}>'3+ years'</span>,</CodeLine>
+              <CodeLine number="06">  skills: [</CodeLine>
+              <CodeLine number="07">    <span style={{color: '#10b981'}}>'VMware'</span>, <span style={{color: '#10b981'}}>'Kubernetes'</span>, <span style={{color: '#10b981'}}>'OpenShift'</span>,</CodeLine>
+              <CodeLine number="08">    <span style={{color: '#10b981'}}>'Terraform'</span>, <span style={{color: '#10b981'}}>'Ansible'</span>, <span style={{color: '#10b981'}}>'Python'</span></CodeLine>
+              <CodeLine number="09">  ],</CodeLine>
+              <CodeLine number="10">  infrastructure: () => manageCloudResources(),</CodeLine>
+              <CodeLine number="11">  contact: <span style={{color: '#10b981'}}>'ochiengcharles531@gmail.com'</span></CodeLine>
+              <CodeLine number="12">{'}'};</CodeLine>
+            </div>
+            
+            {/* Status Bar */}
+            <div style={{
+              background: '#2a2a2a',
+              padding: '0.5rem 1rem',
+              borderTop: '1px solid #374151',
+              display: 'flex',
+              justifyContent: 'space-between',
+              fontSize: '0.75rem',
+              color: '#9ca3af'
+            }}>
+              <span>🟢 CloudChuck Automation</span>
+              <span>Last commit: Today</span>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* About Me Section */}
-      <section id="about-main" className="about-main" style={{
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-        gap: '3em',
-        background: '#0a1623',
-        padding: '60px 20px',
-        flexWrap: 'wrap'
+      {/* Community Impact & Leadership Section */}
+      <section style={{
+        background: 'linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(51, 65, 85, 0.8) 100%)',
+        padding: '6rem 2rem',
+        borderBottom: '1px solid rgba(255, 255, 255, 0.2)',
+        backdropFilter: 'blur(10px)'
       }}>
         <div style={{
-          width: 'min(350px, 100%)',
-          height: 'auto',
-          aspectRatio: '1/1',
-          borderRadius: 16,
-          overflow: 'hidden',
-          boxShadow: '0 8px 32px rgba(0,0,0,0.18)',
-          background: '#fff',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
+          maxWidth: '1200px',
+          margin: '0 auto',
+          textAlign: 'center'
         }}>
-          <img 
-            src="/assets/images/profile.jpg" 
-            alt="Profile" 
-            style={{
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-              objectPosition: 'center top'
-            }} 
-          />
-        </div>
-        <div style={{
-          maxWidth: 600,
-          width: '100%',
-          padding: '0 20px'
-        }}>
+          {/* Section Header */}
           <h2 style={{
-            color: '#fff',
-            fontWeight: 700,
-            fontSize: 'clamp(1.8rem, 4vw, 2.2rem)',
-            marginBottom: 16
-          }}>About Me</h2>
+            fontSize: 'clamp(2rem, 4vw, 3rem)',
+            fontWeight: 800,
+            color: '#3b82f6',
+            marginBottom: '1rem'
+          }}>Community Impact & Leadership</h2>
+          
           <p style={{
-            color: '#bfc9da',
-            fontSize: 'clamp(1rem, 2vw, 1.15rem)',
-            marginBottom: 32
-          }}>
-            I'm a passionate Cloud Infrastructure engineer, DevOps Engineer, and product manager with a strong commitment to creating innovative solutions that enhance user experiences and drive business success. With expertise in Cloud Architecture, DevOps prectices, I create efficient, scalable solutions and enjoy solving complex problems.
-          </p>
+            fontSize: '1.125rem',
+            color: '#9ca3af',
+            marginBottom: '3rem',
+            lineHeight: 1.6,
+            maxWidth: '700px',
+            margin: '0 auto 3rem auto'
+          }}>Speaking engagements, community contributions, and volunteering activities</p>
+          
+          {/* Category Buttons */}
           <div style={{
             display: 'flex',
-            gap: 24,
-            marginBottom: 32,
+            justifyContent: 'center',
+            gap: '1rem',
+            marginBottom: '3rem',
             flexWrap: 'wrap'
           }}>
             <div style={{
-              background: '#232e41',
-              color: '#bfc9da',
-              borderRadius: 12,
-              padding: '24px 32px',
-              textAlign: 'center',
-              minWidth: 120,
-              flex: 1
+              background: 'rgba(59, 130, 246, 0.1)',
+              border: '1px solid rgba(59, 130, 246, 0.3)',
+              padding: '0.75rem 1.5rem',
+              borderRadius: '25px',
+              color: '#60a5fa',
+              fontSize: '0.9rem',
+              fontWeight: 600,
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5rem'
             }}>
-              <div style={{fontWeight: 700, fontSize: 'clamp(1.5rem, 3vw, 2rem)', color: '#6366f1'}}>3+</div>
-              <div style={{fontSize: 'clamp(0.875rem, 2vw, 1rem)'}}>Years Experience</div>
+              🎤 Speaking Engagements
             </div>
+            
             <div style={{
-              background: '#232e41',
-              color: '#bfc9da',
-              borderRadius: 12,
-              padding: '24px 32px',
-              textAlign: 'center',
-              minWidth: 120,
-              flex: 1
+              background: 'rgba(75, 85, 99, 0.3)',
+              border: '1px solid rgba(75, 85, 99, 0.5)',
+              padding: '0.75rem 1.5rem',
+              borderRadius: '25px',
+              color: '#d1d5db',
+              fontSize: '0.9rem',
+              fontWeight: 600,
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5rem'
             }}>
-              <div style={{fontWeight: 700, fontSize: 'clamp(1.5rem, 3vw, 2rem)', color: '#6366f1'}}>10+</div>
-              <div style={{fontSize: 'clamp(0.875rem, 2vw, 1rem)'}}>Projects Completed</div>
+              👥 Community Leadership
             </div>
+            
             <div style={{
-              background: '#232e41',
-              color: '#bfc9da',
-              borderRadius: 12,
-              padding: '24px 32px',
-              textAlign: 'center',
-              minWidth: 120,
-              flex: 1
+              background: 'rgba(59, 130, 246, 0.1)',
+              border: '1px solid rgba(59, 130, 246, 0.3)',
+              padding: '0.75rem 1.5rem',
+              borderRadius: '25px',
+              color: '#60a5fa',
+              fontSize: '0.9rem',
+              fontWeight: 600,
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5rem'
             }}>
-              <div style={{fontWeight: 700, fontSize: 'clamp(1.5rem, 3vw, 2rem)', color: '#6366f1'}}>5+</div>
-              <div style={{fontSize: 'clamp(0.875rem, 2vw, 1rem)'}}>Technical Articles</div>
+              💝 Volunteering & Mentorship
             </div>
           </div>
+          
+          {/* Community Cards */}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(450px, 1fr))',
+            gap: '2rem',
+            textAlign: 'left'
+          }}>
+            {/* Mentor & Graphic Designer Card */}
+            <div style={{
+              background: 'rgba(30, 41, 59, 0.8)',
+              border: '1px solid rgba(75, 85, 99, 0.3)',
+              borderRadius: '12px',
+              padding: '2rem',
+              backdropFilter: 'blur(10px)'
+            }}>
+              <div style={{
+                display: 'flex',
+                alignItems: 'flex-start',
+                gap: '1rem',
+                marginBottom: '1.5rem'
+              }}>
+                <div style={{
+                  width: '60px',
+                  height: '60px',
+                  background: 'linear-gradient(135deg, #374151 0%, #4b5563 100%)',
+                  borderRadius: '12px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '1.5rem',
+                  border: '1px solid rgba(75, 85, 99, 0.5)'
+                }}>
+                  🎨
+                </div>
+                <div style={{ flex: 1 }}>
+                  <h3 style={{
+                    fontSize: '1.25rem',
+                    fontWeight: 700,
+                    color: '#ffffff',
+                    marginBottom: '0.5rem'
+                  }}>Career Ambassador</h3>
+                  <div style={{
+                    color: '#3b82f6',
+                    fontSize: '0.9rem',
+                    fontWeight: 600,
+                    marginBottom: '0.5rem'
+                  }}>Machakos University</div>
+                  <div style={{
+                    color: '#9ca3af',
+                    fontSize: '0.8rem',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.5rem'
+                  }}>
+                    <span>⏰</span> October 2023 - Present
+                  </div>
+                </div>
+              </div>
+              
+              <div style={{
+                marginBottom: '1rem'
+              }}>
+                <div style={{
+                  color: '#10b981',
+                  fontSize: '0.85rem',
+                  fontWeight: 600,
+                  marginBottom: '0.5rem'
+                }}>Focus:</div>
+                <p style={{
+                  color: '#d1d5db',
+                  fontSize: '0.9rem',
+                  lineHeight: 1.5,
+                  marginBottom: '1rem'
+                }}>Mentoring students in Career Selection and Navigation</p>
+                
+                <p style={{
+                  color: '#9ca3af',
+                  fontSize: '0.85rem',
+                  lineHeight: 1.5
+                }}>Serving as a Career Ambassador for Machakos University , guiding students in career selection and design principles.</p>
+              </div>
+              
+              <div style={{
+                background: 'rgba(75, 85, 99, 0.3)',
+                padding: '1rem',
+                borderRadius: '8px',
+                border: '1px solid rgba(75, 85, 99, 0.4)'
+              }}>
+                <div style={{
+                  color: '#10b981',
+                  fontSize: '0.8rem',
+                  fontWeight: 600,
+                  marginBottom: '0.5rem'
+                }}>Impact:</div>
+                <p style={{
+                  color: '#d1d5db',
+                  fontSize: '0.85rem',
+                  lineHeight: 1.4
+                }}>Boosted student career engagement with consistent, professional design assets that strengthened Machakos University's presence</p>
+              </div>
+            </div>
+            
+            {/* Technical Writer Card */}
+            <div style={{
+              background: 'rgba(30, 41, 59, 0.8)',
+              border: '1px solid rgba(75, 85, 99, 0.3)',
+              borderRadius: '12px',
+              padding: '2rem',
+              backdropFilter: 'blur(10px)'
+            }}>
+              <div style={{
+                display: 'flex',
+                alignItems: 'flex-start',
+                gap: '1rem',
+                marginBottom: '1.5rem'
+              }}>
+                <div style={{
+                  width: '60px',
+                  height: '60px',
+                  background: 'linear-gradient(135deg, #ec4899 0%, #be185d 100%)',
+                  borderRadius: '12px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '1.5rem',
+                  border: '1px solid rgba(236, 72, 153, 0.3)'
+                }}>
+                  💖
+                </div>
+                <div style={{ flex: 1 }}>
+                  <h3 style={{
+                    fontSize: '1.25rem',
+                    fontWeight: 700,
+                    color: '#ffffff',
+                    marginBottom: '0.5rem'
+                  }}>Technical Writer</h3>
+                  <div style={{
+                    color: '#3b82f6',
+                    fontSize: '0.9rem',
+                    fontWeight: 600,
+                    marginBottom: '0.5rem'
+                  }}>Hashnode Platform</div>
+                  <div style={{
+                    color: '#9ca3af',
+                    fontSize: '0.8rem',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.5rem'
+                  }}>
+                    <span>⏰</span> May 2024 - Current
+                  </div>
+                </div>
+              </div>
+              
+              <div style={{
+                marginBottom: '1rem'
+              }}>
+                <div style={{
+                  color: '#10b981',
+                  fontSize: '0.85rem',
+                  fontWeight: 600,
+                  marginBottom: '0.5rem'
+                }}>Focus:</div>
+                <p style={{
+                  color: '#d1d5db',
+                  fontSize: '0.9rem',
+                  lineHeight: 1.5,
+                  marginBottom: '1rem'
+                }}>Creating technical content for developers in tech</p>
+                
+                <p style={{
+                  color: '#9ca3af',
+                  fontSize: '0.85rem',
+                  lineHeight: 1.5
+                }}>Contributing technical articles and tutorials to support technology in Africa and beyond. Topics include virtualization, cloud computing, and DevOps practices.</p>
+              </div>
+              
+              <div style={{
+                background: 'rgba(75, 85, 99, 0.3)',
+                padding: '1rem',
+                borderRadius: '8px',
+                border: '1px solid rgba(75, 85, 99, 0.4)'
+              }}>
+                <div style={{
+                  color: '#10b981',
+                  fontSize: '0.8rem',
+                  fontWeight: 600,
+                  marginBottom: '0.5rem'
+                }}>Impact:</div>
+                <p style={{
+                  color: '#d1d5db',
+                  fontSize: '0.85rem',
+                  lineHeight: 1.4
+                }}>Articles reached 5,000+ readers, contributing to increased participation in tech events</p>
+              </div>
+            </div>
+          </div>
+<<<<<<< HEAD
+=======
          
+>>>>>>> origin/main
         </div>
       </section>
 
-      {/* Skills Section */}
-      <section id="skills" style={{
-        background: '#0a1623',
-        padding: '60px 20px 80px 20px'
+      {/* Experience Highlight */}
+      <section style={{
+        background: 'linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(15, 23, 42, 0.85) 100%)',
+        padding: '4rem 2rem',
+        textAlign: 'center',
+        backdropFilter: 'blur(15px)',
+        borderBottom: '1px solid rgba(255, 255, 255, 0.1)'
       }}>
         <div style={{
-          textAlign: 'center',
-          marginBottom: 48,
-          padding: '0 20px'
-        }}>
-          <div style={{
-            color: '#7b8cff',
-            letterSpacing: 2,
-            fontWeight: 700,
-            fontSize: 'clamp(12px, 2vw, 14px)',
-            marginBottom: 8
-          }}>EXPERTISE</div>
-          <h2 style={{
-            color: '#fff',
-            fontWeight: 700,
-            fontSize: 'clamp(2rem, 4vw, 2.6rem)',
-            marginBottom: 8,
-            letterSpacing: 1
-          }}>My Skills</h2>
-          <div style={{
-            width: 120,
-            height: 4,
-            background: '#7b8cff',
-            margin: '0 auto 18px auto',
-            borderRadius: 2
-          }}></div>
-          <p style={{
-            color: '#bfc9da',
-            fontSize: 'clamp(1rem, 2vw, 1.15rem)',
-            maxWidth: 700,
-            margin: '0 auto'
-          }}>Crafting digital experiences with a blend of technical expertise and creative design thinking.</p>
-        </div>
-        <div style={{
-          display: 'flex',
-          justifyContent: 'center',
-          gap: 'clamp(24px, 4vw, 48px)',
-          flexWrap: 'wrap',
-          maxWidth: 1200,
+          maxWidth: '800px',
           margin: '0 auto'
         }}>
-          {/* Development Card */}
+          <h2 style={{
+            fontSize: 'clamp(1.5rem, 3vw, 2rem)',
+            fontWeight: 700,
+            color: '#ffffff',
+            marginBottom: '1rem'
+          }}>🏆 Top Performer</h2>
+          <h3 style={{
+            fontSize: 'clamp(2rem, 4vw, 3rem)',
+            fontWeight: 800,
+            color: '#3b82f6',
+            marginBottom: '1rem'
+          }}>Cloud Infrastructure & DevOps Engineering</h3>
           <div style={{
-            background: '#192235',
-            borderRadius: 18,
-            padding: 'clamp(24px, 4vw, 36px) clamp(20px, 3vw, 32px)',
-            width: 'min(100%, 400px)',
-            boxShadow: '0 4px 24px rgba(0,0,0,0.10)'
+            display: 'flex',
+            justifyContent: 'center',
+            gap: '2rem',
+            marginBottom: '2rem',
+            flexWrap: 'wrap'
           }}>
+            <div style={{color: '#64748b'}}>💰 <strong>KES 2M+</strong> Infrastructure Cost Savings</div>
+            <div style={{color: '#64748b'}}>🏢 <strong>5+</strong> Organizations Served</div>
+            <div style={{color: '#64748b'}}>🎤 <strong>5+</strong> Technical Presentations</div>
+          </div>
+          <button 
+            onClick={() => document.getElementById('projects')?.scrollIntoView({behavior: 'smooth'})}
+            style={{
+              background: '#3b82f6',
+              color: '#ffffff',
+              border: 'none',
+              padding: '0.75rem 1.5rem',
+              borderRadius: '6px',
+              fontSize: '0.9rem',
+              fontWeight: 600,
+              cursor: 'pointer'
+            }}>Explore</button>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" style={{
+        background: 'linear-gradient(135deg, rgba(30, 41, 59, 0.75) 0%, rgba(51, 65, 85, 0.65) 100%)',
+        padding: '6rem 2rem',
+        borderTop: '1px solid rgba(255, 255, 255, 0.15)',
+        backdropFilter: 'blur(15px)'
+      }}>
+        <div style={{
+          maxWidth: '1200px',
+          margin: '0 auto',
+          textAlign: 'center'
+        }}>
+          <h2 style={{
+            fontSize: 'clamp(2rem, 4vw, 3rem)',
+            fontWeight: 800,
+            color: '#ffffff',
+            marginBottom: '1rem'
+          }}>About Me</h2>
+          <p style={{
+            fontSize: '1.125rem',
+            color: '#64748b',
+            maxWidth: '800px',
+            margin: '0 auto 3rem auto',
+            lineHeight: 1.7
+          }}>
+            Cloud Infrastructure Engineer and DevOps specialist, building solutions that impact thousands of users across Kenya. 
+            Part of the growing tech talent ecosystem, passionate about continuous learning, community building, and sharing knowledge through technical presentations and mentorship.
+          </p>
+        </div>
+      </section>
+
+      {/* Experience Section */}
+      <section id="experience" style={{
+        background: 'linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(51, 65, 85, 0.7) 100%)',
+        padding: '6rem 2rem',
+        borderTop: '1px solid rgba(255, 255, 255, 0.15)',
+        backdropFilter: 'blur(15px)'
+      }}>
+        <div style={{
+          maxWidth: '1200px',
+          margin: '0 auto'
+        }}>
+          <h2 style={{
+            fontSize: 'clamp(2rem, 4vw, 3rem)',
+            fontWeight: 800,
+            color: '#ffffff',
+            marginBottom: '3rem',
+            textAlign: 'center'
+          }}>Work Experience</h2>
+          
+          <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '2rem'
+          }}>
+            <ExperienceTimelineItem 
+              company="Angani Limited"
+              role="Cloud Support Engineer"
+              period="Jul 2025 - Sep 2025 "
+              type="Contract"
+              location="Nairobi County, Kenya"
+              description="Delivered timely resolution of infrastructure support tickets, reducing escalations and improving service quality. Allocated and optimized compute resources based on usage patterns and client needs."
+              achievements={[
+                "Supported failover testing, hardware diagnostics, and rapid response to outages in production systems",
+                "Helped right-size server builds and deployments to match client SLAs while avoiding resource waste",
+                "Delivered timely resolution of infrastructure support tickets, reducing escalations"
+              ]}
+              technologies={['VMware', 'Proxmox', 'Hyper-V', 'Xen', 'Linux', 'Veeam', 'Grafana', 'Prometheus', 'NAS/SAN', 'VPC', 'VPN', 'Terraform']}
+            />
+            
+            <ExperienceTimelineItem 
+              company="Safaricom PLC"
+              role="Cloud Infrastructure Automation Specialist"
+              period="Oct 2024 - Apr 2025 "
+              type="Internship"
+              location="Nairobi, Kenya"
+              description="Led the development of a single-plane self-service platform for IaaS, deploying Kubernetes clusters on-prem and in public clouds."
+              achievements={[
+                "Developed Infrastructure as Code (IaC) for private and public clouds using Terraform, SDKs, and Ansible",
+                "Championed open-source adoption in cloud infrastructure (OpenStack, OpenShift, Linux)",
+                "Implemented CI/CD pipelines in hybrid cloud environments",
+                "Built reusable automation scripts and modules with Ansible and Python",
+                "Collaborated on self-service patching solutions for Linux, Windows Server OS, and VMware ESXi"
+              ]}
+              technologies={['Kubernetes', 'OpenShift', 'ROSA', 'AKS', 'EKS', 'Terraform', 'Ansible', 'Python', 'OpenStack', 'CI/CD']}
+            />
+            
+            <ExperienceTimelineItem 
+              company="ICT Authority"
+              role="IT Infrastructure Engineer"
+              period="May 2024 - Aug 2024 "
+              type="Internship"
+              location="Homabay • On-site"
+              description="Provisioned IT infrastructure based on requirements and administered servers across multiple platforms."
+              achievements={[
+                "Administered, configured and troubleshooted servers based on Windows, Linux, VMware, OpenStack and RHEV",
+                "Liaised with internal users, hardware and software vendors to fine tune systems",
+                "Gathered and analyzed end user infrastructure requirements",
+                "Performed racking and mounting of IT infrastructure including servers and storage hardware"
+              ]}
+              technologies={['Windows Server', 'Linux', 'VMware', 'OpenStack', 'RHEV', 'Hardware Setup']}
+            />
+            
+            <ExperienceTimelineItem 
+              company="RISTA Construction Limited"
+              role="IT Support Engineer"
+              period="Dec 2022 - Oct 2023"
+              type="Contract"
+              location="Nairobi County, Kenya • Hybrid"
+              description="Provided comprehensive technical support and system maintenance for the organization."
+              achievements={[
+                "Provided first-line assistance to users experiencing hardware, software and network issues",
+                "Performed regular updates, patches, and maintenance on computer systems and servers",
+                "Managed user accounts in Active Directory, email platforms, and internal applications",
+                "Enforced security protocols with tools like Wazuh for SIEM and ensured data protection measures",
+                "Installed and configured computers, printers, and other devices with proper network integration"
+              ]}
+              technologies={['Active Directory', 'Wazuh SIEM', 'Windows Server', 'Network Administration', 'Hardware Setup']}
+            />
+          </div>
+        </div>
+      </section>
+
+
+
+      {/* Projects Section */}
+      <section id="projects" style={{
+        background: 'linear-gradient(135deg, rgba(30, 41, 59, 0.82) 0%, rgba(51, 65, 85, 0.72) 100%)',
+        padding: 'clamp(3rem, 8vw, 6rem) clamp(1rem, 4vw, 2rem)',
+        borderTop: '1px solid rgba(255, 255, 255, 0.15)',
+        backdropFilter: 'blur(15px)'
+      }}>
+        <div style={{
+          maxWidth: '1200px',
+          margin: '0 auto'
+        }}>
+          <h2 style={{
+            fontSize: 'clamp(2rem, 4vw, 3rem)',
+            fontWeight: 800,
+            color: '#ffffff',
+            marginBottom: '3rem',
+            textAlign: 'center'
+          }}>Featured Projects</h2>
+          
+          <div className="projects-grid" style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(350px, 100%), 1fr))',
+            gap: 'clamp(1rem, 3vw, 2rem)'
+          }}>
+            <SimpleProjectCard 
+              title="Hypervisor Deployment Automation"
+              description="Automated KVM hypervisor deployment for enterprise environments"
+              technologies={['KVM', 'Ansible', 'Terraform']}
+              link="https://gitlab.com/cloudchuck/kvm_deplyoment"
+              backgroundImage="/assets/images/projects/hypervisor-bg.jpg"
+            />
+            <SimpleProjectCard 
+              title="Multi-Cloud Management Platform"
+              description="Unified platform for hybrid cloud infrastructure management"
+              technologies={['AWS', 'Azure', 'Python', 'Docker']}
+              link="https://github.com/ChuckyCharles/Multi-Huybrid_Cloud_Manager.git"
+              backgroundImage="/assets/images/projects/multicloud-bg.jpg"
+            />
+            <SimpleProjectCard 
+              title="Terraform VM Deployment"
+              description="Infrastructure as Code for automated VM provisioning"
+              technologies={['Terraform', 'vSphere', 'HashiCorp']}
+              link="https://github.com/ChuckyCharles/Multi-Huybrid_Cloud_Manager.git"
+              backgroundImage="/assets/images/projects/terraform-bg.jpg"
+            />
+            <SimpleProjectCard 
+              title="OpenShift Voting Application"
+              description="Containerized voting app with CI/CD on ROSA"
+              technologies={['OpenShift', 'Kubernetes', 'ROSA']}
+              link="https://github.com/ChuckyCharles/Voting_App_Openshift"
+              backgroundImage="/assets/images/projects/kubernetes-bg.jpg"
+            />
+          </div>
+          
+          <div style={{
+            textAlign: 'center',
+            marginTop: '3rem'
+          }}>
+            <a href="https://gitlab.com/cloudchuck" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               style={{
+                 background: '#3b82f6',
+                 color: '#ffffff',
+                 padding: '0.75rem 1.5rem',
+                 borderRadius: '6px',
+                 textDecoration: 'none',
+                 fontSize: '0.9rem',
+                 fontWeight: 600
+               }}>
+              View All Projects
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" style={{
+        background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.85) 100%)',
+        padding: '6rem 2rem',
+        borderTop: '1px solid rgba(255, 255, 255, 0.15)',
+        backdropFilter: 'blur(15px)'
+      }}>
+        <div style={{
+          maxWidth: '1200px',
+          margin: '0 auto'
+        }}>
+          <h2 style={{
+            fontSize: 'clamp(2rem, 4vw, 3rem)',
+            fontWeight: 800,
+            color: '#ffffff',
+            marginBottom: '1rem',
+            textAlign: 'center'
+          }}>Get In Touch</h2>
+          <p style={{
+            fontSize: '1.125rem',
+            color: '#9ca3af',
+            marginBottom: '3rem',
+            lineHeight: 1.7,
+            textAlign: 'center',
+            maxWidth: '600px',
+            margin: '0 auto 3rem auto'
+          }}>
+            Have a project in mind or want to discuss cloud infrastructure solutions? Let's connect and build something amazing together.
+          </p>
+          
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
+            gap: '3rem',
+            alignItems: 'start'
+          }}>
+            {/* Contact Info */}
             <div style={{
               display: 'flex',
-              alignItems: 'center',
-              marginBottom: 24
+              flexDirection: 'column',
+              gap: '1.5rem'
             }}>
-              <span style={{
-                background: '#6366f1',
-                color: '#fff',
-                borderRadius: 12,
-                padding: 10,
-                fontSize: 'clamp(20px, 3vw, 24px)',
-                marginRight: 12
-              }}>☁️</span>
-              <span style={{
-                color: '#7b8cff',
-                fontWeight: 700,
-                fontSize: 'clamp(1.2rem, 3vw, 1.5rem)'
-              }}>Cloud Infrastructure</span>
+              <div style={{
+                display: 'flex',
+                gap: '1rem',
+                flexWrap: 'wrap'
+              }}>
+                <a href="mailto:ochiengcharles531@gmail.com" 
+                   style={{
+                     background: '#3b82f6',
+                     color: '#ffffff',
+                     padding: '0.75rem 1.5rem',
+                     borderRadius: '6px',
+                     textDecoration: 'none',
+                     fontSize: '0.9rem',
+                     fontWeight: 600,
+                     display: 'flex',
+                     alignItems: 'center',
+                     gap: '0.5rem',
+                     flex: 1,
+                     justifyContent: 'center'
+                   }}>
+                  ✉️ Email Me
+                </a>
+                <a href="tel:+254718166201" 
+                   style={{
+                     background: 'transparent',
+                     color: '#ffffff',
+                     border: '1px solid #374151',
+                     padding: '0.75rem 1.5rem',
+                     borderRadius: '6px',
+                     textDecoration: 'none',
+                     fontSize: '0.9rem',
+                     fontWeight: 600,
+                     display: 'flex',
+                     alignItems: 'center',
+                     gap: '0.5rem',
+                     flex: 1,
+                     justifyContent: 'center'
+                   }}>
+                  📱 Call
+                </a>
+              </div>
+              
+              <div style={{
+                display: 'flex',
+                gap: '1rem',
+                flexWrap: 'wrap'
+              }}>
+                <a href="https://www.linkedin.com/in/charles-ochieng-177ba3253" 
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   style={{
+                     background: 'transparent',
+                     color: '#ffffff',
+                     border: '1px solid #374151',
+                     padding: '0.75rem 1.5rem',
+                     borderRadius: '6px',
+                     textDecoration: 'none',
+                     fontSize: '0.9rem',
+                     fontWeight: 600,
+                     display: 'flex',
+                     alignItems: 'center',
+                     gap: '0.5rem',
+                     flex: 1,
+                     justifyContent: 'center'
+                   }}>
+                  LinkedIn
+                </a>
+                <a href="https://github.com/ChuckyCharles" 
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   style={{
+                     background: 'transparent',
+                     color: '#ffffff',
+                     border: '1px solid #374151',
+                     padding: '0.75rem 1.5rem',
+                     borderRadius: '6px',
+                     textDecoration: 'none',
+                     fontSize: '0.9rem',
+                     fontWeight: 600,
+                     display: 'flex',
+                     alignItems: 'center',
+                     gap: '0.5rem',
+                     flex: 1,
+                     justifyContent: 'center'
+                   }}>
+                  GitHub
+                </a>
+              </div>
+              
+              <div style={{
+                fontSize: '0.875rem',
+                color: '#6b7280',
+                textAlign: 'center',
+                padding: '1rem',
+                background: '#1a1a1a',
+                borderRadius: '8px',
+                border: '1px solid #374151'
+              }}>
+                📍 Based in Nairobi, Kenya • Available for remote work worldwide
+              </div>
             </div>
-            <SkillBar label="Public and Private Cloud" color="#7b8cff" percent={80} icon={<span style={{fontSize: 'clamp(16px, 2vw, 18px)'}}>☁️</span>} />
-            <SkillBar label="Virtualization" color="#7b8cff" percent={70} icon={<span style={{fontSize: 'clamp(16px, 2vw, 18px)'}}>🖥️</span>} />
-            <SkillBar label="Networking & Security" color="#7b8cff" percent={75} icon={<span style={{fontSize: 'clamp(16px, 2vw, 18px)'}}>🔒</span>} />
-            <SkillBar label="Storage Solutions" color="#7b8cff" percent={70} icon={<span style={{fontSize: 'clamp(16px, 2vw, 18px)'}}>💾</span>} />
-            <SkillBar label="Cloud Migration & Optimization" color="#7b8cff" percent={90} icon={<span style={{fontSize: 'clamp(16px, 2vw, 18px)'}}>🚀</span>} />
-          </div>
-          {/* Design Card */}
-          <div style={{
-            background: '#192235',
-            borderRadius: 18,
-            padding: 'clamp(24px, 4vw, 36px) clamp(20px, 3vw, 32px)',
-            width: 'min(100%, 400px)',
-            boxShadow: '0 4px 24px rgba(0,0,0,0.10)'
-          }}>
+            
+            {/* Contact Form */}
             <div style={{
-              display: 'flex',
-              alignItems: 'center',
-              marginBottom: 24
+              background: '#1a1a1a',
+              border: '1px solid #374151',
+              borderRadius: '12px',
+              padding: '2rem'
             }}>
-              <span style={{
-                background: '#a259f7',
-                color: '#fff',
-                borderRadius: 12,
-                padding: 10,
-                fontSize: 'clamp(20px, 3vw, 24px)',
-                marginRight: 12
-              }}>🛠️</span>
-              <span style={{
-                color: '#a259f7',
+              <h3 style={{
+                fontSize: '1.5rem',
                 fontWeight: 700,
-                fontSize: 'clamp(1.2rem, 3vw, 1.5rem)'
-              }}>DevOps Engineering</span>
-            </div>
-            <SkillBar label="Conteinerization and Orchestration" color="#a259f7" percent={95} icon={<span style={{fontSize: 'clamp(16px, 2vw, 18px)'}}>🖥️</span>} />
-            <SkillBar label="Automation and Configuration" color="#a259f7" percent={85} icon={<span style={{fontSize: 'clamp(16px, 2vw, 18px)'}}>🛠️</span>} />
-            <SkillBar label="Monitoring and Observability" color="#a259f7" percent={80} icon={<span style={{fontSize: 'clamp(16px, 2vw, 18px)'}}>📈</span>} />
-            <SkillBar label="Programming and Scripting" color="#a259f7" percent={80} icon={<span style={{fontSize: 'clamp(16px, 2vw, 18px)'}}>💻</span>} />
-            <SkillBar label="Development and CI/CD" color="#a259f7" percent={80} icon={<span style={{fontSize: 'clamp(16px, 2vw, 18px)'}}>🔄</span>} />
-          </div>
-        </div>
-      </section>
 
-      {/* Additional Expertise Section */}
-      <section id="additional-expertise" style={{background: '#0a1623', padding: '0 0 80px 0'}}>
-        <div style={{textAlign: 'center', marginBottom: 40}}>
-          <span style={{display: 'inline-block', background: '#192235', color: '#7b8cff', fontWeight: 600, borderRadius: 20, padding: '10px 32px', fontSize: 16, letterSpacing: 1, marginBottom: 24, boxShadow: '0 2px 8px rgba(0,0,0,0.08)'}}>Additional Expertise</span>
-        </div>
-        <div style={{display: 'flex', justifyContent: 'center', gap: 48, flexWrap: 'wrap'}}>
-          {/* DevOps Card */}
-          <div style={{background: '#192235', borderRadius: 18, padding: '36px 32px', minWidth: 300, maxWidth: 360, flex: 1, boxShadow: '0 4px 24px rgba(0,0,0,0.10)', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-            <span style={{background: '#232e41', color: '#7b8cff', borderRadius: 16, padding: 18, fontSize: 36, marginBottom: 18, display: 'inline-block'}}>📊</span>
-            <div style={{color: '#fff', fontWeight: 700, fontSize: '1.25rem', marginBottom: 8, letterSpacing: 1}}><span style={{fontWeight: 700}}>Project Management</span></div>
-            <div style={{color: '#bfc9da', fontSize: 16}}></div>
-          </div>
-          {/* Version Control Card */}
-          <div style={{background: '#192235', borderRadius: 18, padding: '36px 32px', minWidth: 300, maxWidth: 360, flex: 1, boxShadow: '0 4px 24px rgba(0,0,0,0.10)', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-            <span style={{background: '#232e41', color: '#7b8cff', borderRadius: 16, padding: 18, fontSize: 36, marginBottom: 18, display: 'inline-block'}}>💬</span>
-            <div style={{color: '#fff', fontWeight: 700, fontSize: '1.25rem', marginBottom: 8, letterSpacing: 1}}><span style={{fontWeight: 700}}>Communication</span></div>
-            <div style={{color: '#bfc9da', fontSize: 16}}></div>
-          </div>
-          {/* Graphic Designer Card */}
-          <div style={{background: '#192235', borderRadius: 18, padding: '36px 32px', minWidth: 300, maxWidth: 360, flex: 1, boxShadow: '0 4px 24px rgba(0,0,0,0.10)', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-            <span style={{background: '#232e41', color: '#7b8cff', borderRadius: 16, padding: 18, fontSize: 36, marginBottom: 18, display: 'inline-block'}}>🤝</span>
-            <div style={{color: '#fff', fontWeight: 700, fontSize: '1.25rem', marginBottom: 8, letterSpacing: 1}}><span style={{fontWeight: 700}}>Teamwork and Adaptability</span></div>
-            <div style={{color: '#bfc9da', fontSize: 16}}></div>
-          </div>
-        </div>
-      </section>
+                color: '#ffffff',
+                marginBottom: '1rem'
+              }}>Send a Message</h3>
+              <p style={{
+                color: '#9ca3af',
+                fontSize: '0.875rem',
+                marginBottom: '1.5rem'
+              }}>Let's discuss your cloud infrastructure needs</p>              
+              <form ref={formRef} onSubmit={handleSubmit} style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '1rem'
+              }}>
 
-      {/* Featured Projects Section */}
-      <section id="projects" style={{background: '#131c2a', padding: '60px 0 80px 0'}}>
-        <h2 style={{textAlign: 'center', color: '#fff', fontWeight: 700, fontSize: '2.5rem', marginBottom: 48}}>Projects</h2>
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(380px, 1fr))',
-          gap: 40,
-          maxWidth: 1200,
-          margin: '0 auto',
-        }}>
-          {/* Project Card 1 */}
-          <div style={{background: '#232e41', borderRadius: 18, overflow: 'hidden', boxShadow: '0 4px 24px rgba(0,0,0,0.10)', display: 'flex', flexDirection: 'column'}}>
-            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80" alt="PeerFund UI/UX Design" style={{width: '100%', height: 220, objectFit: 'cover'}} />
-            <div style={{padding: '28px 24px 18px 24px'}}>
-              <div style={{color: '#fff', fontWeight: 700, fontSize: '1.25rem', marginBottom: 10}}>Hypervisor Deployment</div>
-              <div style={{color: '#bfc9da', fontSize: 16, marginBottom: 18}}>
-                An automated hypervisor deployment solution for enterprise cloud environments.
-              </div>
-              <div style={{display: 'flex', gap: 10, flexWrap: 'wrap'}}>
-              <a href="https://gitlab.com/cloudchuck/kvm_deplyoment" target="_blank" rel="noopener noreferrer" style={{textDecoration: 'none'}}><Tag>Link</Tag></a>
-                
-               
-              </div>
-            </div>
-          </div>
-          {/* Project Card 2 */}
-          <div style={{background: '#232e41', borderRadius: 18, overflow: 'hidden', boxShadow: '0 4px 24px rgba(0,0,0,0.10)', display: 'flex', flexDirection: 'column'}}>
-            <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80" alt="JavaScript Design Project" style={{width: '100%', height: 220, objectFit: 'cover'}} />
-            <div style={{padding: '28px 24px 18px 24px'}}>
-              <div style={{color: '#fff', fontWeight: 700, fontSize: '1.25rem', marginBottom: 10}}>Multi/Hybrid Cloud Management Platform</div>
-              <div style={{color: '#bfc9da', fontSize: 16, marginBottom: 18}}>
-                An single platform for managing both on-premise and hybrid cloud Infrastructure.
-              </div>
-              <div style={{display: 'flex', gap: 10, flexWrap: 'wrap'}}>
-              <a href="https://gitlab.com/cloudchuck/cloud_manager_stack.git" target="_blank" rel="noopener noreferrer" style={{textDecoration: 'none'}}><Tag>Link</Tag></a>
-              
-              
-              </div>
-            </div>
-          </div>
-          {/* Project Card 3 */}
-          <div style={{background: '#232e41', borderRadius: 18, overflow: 'hidden', boxShadow: '0 4px 24px rgba(0,0,0,0.10)', display: 'flex', flexDirection: 'column'}}>
-            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Mobile Marketing App" style={{width: '100%', height: 220, objectFit: 'cover'}} />
-            <div style={{padding: '28px 24px 18px 24px'}}>
-              <div style={{color: '#fff', fontWeight: 700, fontSize: '1.25rem', marginBottom: 10}}>Terraform VM Deployment</div>
-              <div style={{color: '#bfc9da', fontSize: 16, marginBottom: 18}}>
-                A fast and automated way to deploy virtual machines in a private hybrid cloud environment.
-              </div>
-              <div style={{display: 'flex', gap: 10, flexWrap: 'wrap'}}>
-                <a href="https://github.com/ChuckyCharles/Multi-Huybrid_Cloud_Manager.git" target="_blank" rel="noopener noreferrer" style={{textDecoration: 'none'}}><Tag>Link</Tag></a>
-              </div>
-            </div>
-          </div>
-          {/* Project Card 4 */}
-          <div style={{background: '#232e41', borderRadius: 18, overflow: 'hidden', boxShadow: '0 4px 24px rgba(0,0,0,0.10)', display: 'flex', flexDirection: 'column'}}>
-            <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=600&q=80" alt="Portfolio Website" style={{width: '100%', height: 220, objectFit: 'cover'}} />
-            <div style={{padding: '28px 24px 18px 24px'}}>
-              <div style={{color: '#fff', fontWeight: 700, fontSize: '1.25rem', marginBottom: 10}}>Voting App On OpenShift</div>
-              <div style={{color: '#bfc9da', fontSize: 16, marginBottom: 18}}>
-                A containerised voting application deployed on Redhat OpenShift Service on AWS (ROSA).
-              </div>
-              <div style={{display: 'flex', gap: 10, flexWrap: 'wrap'}}>
-              <a href="https://github.com/ChuckyCharles/Voting_App_Openshift" target="_blank" rel="noopener noreferrer" style={{textDecoration: 'none'}}><Tag>Link</Tag></a>
-                
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Get in Touch Section */}
-      <section id="contact" style={{background: '#0a1623', padding: '60px 0 80px 0'}}>
-        <h2 style={{textAlign: 'center', color: '#fff', fontWeight: 700, fontSize: '2.5rem', marginBottom: 48}}>Get in Touch</h2>
-        <div style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'flex-start',
-          gap: 40,
-          flexWrap: 'wrap',
-          maxWidth: 1200,
-          margin: '0 auto',
-        }}>
-          {/* Contact Info Cards */}
-          <div style={{flex: 1, minWidth: 340, maxWidth: 500, display: 'flex', flexDirection: 'column', gap: 32}}>
-            <div style={{display: 'flex', gap: 32}}>
-              {/* Email Card */}
-              <div style={{background: '#313d4f', borderRadius: 18, flex: 1, padding: '36px 0', display: 'flex', flexDirection: 'column', alignItems: 'center', boxShadow: '0 4px 24px rgba(0,0,0,0.10)'}}>
-                <span style={{background: '#353fa8', color: '#fff', borderRadius: '50%', width: 64, height: 64, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 32, marginBottom: 18}}>✉️</span>
-                <div style={{color: '#fff', fontWeight: 700, fontSize: '1.2rem', marginBottom: 6}}>Email</div>
-                <div style={{color: '#bfc9da', fontSize: 16, marginBottom: 12}}>ochiengcharles531@gmail.com</div>
-                <a href="mailto:ochiengcharles531@gmail.com" style={{color: '#7b8cff', fontWeight: 500, fontSize: 16, textDecoration: 'none'}}>Send Email</a>
-              </div>
-              {/* Phone Card */}
-              <div style={{background: '#313d4f', borderRadius: 18, flex: 1, padding: '36px 0', display: 'flex', flexDirection: 'column', alignItems: 'center', boxShadow: '0 4px 24px rgba(0,0,0,0.10)'}}>
-                <span style={{background: '#353fa8', color: '#fff', borderRadius: '50%', width: 64, height: 64, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 32, marginBottom: 18}}>📞</span>
-                <div style={{color: '#fff', fontWeight: 700, fontSize: '1.2rem', marginBottom: 6}}>Phone</div>
-                <div style={{color: '#bfc9da', fontSize: 16, marginBottom: 12}}>+254718166201</div>
-                <a href="tel:+254718166201" style={{color: '#7b8cff', fontWeight: 500, fontSize: 16, textDecoration: 'none'}}>Call Now</a>
-              </div>
-            </div>
-            {/* Location Card */}
-            <div style={{background: '#313d4f', borderRadius: 18, padding: '36px 0', display: 'flex', flexDirection: 'column', alignItems: 'center', boxShadow: '0 4px 24px rgba(0,0,0,0.10)'}}>
-              <span style={{background: '#353fa8', color: '#fff', borderRadius: '50%', width: 64, height: 64, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 32, marginBottom: 18}}>📍</span>
-              <div style={{color: '#fff', fontWeight: 700, fontSize: '1.2rem', marginBottom: 6}}>Location</div>
-              <div style={{color: '#bfc9da', fontSize: 16, marginBottom: 12}}>Nairobi, Kenya</div>
-              <a href="https://www.google.com/maps/place/Nairobi,+Kenya" target="_blank" rel="noopener noreferrer" style={{color: '#7b8cff', fontWeight: 500, fontSize: 16, textDecoration: 'none'}}>View on Map</a>
-            </div>
-          </div>
-          {/* Contact Form Card */}
-          <div style={{flex: 1, minWidth: 340, maxWidth: 500, background: '#313d4f', borderRadius: 18, padding: '36px 32px', boxShadow: '0 4px 24px rgba(0,0,0,0.10)'}}>
-            <div style={{color: '#fff', fontWeight: 700, fontSize: '1.3rem', marginBottom: 8}}>Send Message</div>
-            <div style={{color: '#bfc9da', fontSize: 16, marginBottom: 24}}>Feel free to reach out to me for any inquiries or collaboration opportunities.</div>
-            <form ref={formRef} onSubmit={handleSubmit}>
-              <div style={{display: 'flex', alignItems: 'center', background: '#232e41', borderRadius: 8, marginBottom: 18, padding: '0 12px'}}>
-                <span style={{color: '#7b8cff', fontSize: 18, marginRight: 8}}></span>
                 <input 
-                  type="text" 
+                  type="text"
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  placeholder="Your Name" 
+                  placeholder="Your Name"
                   required
-                  style={{background: 'transparent', border: 'none', outline: 'none', color: '#fff', fontSize: 16, padding: '16px 0', flex: 1}} 
+                  style={{
+                    background: '#374151',
+                    border: '1px solid #4b5563',
+                    borderRadius: '6px',
+                    padding: '0.75rem',
+                    color: '#ffffff',
+                    fontSize: '0.875rem'
+                  }}
                 />
-              </div>
-              <div style={{display: 'flex', alignItems: 'center', background: '#232e41', borderRadius: 8, marginBottom: 18, padding: '0 12px'}}>
-                <span style={{color: '#7b8cff', fontSize: 18, marginRight: 8}}></span>
+                
                 <input 
-                  type="email" 
+                  type="email"
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  placeholder="Your Email" 
+                  placeholder="Your Email"
                   required
-                  style={{background: 'transparent', border: 'none', outline: 'none', color: '#fff', fontSize: 16, padding: '16px 0', flex: 1}} 
+                  style={{
+                    background: '#374151',
+                    border: '1px solid #4b5563',
+                    borderRadius: '6px',
+                    padding: '0.75rem',
+                    color: '#ffffff',
+                    fontSize: '0.875rem'
+                  }}
                 />
-              </div>
-              <div style={{display: 'flex', alignItems: 'center', background: '#232e41', borderRadius: 8, marginBottom: 18, padding: '0 12px'}}>
-                <span style={{color: '#7b8cff', fontSize: 18, marginRight: 8}}></span>
+                
                 <input 
-                  type="tel" 
+                  type="tel"
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  placeholder="Your Number" 
+                  placeholder="Your Phone Number"
                   required
-                  style={{background: 'transparent', border: 'none', outline: 'none', color: '#fff', fontSize: 16, padding: '16px 0', flex: 1}} 
+                  style={{
+                    background: '#374151',
+                    border: '1px solid #4b5563',
+                    borderRadius: '6px',
+                    padding: '0.75rem',
+                    color: '#ffffff',
+                    fontSize: '0.875rem'
+                  }}
                 />
-              </div>
-              <div style={{display: 'flex', alignItems: 'flex-start', background: '#232e41', borderRadius: 8, marginBottom: 24, padding: '12px'}}>
-                <span style={{color: '#7b8cff', fontSize: 18, marginRight: 8, marginTop: 4}}></span>
+                
                 <textarea 
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  placeholder="Your Message" 
+                  placeholder="Tell me about your project..."
                   required
-                  rows={4} 
-                  style={{background: 'transparent', border: 'none', outline: 'none', color: '#fff', fontSize: 16, flex: 1, resize: 'none'}} 
+                  rows={4}
+                  style={{
+                    background: '#374151',
+                    border: '1px solid #4b5563',
+                    borderRadius: '6px',
+                    padding: '0.75rem',
+                    color: '#ffffff',
+                    fontSize: '0.875rem',
+                    resize: 'vertical',
+                    minHeight: '100px'
+                  }}
                 />
-              </div>
-              {submitStatus === 'success' && (
-                <div style={{color: '#4CAF50', marginBottom: 16, textAlign: 'center'}}>
-                  Message sent successfully! I'll get back to you soon.
-                </div>
-              )}
-              {submitStatus === 'error' && (
-                <div style={{color: '#f44336', marginBottom: 16, textAlign: 'center'}}>
-                  Failed to send message. Please try again later.
-                </div>
-              )}
-              <button 
-                type="submit" 
-                disabled={isSubmitting}
-                style={{
-                  width: '100%', 
-                  background: isSubmitting ? '#4a4a4a' : '#6366f1', 
-                  color: '#fff', 
-                  fontWeight: 600, 
-                  fontSize: 18, 
-                  border: 'none', 
-                  borderRadius: 10, 
-                  padding: '16px 0', 
-                  cursor: isSubmitting ? 'not-allowed' : 'pointer',
-                  display: 'flex', 
-                  alignItems: 'center', 
-                  justifyContent: 'center', 
-                  gap: 10
-                }}
-              >
-                {isSubmitting ? 'Sending...' : 'Send Message'}
-              </button>
-            </form>
+                
+                {submitStatus === 'success' && (
+                  <div style={{
+                    color: '#10b981',
+                    fontSize: '0.875rem',
+                    textAlign: 'center',
+                    padding: '0.75rem',
+                    background: 'rgba(16, 185, 129, 0.1)',
+                    borderRadius: '6px',
+                    border: '1px solid rgba(16, 185, 129, 0.2)'
+                  }}>
+                     Message sent successfully! I'll get back to you in a short while.
+                  </div>
+                )}
+                
+                {submitStatus === 'error' && (
+                  <div style={{
+                    color: '#ef4444',
+                    fontSize: '0.875rem',
+                    textAlign: 'center',
+                    padding: '0.75rem',
+                    background: 'rgba(239, 68, 68, 0.1)',
+                    borderRadius: '6px',
+                    border: '1px solid rgba(239, 68, 68, 0.2)'
+                  }}>
+                    Failed to send message. Please try again or contact me directly.
+                  </div>
+                )}
+                
+                <button 
+                  type="submit"
+                  disabled={isSubmitting}
+                  style={{
+                    background: isSubmitting ? '#6b7280' : '#3b82f6',
+                    color: '#ffffff',
+                    border: 'none',
+                    borderRadius: '6px',
+                    padding: '0.75rem 1.5rem',
+                    fontSize: '0.9rem',
+                    fontWeight: 600,
+                    cursor: isSubmitting ? 'not-allowed' : 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '0.5rem'
+                  }}
+                >
+                  {isSubmitting ? (
+                    <>
+                      <div style={{
+                        width: '16px',
+                        height: '16px',
+                        border: '2px solid transparent',
+                        borderTop: '2px solid currentColor',
+                        borderRadius: '50%',
+                        animation: 'spin 1s linear infinite'
+                      }}></div>
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      Send Message
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M22 2L2 8.667l9 4 4 9L22 2z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </>
+                  )}
+                </button>
+              </form>
+            </div>
           </div>
         </div>
       </section>
+      
+      {/* Footer */}
+      <footer style={{
+        background: '#0a0a0a',
+        borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+        padding: '2rem',
+        textAlign: 'center'
+      }}>
+        <div style={{
+          color: '#6b7280',
+          fontSize: '0.875rem'
+        }}>
+          © {new Date().getFullYear()} Charles Ochieng. All rights reserved.
+        </div>
+      </footer>
     </div>
   );
 }
 
-// SkillBar component
-function SkillBar({ label, color, percent, icon }) {
+// ModernSkillBar component
+function ModernSkillBar({ label, color, percent, icon }) {
   return (
-    <div style={{ marginBottom: 20 }}>
+    <div style={{ marginBottom: 0 }}>
       <div style={{
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        marginBottom: 8
+        marginBottom: '0.75rem'
       }}>
         <div style={{
           display: 'flex',
           alignItems: 'center',
-          gap: 8
+          gap: '0.75rem'
         }}>
-          {icon}
           <span style={{
-            color: '#bfc9da',
-            fontSize: 'clamp(0.875rem, 2vw, 1rem)'
+            fontSize: '1rem',
+            opacity: 0.8
+          }}>{icon}</span>
+          <span style={{
+            color: 'var(--text-secondary)',
+            fontSize: 'clamp(0.875rem, 2vw, 0.95rem)',
+            fontWeight: 500
           }}>{label}</span>
         </div>
-        <span style={{
-          color: color,
-          fontWeight: 600,
-          fontSize: 'clamp(0.875rem, 2vw, 1rem)'
-        }}>{percent}%</span>
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '0.5rem'
+        }}>
+          <span style={{
+            color: color,
+            fontWeight: 700,
+            fontSize: 'clamp(0.875rem, 2vw, 0.95rem)'
+          }}>{percent}%</span>
+          <div style={{
+            width: '6px',
+            height: '6px',
+            borderRadius: '50%',
+            background: color,
+            opacity: 0.6
+          }}></div>
+        </div>
       </div>
       <div style={{
         width: '100%',
-        height: 'clamp(6px, 1vw, 8px)',
-        background: '#232e41',
-        borderRadius: 'clamp(3px, 0.5vw, 4px)',
-        overflow: 'hidden'
+        height: '8px',
+        background: 'rgba(30, 41, 59, 0.8)',
+        borderRadius: '12px',
+        overflow: 'hidden',
+        position: 'relative'
       }}>
         <div style={{
           width: `${percent}%`,
           height: '100%',
-          background: color,
-          borderRadius: 'clamp(3px, 0.5vw, 4px)',
-          transition: 'width 0.3s ease'
-        }} />
+          background: `linear-gradient(90deg, ${color} 0%, ${color}cc 100%)`,
+          borderRadius: '12px',
+          transition: 'width 1.2s cubic-bezier(0.4, 0, 0.2, 1)',
+          position: 'relative',
+          overflow: 'hidden'
+        }}>
+          {/* Animated shine effect */}
+          <div style={{
+            position: 'absolute',
+            top: 0,
+            left: '-100%',
+            width: '100%',
+            height: '100%',
+            background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent)',
+            animation: 'shine 2s ease-in-out infinite',
+            animationDelay: '0.5s'
+          }}></div>
+        </div>
       </div>
     </div>
   );
 }
 
-// Tag component
-function Tag({children}) {
+// Add shine animation to global styles
+const shineKeyframes = `
+  @keyframes shine {
+    0% { left: -100%; }
+    50% { left: -100%; }
+    100% { left: 100%; }
+  }
+`;
+
+// Inject the keyframes into the document
+if (typeof document !== 'undefined') {
+  const style = document.createElement('style');
+  style.textContent = shineKeyframes;
+  document.head.appendChild(style);
+}
+
+// ProjectCard component
+function ProjectCard({ image, title, description, technologies, link, category, gradient }) {
   return (
-    <span style={{background: '#363e54', color: '#7b8cff', borderRadius: 16, padding: '6px 18px', fontSize: 15, fontWeight: 500, letterSpacing: 0.5, marginBottom: 6, display: 'inline-block'}}>{children}</span>
+    <div className="card animate-fadeInUp" style={{
+      background: 'linear-gradient(135deg, var(--background-secondary) 0%, #2d3748 100%)',
+      borderRadius: '24px',
+      overflow: 'hidden',
+      border: '1px solid rgba(255, 255, 255, 0.1)',
+      transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+      cursor: 'pointer',
+      position: 'relative',
+      height: 'fit-content'
+    }}>
+      {/* Category badge */}
+      <div style={{
+        position: 'absolute',
+        top: '1rem',
+        left: '1rem',
+        background: gradient,
+        color: 'white',
+        padding: '0.375rem 0.75rem',
+        borderRadius: '12px',
+        fontSize: '0.75rem',
+        fontWeight: 600,
+        textTransform: 'uppercase',
+        letterSpacing: '0.05em',
+        zIndex: 2,
+        boxShadow: '0 4px 12px rgba(0, 0, 0, 0.3)'
+      }}>
+        {category}
+      </div>
+      
+      {/* Image container with overlay */}
+      <div style={{
+        position: 'relative',
+        overflow: 'hidden',
+        height: '240px'
+      }}>
+        <img 
+          src={image} 
+          alt={title}
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            transition: 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)'
+          }}
+        />
+        {/* Gradient overlay */}
+        <div style={{
+          position: 'absolute',
+          bottom: 0,
+          left: 0,
+          right: 0,
+          height: '50%',
+          background: 'linear-gradient(transparent, rgba(0,0,0,0.8))',
+          opacity: 0,
+          transition: 'opacity 0.3s ease'
+        }}></div>
+      </div>
+      
+      {/* Content */}
+      <div style={{
+        padding: '2rem'
+      }}>
+        <h3 style={{
+          color: 'var(--text-primary)',
+          fontSize: 'clamp(1.125rem, 2.5vw, 1.375rem)',
+          fontWeight: 700,
+          marginBottom: '0.75rem',
+          lineHeight: 1.3,
+          letterSpacing: '-0.01em'
+        }}>
+          {title}
+        </h3>
+        
+        <p style={{
+          color: 'var(--text-secondary)',
+          fontSize: 'clamp(0.875rem, 2vw, 1rem)',
+          lineHeight: 1.6,
+          marginBottom: '1.5rem'
+        }}>
+          {description}
+        </p>
+        
+        {/* Technologies */}
+        <div style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          gap: '0.5rem',
+          marginBottom: '1.5rem'
+        }}>
+          {technologies.map((tech, index) => (
+            <TechTag key={index} gradient={gradient}>{tech}</TechTag>
+          ))}
+        </div>
+        
+        {/* Action button */}
+        <a 
+          href={link}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+            color: 'var(--text-primary)',
+            fontSize: '0.95rem',
+            fontWeight: 600,
+            textDecoration: 'none',
+            transition: 'all 0.3s ease',
+            padding: '0.5rem 0'
+          }}
+        >
+          View Project
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </a>
+      </div>
+      
+      {/* Hover effects */}
+      <style jsx>{`
+        .card:hover {
+          transform: translateY(-8px) !important;
+          box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4) !important;
+        }
+        .card:hover img {
+          transform: scale(1.05) !important;
+        }
+        .card:hover .gradient-overlay {
+          opacity: 1 !important;
+        }
+      `}</style>
+    </div>
+  );
+}
+
+// TechTag component
+function TechTag({ children, gradient }) {
+  return (
+    <span style={{
+      background: 'rgba(30, 41, 59, 0.8)',
+      color: 'var(--text-secondary)',
+      borderRadius: '12px',
+      padding: '0.375rem 0.75rem',
+      fontSize: '0.8rem',
+      fontWeight: 500,
+      letterSpacing: '0.02em',
+      border: '1px solid rgba(255, 255, 255, 0.1)',
+      position: 'relative',
+      overflow: 'hidden'
+    }}>
+      {children}
+    </span>
+  );
+}
+
+// ContactCard component
+function ContactCard({ icon, title, info, link, linkText, gradient, fullWidth }) {
+  return (
+    <div className="card" style={{
+      background: 'linear-gradient(135deg, var(--background-secondary) 0%, #2d3748 100%)',
+      borderRadius: '20px',
+      padding: '2rem',
+      textAlign: 'center',
+      border: '1px solid rgba(255, 255, 255, 0.1)',
+      position: 'relative',
+      width: fullWidth ? '100%' : 'auto'
+    }}>
+      <div style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        height: '2px',
+        background: gradient
+      }}></div>
+      
+      <div style={{
+        background: gradient,
+        color: 'white',
+        borderRadius: '50%',
+        width: '4rem',
+        height: '4rem',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        fontSize: '1.5rem',
+        margin: '0 auto 1rem auto',
+        boxShadow: '0 8px 20px rgba(0, 0, 0, 0.3)'
+      }}>
+        {icon}
+      </div>
+      
+      <h4 style={{
+        color: 'var(--text-primary)',
+        fontSize: '1.125rem',
+        fontWeight: 600,
+        marginBottom: '0.5rem'
+      }}>
+        {title}
+      </h4>
+      
+      <p style={{
+        color: 'var(--text-secondary)',
+        fontSize: '0.95rem',
+        marginBottom: '1rem',
+        wordBreak: 'break-word'
+      }}>
+        {info}
+      </p>
+      
+      <a 
+        href={link}
+        target={link.startsWith('http') ? '_blank' : undefined}
+        rel={link.startsWith('http') ? 'noopener noreferrer' : undefined}
+        style={{
+          color: 'var(--primary)',
+          fontSize: '0.9rem',
+          fontWeight: 600,
+          textDecoration: 'none',
+          transition: 'all 0.3s ease'
+        }}
+      >
+        {linkText}
+      </a>
+    </div>
+  );
+}
+
+// ModernInput component
+function ModernInput({ type, name, value, onChange, placeholder, icon, required }) {
+  return (
+    <div style={{
+      position: 'relative'
+    }}>
+      <input 
+        type={type}
+        name={name}
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+        required={required}
+        style={{
+          width: '100%',
+          background: 'rgba(30, 41, 59, 0.8)',
+          border: '1px solid rgba(255, 255, 255, 0.1)',
+          borderRadius: '12px',
+          padding: '1rem 1rem 1rem 3rem',
+          color: 'var(--text-primary)',
+          fontSize: '1rem',
+          fontFamily: 'inherit',
+          transition: 'all 0.3s ease',
+          outline: 'none'
+        }}
+      />
+      <div style={{
+        position: 'absolute',
+        left: '1rem',
+        top: '50%',
+        transform: 'translateY(-50%)',
+        fontSize: '1rem',
+        opacity: 0.6,
+        pointerEvents: 'none'
+      }}>
+        {icon}
+      </div>
+    </div>
+  );
+}
+
+// SocialLink component
+function SocialLink({ href, platform }) {
+  const getIcon = (platform) => {
+    const icons = {
+      'LinkedIn': 'in',
+      'GitHub': 'github',
+      'GitLab': 'gitlab', 
+      'Twitter': 'x'
+    };
+    return icons[platform] || 'link';
+  };
+  
+  return (
+    <a 
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      style={{
+        display: 'inline-flex',
+        alignItems: 'center',
+        gap: '0.5rem',
+        padding: '0.75rem 1rem',
+        background: 'rgba(30, 41, 59, 0.6)',
+        borderRadius: '12px',
+        color: 'var(--text-secondary)',
+        fontSize: '0.9rem',
+        fontWeight: 500,
+        textDecoration: 'none',
+        border: '1px solid rgba(255, 255, 255, 0.1)',
+        transition: 'all 0.3s ease'
+      }}
+    >
+      <i className={`fab fa-${getIcon(platform)}`} style={{ fontSize: '1rem' }}></i>
+      {platform}
+    </a>
+  );
+}
+
+// TechIcon component
+function TechIcon({ children }) {
+  return (
+    <div style={{
+      width: '2.5rem',
+      height: '2.5rem',
+      background: '#1a1a1a',
+      border: '1px solid #374151',
+      borderRadius: '6px',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      fontSize: '0.875rem',
+      fontWeight: 600,
+      color: '#ffffff'
+    }}>
+      {children}
+    </div>
+  );
+}
+
+// CodeLine component
+function CodeLine({ number, children }) {
+  return (
+    <div style={{
+      display: 'flex',
+      gap: '1rem',
+      marginBottom: '0.25rem'
+    }}>
+      <span style={{ color: '#6b7280', minWidth: '2rem' }}>{number}</span>
+      <span style={{ color: '#e5e7eb' }}>{children}</span>
+    </div>
+  );
+}
+
+// StatCard component
+function StatCard({ icon, title, subtitle, highlight }) {
+  return (
+    <div style={{
+      background: highlight ? 'linear-gradient(135deg, #1e40af, #3b82f6)' : '#1a1a1a',
+      border: '1px solid #374151',
+      borderRadius: '8px',
+      padding: '2rem',
+      textAlign: 'center',
+      transition: 'transform 0.3s ease'
+    }}>
+      <div style={{
+        fontSize: '2rem',
+        marginBottom: '1rem'
+      }}>{icon}</div>
+      <div style={{
+        fontSize: '1.5rem',
+        fontWeight: 700,
+        color: '#ffffff',
+        marginBottom: '0.5rem'
+      }}>{title}</div>
+      <div style={{
+        fontSize: '0.875rem',
+        color: '#9ca3af'
+      }}>{subtitle}</div>
+    </div>
+  );
+}
+
+// ExperienceCard component
+function ExperienceCard({ title, skills, description }) {
+  return (
+    <div style={{
+      background: '#1a1a1a',
+      border: '1px solid #374151',
+      borderRadius: '8px',
+      padding: '2rem',
+      transition: 'transform 0.3s ease'
+    }}>
+      <h3 style={{
+        fontSize: '1.25rem',
+        fontWeight: 700,
+        color: '#ffffff',
+        marginBottom: '1rem'
+      }}>{title}</h3>
+      <p style={{
+        color: '#9ca3af',
+        fontSize: '0.875rem',
+        marginBottom: '1.5rem',
+        lineHeight: 1.6
+      }}>{description}</p>
+      <div style={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        gap: '0.5rem'
+      }}>
+        {skills.map((skill, index) => (
+          <span key={index} style={{
+            background: '#374151',
+            color: '#e5e7eb',
+            padding: '0.25rem 0.75rem',
+            borderRadius: '4px',
+            fontSize: '0.75rem',
+            fontWeight: 500
+          }}>{skill}</span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// SimpleProjectCard component
+function SimpleProjectCard({ title, description, technologies, link, backgroundImage }) {
+  const [windowWidth, setWindowWidth] = React.useState(typeof window !== 'undefined' ? window.innerWidth : 1024);
+  const [imageLoaded, setImageLoaded] = React.useState(false);
+  
+  React.useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  
+  React.useEffect(() => {
+    if (backgroundImage) {
+      const img = new Image();
+      img.onload = () => setImageLoaded(true);
+      img.src = backgroundImage;
+    }
+  }, [backgroundImage]);
+  
+  const isMobile = windowWidth <= 768;
+  const isTablet = windowWidth > 768 && windowWidth <= 1024;
+  
+  // Responsive background image sizing
+  const getBackgroundStyle = () => {
+    if (!backgroundImage) return '#1a1a1a';
+    
+    const overlayOpacity = isMobile ? '0.9' : '0.85';
+    const backgroundSize = isMobile ? 'cover' : 'cover';
+    const backgroundPosition = isMobile ? 'center center' : 'center';
+    
+    return `linear-gradient(135deg, rgba(26, 26, 26, ${overlayOpacity}) 0%, rgba(55, 65, 81, 0.78) 100%), url('${backgroundImage}') ${backgroundPosition}/${backgroundSize} no-repeat`;
+  };
+  
+  return (
+    <div className="project-card" style={{
+      background: getBackgroundStyle(),
+      opacity: imageLoaded || !backgroundImage ? 1 : 0.8,
+      transition: 'all 0.3s ease, opacity 0.5s ease, transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease',
+      border: '1px solid #374151',
+      borderRadius: isMobile ? '12px' : '8px',
+      padding: isMobile ? '1.5rem' : (isTablet ? '1.75rem' : '2rem'),
+      cursor: 'pointer',
+      position: 'relative',
+      overflow: 'hidden',
+      minHeight: isMobile ? '240px' : (isTablet ? '260px' : '280px'),
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'space-between'
+    }}
+    onClick={() => window.open(link, '_blank')}
+    onMouseEnter={(e) => {
+      e.target.style.borderColor = '#3b82f6';
+      e.target.style.transform = 'translateY(-4px)';
+      e.target.style.boxShadow = '0 20px 40px rgba(59, 130, 246, 0.3)';
+    }}
+    onMouseLeave={(e) => {
+      e.target.style.borderColor = '#374151';
+      e.target.style.transform = 'translateY(0)';
+      e.target.style.boxShadow = 'none';
+    }}>
+      <div>
+        <h3 style={{
+          fontSize: isMobile ? '1.125rem' : (isTablet ? '1.2rem' : '1.25rem'),
+          fontWeight: 700,
+          color: '#ffffff',
+          marginBottom: isMobile ? '0.5rem' : '0.75rem',
+          textShadow: '0 2px 4px rgba(0, 0, 0, 0.3)',
+          lineHeight: 1.3
+        }}>{title}</h3>
+        <p style={{
+          color: '#e5e7eb',
+          fontSize: isMobile ? '0.8rem' : '0.875rem',
+          marginBottom: isMobile ? '1.25rem' : '1.5rem',
+          lineHeight: isMobile ? 1.5 : 1.6,
+          textShadow: '0 1px 2px rgba(0, 0, 0, 0.2)'
+        }}>{description}</p>
+      </div>
+      <div>
+        <div style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          gap: isMobile ? '0.375rem' : '0.5rem',
+          marginBottom: isMobile ? '0.75rem' : '1rem'
+        }}>
+          {technologies.map((tech, index) => (
+            <span key={index} style={{
+              background: 'rgba(55, 65, 81, 0.85)',
+              color: '#e5e7eb',
+              padding: isMobile ? '0.2rem 0.6rem' : '0.25rem 0.75rem',
+              borderRadius: '6px',
+              fontSize: isMobile ? '0.7rem' : '0.75rem',
+              fontWeight: 500,
+              backdropFilter: 'blur(6px)',
+              border: '1px solid rgba(75, 85, 99, 0.4)',
+              textShadow: '0 1px 2px rgba(0, 0, 0, 0.3)'
+            }}>{tech}</span>
+          ))}
+        </div>
+        <div style={{
+          color: '#60a5fa',
+          fontSize: isMobile ? '0.8rem' : '0.875rem',
+          fontWeight: 600,
+          display: 'flex',
+          alignItems: 'center',
+          gap: '0.5rem',
+          textShadow: '0 1px 3px rgba(0, 0, 0, 0.4)',
+          padding: isMobile ? '0.5rem 0' : '0'
+        }}>
+          View Project 
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ExperienceTimelineItem component
+function ExperienceTimelineItem({ company, role, period, type, location, description, achievements, technologies }) {
+  return (
+    <div style={{
+      background: '#1a1a1a',
+      border: '1px solid #374151',
+      borderRadius: '12px',
+      padding: '2rem',
+      position: 'relative',
+      transition: 'all 0.3s ease'
+    }}>
+      {/* Timeline dot */}
+      <div style={{
+        position: 'absolute',
+        left: '-6px',
+        top: '2rem',
+        width: '12px',
+        height: '12px',
+        background: '#3b82f6',
+        borderRadius: '50%',
+        border: '3px solid #0a0a0a'
+      }}></div>
+      
+      {/* Header */}
+      <div style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'flex-start',
+        marginBottom: '1rem',
+        flexWrap: 'wrap',
+        gap: '0.5rem'
+      }}>
+        <div>
+          <h3 style={{
+            fontSize: '1.5rem',
+            fontWeight: 700,
+            color: '#ffffff',
+            marginBottom: '0.25rem'
+          }}>{role}</h3>
+          <div style={{
+            fontSize: '1.125rem',
+            color: '#3b82f6',
+            fontWeight: 600,
+            marginBottom: '0.25rem'
+          }}>{company}</div>
+          <div style={{
+            fontSize: '0.875rem',
+            color: '#9ca3af'
+          }}>
+            {type} • {location}
+          </div>
+        </div>
+        <div style={{
+          background: '#374151',
+          color: '#e5e7eb',
+          padding: '0.5rem 1rem',
+          borderRadius: '6px',
+          fontSize: '0.875rem',
+          fontWeight: 500,
+          whiteSpace: 'nowrap'
+        }}>
+          {period}
+        </div>
+      </div>
+      
+      {/* Description */}
+      <p style={{
+        color: '#d1d5db',
+        fontSize: '1rem',
+        lineHeight: 1.6,
+        marginBottom: '1.5rem'
+      }}>
+        {description}
+      </p>
+      
+      {/* Achievements */}
+      <div style={{
+        marginBottom: '1.5rem'
+      }}>
+        <h4 style={{
+          fontSize: '1rem',
+          fontWeight: 600,
+          color: '#ffffff',
+          marginBottom: '0.75rem'
+        }}>Key Achievements:</h4>
+        <ul style={{
+          listStyle: 'none',
+          padding: 0,
+          margin: 0
+        }}>
+          {achievements.map((achievement, index) => (
+            <li key={index} style={{
+              color: '#9ca3af',
+              fontSize: '0.875rem',
+              lineHeight: 1.5,
+              marginBottom: '0.5rem',
+              paddingLeft: '1rem',
+              position: 'relative'
+            }}>
+              <span style={{
+                position: 'absolute',
+                left: 0,
+                top: '0.125rem',
+                color: '#3b82f6',
+                fontSize: '0.75rem'
+              }}>•</span>
+              {achievement}
+            </li>
+          ))}
+        </ul>
+      </div>
+      
+      {/* Technologies */}
+      <div>
+        <h4 style={{
+          fontSize: '0.875rem',
+          fontWeight: 600,
+          color: '#ffffff',
+          marginBottom: '0.75rem'
+        }}>Technologies Used:</h4>
+        <div style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          gap: '0.5rem'
+        }}>
+          {technologies.map((tech, index) => (
+            <span key={index} style={{
+              background: '#374151',
+              color: '#e5e7eb',
+              padding: '0.375rem 0.75rem',
+              borderRadius: '6px',
+              fontSize: '0.75rem',
+              fontWeight: 500
+            }}>{tech}</span>
+          ))}
+        </div>
+      </div>
+    </div>
   );
 }
 

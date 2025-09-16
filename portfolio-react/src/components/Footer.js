@@ -46,7 +46,7 @@ function Footer() {
       <div className="footer-bottom">
         <div className="footer-contact-social">
           <span className="footer-contact-info">
-            Contact us: <a href="mailto:ochiengcharles531@gmail.com">ochiengcharles531@gmail.com</a> | <a href="tel:+254718166201">+254718166201</a>
+            Contact Me: <a href="mailto:ochiengcharles531@gmail.com">ochiengcharles531@gmail.com</a> | <a href="tel:+254718166201">+254718166201</a>
           </span>
           <span className="footer-social-links">
             <a href="https://www.linkedin.com/in/charles-ochieng-177ba3253" target="_blank" rel="noopener noreferrer" className="social-icon"><i className="fab fa-linkedin-in"></i></a>
