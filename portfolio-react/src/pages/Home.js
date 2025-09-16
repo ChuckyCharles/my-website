@@ -951,6 +951,10 @@ function Home() {
               </div>
             </div>
           </div>
+<<<<<<< HEAD
+=======
+         
+>>>>>>> origin/main
         </div>
       </section>
 
@@ -1373,6 +1377,7 @@ function Home() {
                 flexDirection: 'column',
                 gap: '1rem'
               }}>
+
                 <input 
                   type="text"
                   name="name"
