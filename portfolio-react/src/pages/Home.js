@@ -951,10 +951,6 @@ function Home() {
               </div>
             </div>
           </div>
-<<<<<<< HEAD
-=======
-         
->>>>>>> origin/main
         </div>
       </section>
 
