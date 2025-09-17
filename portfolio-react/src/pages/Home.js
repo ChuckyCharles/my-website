@@ -2899,7 +2899,7 @@ function ModernExperienceSection({ activeTab, setActiveTab }) {
         location: "Nairobi County, Kenya",
         type: "Contract",
         icon: "☁️",
-        website: "https://angani.co.ke",
+        website: "https://angani.co",
         description: "Delivered timely resolution of infrastructure support tickets, reducing escalations and improving service quality. Allocated and optimized compute resources based on usage patterns and client needs.",
         details: [
           {
