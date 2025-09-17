@@ -235,7 +235,7 @@ p {
   }
   
   section {
-    padding: 50px 15px;
+    padding: clamp(40px, 8vw, 50px) clamp(12px, 3vw, 15px);
   }
 }
 
@@ -245,21 +245,61 @@ p {
   }
   
   section {
-    padding: 40px 15px;
+    padding: clamp(30px, 6vw, 40px) clamp(10px, 2vw, 15px);
+  }
+  
+  /* Improve touch targets on mobile */
+  .cta {
+    min-height: 44px;
+    padding: 12px 20px;
+  }
+  
+  /* Better spacing for mobile */
+  .flex {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .justify-between {
+    justify-content: center;
   }
 }
 
 @media (max-width: 576px) {
   .container {
-    padding: 0 15px;
+    padding: 0 clamp(10px, 2vw, 15px);
   }
   
   section {
-    padding: 30px 10px;
+    padding: clamp(20px, 4vw, 30px) clamp(8px, 2vw, 10px);
   }
   
   .cta {
-    padding: 10px 20px;
+    padding: 12px 16px;
+    font-size: 0.9rem;
+  }
+  
+  /* Stack elements vertically on very small screens */
+  .gap-4 { gap: 0.75rem; }
+  .gap-6 { gap: 1rem; }
+  .gap-8 { gap: 1.25rem; }
+}
+
+/* Tablet specific adjustments */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .container {
+    max-width: 720px;
+  }
+  
+  section {
+    padding: clamp(50px, 8vw, 60px) clamp(20px, 4vw, 30px);
+  }
+}
+
+/* Large screen optimizations */
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1320px;
   }
 }
 

@@ -10,6 +10,7 @@ function Home() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const formRef = useRef();
   
   // Add smooth scrolling effect for anchor links
@@ -257,19 +258,19 @@ function Home() {
         backdropFilter: 'blur(20px)',
         borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
         zIndex: 1000,
-        padding: '1rem 0',
+        padding: 'clamp(0.75rem, 2vw, 1rem) 0',
         boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)'
       }}>
         <div style={{
           maxWidth: '1200px',
           margin: '0 auto',
-          padding: '0 2rem',
+          padding: '0 clamp(1rem, 3vw, 2rem)',
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center'
         }}>
           <div style={{
-            fontSize: '1.5rem',
+            fontSize: 'clamp(1.25rem, 3vw, 1.5rem)',
             fontWeight: 800,
             color: '#ffffff',
             background: 'linear-gradient(135deg, #60a5fa 0%, #3b82f6 50%, #2563eb 100%)',
@@ -278,10 +279,52 @@ function Home() {
             backgroundClip: 'text'
           }}>Charles Ochieng</div>
           
+          {/* Mobile Menu Button */}
+          <button 
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            style={{
+              display: window.innerWidth <= 768 ? 'block' : 'none',
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              padding: '0.5rem',
+              zIndex: 1001
+            }}
+          >
+            <div style={{
+              width: '24px',
+              height: '2px',
+              background: '#fff',
+              transition: 'all 0.3s ease',
+              position: 'relative'
+            }}>
+              <div style={{
+                position: 'absolute',
+                top: mobileMenuOpen ? '0' : '-8px',
+                left: '0',
+                width: '24px',
+                height: '2px',
+                background: '#fff',
+                transition: 'all 0.3s ease',
+                transform: mobileMenuOpen ? 'rotate(45deg)' : 'rotate(0deg)'
+              }}></div>
+              <div style={{
+                position: 'absolute',
+                bottom: mobileMenuOpen ? '0' : '-8px',
+                left: '0',
+                width: '24px',
+                height: '2px',
+                background: '#fff',
+                transition: 'all 0.3s ease',
+                transform: mobileMenuOpen ? 'rotate(-45deg)' : 'rotate(0deg)'
+              }}></div>
+            </div>
+          </button>
+          
           {/* Desktop Navigation */}
           <div style={{
-            display: 'flex',
-            gap: '2.5rem',
+            display: window.innerWidth <= 768 ? 'none' : 'flex',
+            gap: 'clamp(1.5rem, 3vw, 2.5rem)',
             alignItems: 'center'
           }}>
             <a href="#home" 
@@ -290,7 +333,7 @@ function Home() {
                style={{
               color: 'rgba(255, 255, 255, 0.9)', 
               textDecoration: 'none', 
-              fontSize: '1rem',
+              fontSize: 'clamp(0.875rem, 2vw, 1rem)',
               fontWeight: 500,
               padding: '0.5rem 0',
               transition: 'color 0.3s ease'
@@ -301,7 +344,7 @@ function Home() {
                style={{
               color: 'rgba(255, 255, 255, 0.9)', 
               textDecoration: 'none', 
-              fontSize: '1rem',
+              fontSize: 'clamp(0.875rem, 2vw, 1rem)',
               fontWeight: 500,
               padding: '0.5rem 0',
               transition: 'color 0.3s ease'
@@ -312,7 +355,7 @@ function Home() {
                style={{
               color: 'rgba(255, 255, 255, 0.9)', 
               textDecoration: 'none', 
-              fontSize: '1rem',
+              fontSize: 'clamp(0.875rem, 2vw, 1rem)',
               fontWeight: 500,
               padding: '0.5rem 0',
               transition: 'color 0.3s ease'
@@ -323,7 +366,7 @@ function Home() {
                style={{
               color: 'rgba(255, 255, 255, 0.9)', 
               textDecoration: 'none', 
-              fontSize: '1rem',
+              fontSize: 'clamp(0.875rem, 2vw, 1rem)',
               fontWeight: 500,
               padding: '0.5rem 0',
               transition: 'color 0.3s ease'
@@ -334,15 +377,15 @@ function Home() {
                style={{
               color: 'rgba(255, 255, 255, 0.9)', 
               textDecoration: 'none', 
-              fontSize: '1rem',
+              fontSize: 'clamp(0.875rem, 2vw, 1rem)',
               fontWeight: 500,
               padding: '0.5rem 0',
               transition: 'color 0.3s ease'
             }}>Contact</a>
             
-            {/* Social Icons */}
+            {/* Social Icons - Hidden on mobile */}
             <div style={{
-              display: 'flex',
+              display: window.innerWidth <= 1024 ? 'none' : 'flex',
               gap: '1rem',
               alignItems: 'center',
               marginLeft: '1rem'
@@ -423,17 +466,18 @@ function Home() {
                style={{
                  background: 'linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)',
                  color: '#ffffff',
-                 padding: '0.75rem 1.5rem',
+                 padding: 'clamp(0.5rem, 2vw, 0.75rem) clamp(1rem, 3vw, 1.5rem)',
                  borderRadius: '25px',
                  textDecoration: 'none',
-                 fontSize: '0.95rem',
+                 fontSize: 'clamp(0.8rem, 2vw, 0.95rem)',
                  fontWeight: 600,
                  transition: 'all 0.3s ease',
                  boxShadow: '0 4px 15px rgba(59, 130, 246, 0.4)',
                  border: '1px solid rgba(255, 255, 255, 0.2)',
                  display: 'flex',
                  alignItems: 'center',
-                 gap: '0.5rem'
+                 gap: '0.5rem',
+                 whiteSpace: 'nowrap'
                }}
                onMouseEnter={(e) => {
                  e.target.style.transform = 'translateY(-2px)';
@@ -445,9 +489,174 @@ function Home() {
                }}
             >
               <i className="fas fa-download"></i>
-              Download CV
+              <span style={{ display: window.innerWidth <= 480 ? 'none' : 'inline' }}>Download CV</span>
             </a>
           </div>
+        </div>
+        
+        {/* Mobile Navigation Menu */}
+        <div style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: 'rgba(10, 22, 35, 0.98)',
+          backdropFilter: 'blur(20px)',
+          display: window.innerWidth <= 768 && mobileMenuOpen ? 'flex' : 'none',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          gap: '2rem',
+          padding: '6rem 2rem 2rem',
+          zIndex: 999,
+          transform: mobileMenuOpen ? 'translateX(0)' : 'translateX(100%)',
+          opacity: mobileMenuOpen ? 1 : 0,
+          visibility: mobileMenuOpen ? 'visible' : 'hidden',
+          transition: 'all 0.3s ease'
+        }}>
+          <a href="#home" 
+             onClick={() => setMobileMenuOpen(false)}
+             style={{
+              color: 'rgba(255, 255, 255, 0.9)', 
+              textDecoration: 'none', 
+              fontSize: '1.5rem',
+              fontWeight: 500,
+              padding: '0.75rem 0',
+              transition: 'color 0.3s ease'
+            }}>Home</a>
+          <a href="#about" 
+             onClick={() => setMobileMenuOpen(false)}
+             style={{
+              color: 'rgba(255, 255, 255, 0.9)', 
+              textDecoration: 'none', 
+              fontSize: '1.5rem',
+              fontWeight: 500,
+              padding: '0.75rem 0',
+              transition: 'color 0.3s ease'
+            }}>About</a>
+          <a href="#experience" 
+             onClick={() => setMobileMenuOpen(false)}
+             style={{
+              color: 'rgba(255, 255, 255, 0.9)', 
+              textDecoration: 'none', 
+              fontSize: '1.5rem',
+              fontWeight: 500,
+              padding: '0.75rem 0',
+              transition: 'color 0.3s ease'
+            }}>Experience</a>
+          <a href="#projects" 
+             onClick={() => setMobileMenuOpen(false)}
+             style={{
+              color: 'rgba(255, 255, 255, 0.9)', 
+              textDecoration: 'none', 
+              fontSize: '1.5rem',
+              fontWeight: 500,
+              padding: '0.75rem 0',
+              transition: 'color 0.3s ease'
+            }}>Projects</a>
+          <a href="#contact" 
+             onClick={() => setMobileMenuOpen(false)}
+             style={{
+              color: 'rgba(255, 255, 255, 0.9)', 
+              textDecoration: 'none', 
+              fontSize: '1.5rem',
+              fontWeight: 500,
+              padding: '0.75rem 0',
+              transition: 'color 0.3s ease'
+            }}>Contact</a>
+          
+          {/* Mobile Social Icons */}
+          <div style={{
+            display: 'flex',
+            gap: '1.5rem',
+            alignItems: 'center',
+            marginTop: '2rem'
+          }}>
+             <a href="https://gitlab.com/CloudChuck"
+               target="_blank" 
+               rel="noopener noreferrer"
+               style={{
+                 color: 'rgba(255, 255, 255, 0.8)',
+                 fontSize: '1.5rem',
+                 transition: 'color 0.3s ease'
+               }}
+               title="GitLab"
+            >
+              <i className="fab fa-gitlab"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/charles-ochieng-177ba3253" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               style={{
+                 color: 'rgba(255, 255, 255, 0.8)',
+                 fontSize: '1.5rem',
+                 transition: 'color 0.3s ease'
+               }}
+               title="LinkedIn"
+            >
+              <i className="fab fa-linkedin"></i>
+            </a>
+               <a href="https://github.com/ChuckyCharles" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               style={{
+                 color: 'rgba(255, 255, 255, 0.8)',
+                 fontSize: '1.5rem',
+                 transition: 'color 0.3s ease'
+               }}
+               title="GitHub"
+            >
+              <i className="fab fa-github"></i>
+            </a>
+            <a href="https://x.com/CharlesO21441" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               style={{
+                 color: 'rgba(255, 255, 255, 0.8)',
+                 fontSize: '1.5rem',
+                 transition: 'color 0.3s ease'
+               }}
+               title="Twitter"
+            >
+              <i className="fab fa-twitter"></i>
+            </a>
+            <a href="mailto:ochiengcharles531@gmail.com" 
+               style={{
+                 color: 'rgba(255, 255, 255, 0.8)',
+                 fontSize: '1.5rem',
+                 transition: 'color 0.3s ease'
+               }}
+               title="Email"
+            >
+              <i className="fas fa-envelope"></i>
+            </a>
+          </div>
+          
+          <a href="https://1drv.ms/w/c/e69819c0d7c33828/EWlz9mH6g5JGhNcwaanH3H4BLMGsFg3Cne2t0KL4MMC0Qg?e=XmCYXp" 
+             target="_blank" 
+             rel="noopener noreferrer"
+             onClick={() => setMobileMenuOpen(false)}
+             style={{
+               background: 'linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)',
+               color: '#ffffff',
+               padding: '0.75rem 1.5rem',
+               borderRadius: '25px',
+               textDecoration: 'none',
+               fontSize: '1rem',
+               fontWeight: 600,
+               transition: 'all 0.3s ease',
+               boxShadow: '0 4px 15px rgba(59, 130, 246, 0.4)',
+               border: '1px solid rgba(255, 255, 255, 0.2)',
+               display: 'flex',
+               alignItems: 'center',
+               gap: '0.5rem',
+               marginTop: '1rem'
+             }}
+          >
+            <i className="fas fa-download"></i>
+            Download CV
+          </a>
         </div>
       </nav>
 
@@ -456,8 +665,8 @@ function Home() {
         minHeight: '100vh',
         display: 'flex',
         alignItems: 'center',
-        padding: '0 2rem',
-        paddingTop: '80px',
+        padding: '0 clamp(1rem, 3vw, 2rem)',
+        paddingTop: 'clamp(80px, 12vw, 120px)',
         background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(30, 41, 59, 0.75) 50%, rgba(51, 65, 85, 0.65) 100%)',
         backdropFilter: 'blur(15px)',
         borderBottom: '1px solid rgba(255, 255, 255, 0.1)'
@@ -468,7 +677,7 @@ function Home() {
           width: '100%',
           display: 'grid',
           gridTemplateColumns: window.innerWidth > 768 ? '1fr 1fr' : '1fr',
-          gap: '4rem',
+          gap: 'clamp(2rem, 5vw, 4rem)',
           alignItems: 'center'
         }}>
           {/* Left Content */}
@@ -476,8 +685,8 @@ function Home() {
             {/* Tech Stack Icons */}
             <div style={{
               display: 'flex',
-              gap: '0.75rem',
-              marginBottom: '2rem',
+              gap: 'clamp(0.5rem, 2vw, 0.75rem)',
+              marginBottom: 'clamp(1.5rem, 4vw, 2rem)',
               flexWrap: 'wrap'
             }}>
               <TechIcon>☁️</TechIcon>
@@ -492,38 +701,38 @@ function Home() {
             </div>
             
             <div style={{
-              fontSize: '0.9rem',
+              fontSize: 'clamp(0.8rem, 2vw, 0.9rem)',
               color: '#64748b',
               marginBottom: '0.5rem',
               fontWeight: 500
             }}>Cloud Infrastructure / DevOps </div>
             
             <h1 style={{
-              fontSize: 'clamp(2.5rem, 5vw, 4rem)',
+              fontSize: 'clamp(2rem, 6vw, 4rem)',
               fontWeight: 800,
               color: '#ffffff',
-              marginBottom: '1rem',
+              marginBottom: 'clamp(0.75rem, 2vw, 1rem)',
               lineHeight: 1.1
             }}>Charles Ochieng</h1>
             
             <div style={{
-              fontSize: '1.25rem',
+              fontSize: 'clamp(1rem, 3vw, 1.25rem)',
               color: '#3b82f6',
               fontWeight: 600,
               marginBottom: '0.5rem'
             }}>Cloud Infrastructure & DevOps Engineer</div>
             
             <div style={{
-              fontSize: '1rem',
+              fontSize: 'clamp(0.9rem, 2.5vw, 1rem)',
               color: '#64748b',
-              marginBottom: '2rem',
+              marginBottom: 'clamp(1.5rem, 4vw, 2rem)',
               lineHeight: 1.6
             }}>Specializing in hybrid cloud architectures, containerization, and infrastructure automation. Passionate about optimizing cloud costs and enhancing system reliability through DevOps practices.</div>
             
             <div style={{
               display: 'flex',
-              gap: '1rem',
-              marginBottom: '2rem',
+              gap: 'clamp(0.75rem, 2vw, 1rem)',
+              marginBottom: 'clamp(1.5rem, 4vw, 2rem)',
               flexWrap: 'wrap'
             }}>
               <button 
@@ -532,12 +741,13 @@ function Home() {
                   background: '#3b82f6',
                   color: '#ffffff',
                   border: 'none',
-                  padding: '0.75rem 1.5rem',
+                  padding: 'clamp(0.6rem, 2vw, 0.75rem) clamp(1rem, 3vw, 1.5rem)',
                   borderRadius: '6px',
-                  fontSize: '0.9rem',
+                  fontSize: 'clamp(0.8rem, 2vw, 0.9rem)',
                   fontWeight: 600,
                   cursor: 'pointer',
-                  transition: 'all 0.3s ease'
+                  transition: 'all 0.3s ease',
+                  whiteSpace: 'nowrap'
                 }}
                 onMouseEnter={(e) => {
                   e.target.style.transform = 'translateY(-2px)';
@@ -556,16 +766,17 @@ function Home() {
                    background: 'transparent',
                    color: '#ffffff',
                    border: '1px solid #374151',
-                   padding: '0.75rem 1.5rem',
+                   padding: 'clamp(0.6rem, 2vw, 0.75rem) clamp(1rem, 3vw, 1.5rem)',
                    borderRadius: '6px',
-                   fontSize: '0.9rem',
+                   fontSize: 'clamp(0.8rem, 2vw, 0.9rem)',
                    fontWeight: 600,
                    cursor: 'pointer',
                    textDecoration: 'none',
                    display: 'flex',
                    alignItems: 'center',
                    gap: '0.5rem',
-                   transition: 'all 0.3s ease'
+                   transition: 'all 0.3s ease',
+                   whiteSpace: 'nowrap'
                  }}
                  onMouseEnter={(e) => {
                    e.target.style.borderColor = '#3b82f6';
@@ -583,12 +794,13 @@ function Home() {
                   background: 'transparent',
                   color: '#ffffff',
                   border: '1px solid #374151',
-                  padding: '0.75rem 1.5rem',
+                  padding: 'clamp(0.6rem, 2vw, 0.75rem) clamp(1rem, 3vw, 1.5rem)',
                   borderRadius: '6px',
-                  fontSize: '0.9rem',
+                  fontSize: 'clamp(0.8rem, 2vw, 0.9rem)',
                   fontWeight: 600,
                   cursor: 'pointer',
-                  transition: 'all 0.3s ease'
+                  transition: 'all 0.3s ease',
+                  whiteSpace: 'nowrap'
                 }}
                 onMouseEnter={(e) => {
                   e.target.style.borderColor = '#3b82f6';
@@ -604,7 +816,7 @@ function Home() {
             
             {/* Tech Stack */}
             <div style={{
-              fontSize: '0.875rem',
+              fontSize: 'clamp(0.8rem, 2vw, 0.875rem)',
               color: '#64748b'
             }}>
               <strong>Cloud Expertise:</strong> VMware vSphere, Kubernetes, OpenShift, Terraform, Ansible, AWS, Azure, <span style={{color: '#3b82f6'}}>+10 more tools</span>
@@ -616,7 +828,8 @@ function Home() {
             background: '#1a1a1a',
             border: '1px solid #374151',
             borderRadius: '8px',
-            overflow: 'hidden'
+            overflow: 'hidden',
+            display: window.innerWidth <= 768 ? 'none' : 'block'
           }}>
             {/* Code Editor Header */}
             <div style={{
@@ -649,7 +862,7 @@ function Home() {
               <CodeLine number="07">    <span style={{color: '#10b981'}}>'VMware'</span>, <span style={{color: '#10b981'}}>'Kubernetes'</span>, <span style={{color: '#10b981'}}>'OpenShift'</span>,</CodeLine>
               <CodeLine number="08">    <span style={{color: '#10b981'}}>'Terraform'</span>, <span style={{color: '#10b981'}}>'Ansible'</span>, <span style={{color: '#10b981'}}>'Python'</span></CodeLine>
               <CodeLine number="09">  ],</CodeLine>
-              <CodeLine number="10">  infrastructure: () => manageCloudResources(),</CodeLine>
+              <CodeLine number="10">  infrastructure: () =&gt; manageCloudResources(),</CodeLine>
               <CodeLine number="11">  contact: <span style={{color: '#10b981'}}>'ochiengcharles531@gmail.com'</span></CodeLine>
               <CodeLine number="12">{'}'};</CodeLine>
             </div>
@@ -674,7 +887,7 @@ function Home() {
       {/* Community Impact & Leadership Section */}
       <section style={{
         background: 'linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(51, 65, 85, 0.8) 100%)',
-        padding: '6rem 2rem',
+        padding: 'clamp(3rem, 8vw, 6rem) clamp(1rem, 3vw, 2rem)',
         borderBottom: '1px solid rgba(255, 255, 255, 0.2)',
         backdropFilter: 'blur(10px)'
       }}>
@@ -757,8 +970,8 @@ function Home() {
           {/* Community Cards */}
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(450px, 1fr))',
-            gap: '2rem',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(350px, 100%), 1fr))',
+            gap: 'clamp(1.5rem, 4vw, 2rem)',
             textAlign: 'left'
           }}>
             {/* Mentor & Graphic Designer Card */}
@@ -954,6 +1167,21 @@ function Home() {
         </div>
       </section>
 
+      {/* Skills Showcase Section */}
+      <section style={{
+        background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.9) 100%)',
+        padding: 'clamp(3rem, 8vw, 6rem) clamp(1rem, 3vw, 2rem)',
+        borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+        backdropFilter: 'blur(15px)'
+      }}>
+        <div style={{
+          maxWidth: '1200px',
+          margin: '0 auto'
+        }}>
+          <SkillsShowcase />
+        </div>
+      </section>
+
       {/* Experience Highlight */}
       <section style={{
         background: 'linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(15, 23, 42, 0.85) 100%)',
@@ -1038,7 +1266,7 @@ function Home() {
       {/* Experience Section */}
       <section id="experience" style={{
         background: 'linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(51, 65, 85, 0.7) 100%)',
-        padding: '6rem 2rem',
+        padding: 'clamp(3rem, 8vw, 6rem) clamp(1rem, 3vw, 2rem)',
         borderTop: '1px solid rgba(255, 255, 255, 0.15)',
         backdropFilter: 'blur(15px)'
       }}>
@@ -1208,7 +1436,7 @@ function Home() {
       {/* Contact Section */}
       <section id="contact" style={{
         background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.85) 100%)',
-        padding: '6rem 2rem',
+        padding: 'clamp(3rem, 8vw, 6rem) clamp(1rem, 3vw, 2rem)',
         borderTop: '1px solid rgba(255, 255, 255, 0.15)',
         backdropFilter: 'blur(15px)'
       }}>
@@ -1237,8 +1465,8 @@ function Home() {
           
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
-            gap: '3rem',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(300px, 100%), 1fr))',
+            gap: 'clamp(2rem, 5vw, 3rem)',
             alignItems: 'start'
           }}>
             {/* Contact Info */}
@@ -1943,15 +2171,15 @@ function SocialLink({ href, platform }) {
 function TechIcon({ children }) {
   return (
     <div style={{
-      width: '2.5rem',
-      height: '2.5rem',
+      width: 'clamp(2rem, 4vw, 2.5rem)',
+      height: 'clamp(2rem, 4vw, 2.5rem)',
       background: '#1a1a1a',
       border: '1px solid #374151',
       borderRadius: '6px',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      fontSize: '0.875rem',
+      fontSize: 'clamp(0.75rem, 2vw, 0.875rem)',
       fontWeight: 600,
       color: '#ffffff'
     }}>
@@ -2298,6 +2526,443 @@ function ExperienceTimelineItem({ company, role, period, type, location, descrip
               fontWeight: 500
             }}>{tech}</span>
           ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// SkillsShowcase component
+function SkillsShowcase() {
+  const [selectedCategory, setSelectedCategory] = useState('Cloud Platforms');
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const skillCategories = {
+    'Cloud Platforms': {
+      icon: '☁️',
+      description: 'Leading cloud service providers and platforms',
+      skills: ['AWS', 'Microsoft Azure', 'Google Cloud Platform', 'IBM Cloud', 'Oracle Cloud', 'DigitalOcean', 'Linode'],
+      gradient: 'linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)'
+    },
+    'Containerization': {
+      icon: '🐳',
+      description: 'Container orchestration and management technologies',
+      skills: ['Docker', 'Kubernetes', 'OpenShift', 'Podman', 'Docker Compose', 'Helm', 'Kustomize'],
+      gradient: 'linear-gradient(135deg, #10b981 0%, #059669 100%)'
+    },
+    'Infrastructure as Code': {
+      icon: '🏗️',
+      description: 'Infrastructure automation and configuration management',
+      skills: ['Terraform', 'Ansible', 'Pulumi', 'CloudFormation', 'ARM Templates', 'Chef', 'Puppet'],
+      gradient: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)'
+    },
+    'Virtualization': {
+      icon: '🖥️',
+      description: 'Virtualization platforms and hypervisor technologies',
+      skills: ['VMware vSphere', 'Proxmox', 'Hyper-V', 'KVM', 'Xen', 'VirtualBox', 'QEMU'],
+      gradient: 'linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)'
+    },
+    'Monitoring & Observability': {
+      icon: '📊',
+      description: 'System monitoring, logging, and observability tools',
+      skills: ['Prometheus', 'Grafana', 'ELK Stack', 'Jaeger', 'New Relic', 'Datadog', 'Zabbix'],
+      gradient: 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)'
+    },
+    'CI/CD & DevOps': {
+      icon: '⚙️',
+      description: 'Continuous integration, deployment, and DevOps practices',
+      skills: ['Jenkins', 'GitLab CI', 'GitHub Actions', 'Azure DevOps', 'CircleCI', 'ArgoCD', 'Tekton'],
+      gradient: 'linear-gradient(135deg, #06b6d4 0%, #0891b2 100%)'
+    },
+    'Scripting & Automation': {
+      icon: '🐍',
+      description: 'Programming languages and automation scripting',
+      skills: ['Python', 'Bash', 'PowerShell', 'Go', 'Ruby', 'YAML', 'JSON'],
+      gradient: 'linear-gradient(135deg, #ec4899 0%, #be185d 100%)'
+    },
+    'Security & Compliance': {
+      icon: '🔒',
+      description: 'Security tools and compliance frameworks',
+      skills: ['Vault', 'Wazuh', 'OWASP', 'CIS Benchmarks', 'NIST', 'SOC 2', 'ISO 27001'],
+      gradient: 'linear-gradient(135deg, #84cc16 0%, #65a30d 100%)'
+    }
+  };
+
+  const filteredCategories = Object.keys(skillCategories).filter(category =>
+    category.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    skillCategories[category].skills.some(skill => 
+      skill.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+  );
+
+  const selectedSkills = skillCategories[selectedCategory];
+
+  return (
+    <div style={{
+      display: 'grid',
+      gridTemplateColumns: window.innerWidth <= 768 ? '1fr' : '1fr 2fr',
+      gap: 'clamp(2rem, 5vw, 3rem)',
+      minHeight: '600px'
+    }}>
+      {/* Left Sidebar */}
+      <div style={{
+        background: 'rgba(30, 41, 59, 0.8)',
+        border: '1px solid rgba(75, 85, 99, 0.3)',
+        borderRadius: '12px',
+        padding: 'clamp(1.5rem, 4vw, 2rem)',
+        backdropFilter: 'blur(10px)'
+      }}>
+        {/* Search Bar */}
+        <div style={{
+          position: 'relative',
+          marginBottom: '2rem'
+        }}>
+          <input
+            type="text"
+            placeholder="Search skills..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            style={{
+              width: '100%',
+              background: 'rgba(15, 23, 42, 0.8)',
+              border: '1px solid rgba(75, 85, 99, 0.5)',
+              borderRadius: '8px',
+              padding: '0.75rem 1rem 0.75rem 2.5rem',
+              color: '#ffffff',
+              fontSize: '0.9rem',
+              outline: 'none',
+              transition: 'border-color 0.3s ease'
+            }}
+            onFocus={(e) => e.target.style.borderColor = '#3b82f6'}
+            onBlur={(e) => e.target.style.borderColor = 'rgba(75, 85, 99, 0.5)'}
+          />
+          <div style={{
+            position: 'absolute',
+            left: '0.75rem',
+            top: '50%',
+            transform: 'translateY(-50%)',
+            color: '#9ca3af',
+            fontSize: '1rem'
+          }}>
+            🔍
+          </div>
+        </div>
+
+        {/* Filter by Category */}
+        <h3 style={{
+          fontSize: '1rem',
+          fontWeight: 600,
+          color: '#ffffff',
+          marginBottom: '1rem'
+        }}>Filter by Category</h3>
+        
+        <div style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          gap: '0.5rem',
+          marginBottom: '2rem'
+        }}>
+          {['All', ...Object.keys(skillCategories)].map(category => (
+            <button
+              key={category}
+              onClick={() => setSelectedCategory(category === 'All' ? 'Cloud Platforms' : category)}
+              style={{
+                background: category === selectedCategory || (category === 'All' && selectedCategory === 'Cloud Platforms') 
+                  ? 'rgba(59, 130, 246, 0.2)' 
+                  : 'rgba(75, 85, 99, 0.3)',
+                border: category === selectedCategory || (category === 'All' && selectedCategory === 'Cloud Platforms')
+                  ? '1px solid #3b82f6'
+                  : '1px solid rgba(75, 85, 99, 0.5)',
+                color: category === selectedCategory || (category === 'All' && selectedCategory === 'Cloud Platforms')
+                  ? '#60a5fa'
+                  : '#d1d5db',
+                padding: '0.5rem 0.75rem',
+                borderRadius: '20px',
+                fontSize: '0.8rem',
+                fontWeight: 500,
+                cursor: 'pointer',
+                transition: 'all 0.3s ease',
+                whiteSpace: 'nowrap'
+              }}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
+
+        {/* Skills Count */}
+        <h3 style={{
+          fontSize: '1rem',
+          fontWeight: 600,
+          color: '#ffffff',
+          marginBottom: '1rem'
+        }}>{Object.keys(skillCategories).length} Categories</h3>
+
+        {/* Category List */}
+        <div style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '0.75rem'
+        }}>
+          {filteredCategories.map(category => {
+            const isSelected = category === selectedCategory;
+            return (
+              <div
+                key={category}
+                onClick={() => setSelectedCategory(category)}
+                style={{
+                  background: isSelected ? selectedSkills.gradient : 'rgba(75, 85, 99, 0.3)',
+                  border: '1px solid rgba(75, 85, 99, 0.5)',
+                  borderRadius: '8px',
+                  padding: '1rem',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s ease',
+                  transform: isSelected ? 'scale(1.02)' : 'scale(1)'
+                }}
+              >
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.75rem',
+                  marginBottom: '0.5rem'
+                }}>
+                  <div style={{
+                    fontSize: '1.5rem',
+                    opacity: 0.9
+                  }}>{skillCategories[category].icon}</div>
+                  <div>
+                    <div style={{
+                      fontSize: '1rem',
+                      fontWeight: 600,
+                      color: '#ffffff',
+                      marginBottom: '0.25rem'
+                    }}>{category}</div>
+                    <div style={{
+                      fontSize: '0.8rem',
+                      color: isSelected ? 'rgba(255, 255, 255, 0.8)' : '#9ca3af',
+                      lineHeight: 1.4
+                    }}>{skillCategories[category].description}</div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Navigation Hint */}
+        <div style={{
+          marginTop: '2rem',
+          textAlign: 'center',
+          color: '#6b7280',
+          fontSize: '0.8rem',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: '0.5rem'
+        }}>
+          <span>↑↓</span>
+          <span>to navigate skills</span>
+        </div>
+      </div>
+
+      {/* Right Content Area */}
+      <div style={{
+        background: 'rgba(30, 41, 59, 0.8)',
+        border: '1px solid rgba(75, 85, 99, 0.3)',
+        borderRadius: '12px',
+        padding: 'clamp(1.5rem, 4vw, 2rem)',
+        backdropFilter: 'blur(10px)'
+      }}>
+        {/* Header */}
+        <div style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'flex-start',
+          marginBottom: '2rem',
+          flexWrap: 'wrap',
+          gap: '1rem'
+        }}>
+          <div>
+            <h2 style={{
+              fontSize: 'clamp(1.8rem, 4vw, 2.5rem)',
+              fontWeight: 700,
+              color: '#ffffff',
+              marginBottom: '0.5rem',
+              lineHeight: 1.2
+            }}>{selectedCategory}</h2>
+            <p style={{
+              fontSize: 'clamp(0.9rem, 2vw, 1rem)',
+              color: '#9ca3af',
+              lineHeight: 1.5
+            }}>{selectedSkills.description}</p>
+          </div>
+          <div style={{
+            background: selectedSkills.gradient,
+            color: '#ffffff',
+            padding: '0.5rem 1rem',
+            borderRadius: '20px',
+            fontSize: '0.8rem',
+            fontWeight: 600
+          }}>
+            {selectedCategory}
+          </div>
+        </div>
+
+        {/* Skills Tags */}
+        <div style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          gap: '0.75rem',
+          marginBottom: '2rem'
+        }}>
+          {selectedSkills.skills.map((skill, index) => (
+            <span
+              key={index}
+              style={{
+                background: 'rgba(59, 130, 246, 0.2)',
+                border: '1px solid rgba(59, 130, 246, 0.3)',
+                color: '#60a5fa',
+                padding: '0.5rem 1rem',
+                borderRadius: '20px',
+                fontSize: '0.9rem',
+                fontWeight: 500,
+                transition: 'all 0.3s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.background = 'rgba(59, 130, 246, 0.3)';
+                e.target.style.transform = 'translateY(-2px)';
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.background = 'rgba(59, 130, 246, 0.2)';
+                e.target.style.transform = 'translateY(0)';
+              }}
+            >
+              {skill}
+            </span>
+          ))}
+        </div>
+
+        {/* Share Button */}
+        <div style={{
+          display: 'flex',
+          justifyContent: 'flex-end',
+          marginBottom: '2rem'
+        }}>
+          <button
+            onClick={() => navigator.share ? navigator.share({
+              title: `${selectedCategory} Skills`,
+              text: `Check out my ${selectedCategory} skills: ${selectedSkills.skills.join(', ')}`,
+              url: window.location.href
+            }) : navigator.clipboard.writeText(window.location.href)}
+            style={{
+              background: 'rgba(75, 85, 99, 0.3)',
+              border: '1px solid rgba(75, 85, 99, 0.5)',
+              color: '#d1d5db',
+              padding: '0.5rem 1rem',
+              borderRadius: '8px',
+              fontSize: '0.9rem',
+              fontWeight: 500,
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              transition: 'all 0.3s ease'
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.background = 'rgba(75, 85, 99, 0.5)';
+              e.target.style.borderColor = '#3b82f6';
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.background = 'rgba(75, 85, 99, 0.3)';
+              e.target.style.borderColor = 'rgba(75, 85, 99, 0.5)';
+            }}
+          >
+            📤 Share
+          </button>
+        </div>
+
+        {/* Overview Section */}
+        <div style={{
+          marginBottom: '2rem'
+        }}>
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.75rem',
+            marginBottom: '1rem'
+          }}>
+            <div style={{
+              fontSize: '1.2rem',
+              color: '#3b82f6'
+            }}>🏷️</div>
+            <h3 style={{
+              fontSize: '1.1rem',
+              fontWeight: 600,
+              color: '#ffffff'
+            }}>Overview</h3>
+          </div>
+          <p style={{
+            color: '#d1d5db',
+            fontSize: '0.95rem',
+            lineHeight: 1.6,
+            marginLeft: '2rem'
+          }}>
+            {selectedCategory === 'Cloud Platforms' && 'Comprehensive expertise in leading cloud service providers, enabling scalable and cost-effective infrastructure solutions across public, private, and hybrid cloud environments.'}
+            {selectedCategory === 'Containerization' && 'Advanced container orchestration and management capabilities, specializing in Docker and Kubernetes for modern application deployment and scaling.'}
+            {selectedCategory === 'Infrastructure as Code' && 'Proficient in infrastructure automation tools and practices, enabling consistent, repeatable, and version-controlled infrastructure deployments.'}
+            {selectedCategory === 'Virtualization' && 'Deep knowledge of virtualization platforms and hypervisor technologies for efficient resource utilization and infrastructure optimization.'}
+            {selectedCategory === 'Monitoring & Observability' && 'Expertise in comprehensive monitoring solutions, logging, and observability tools to ensure system reliability and performance optimization.'}
+            {selectedCategory === 'CI/CD & DevOps' && 'Strong background in continuous integration and deployment practices, enabling rapid and reliable software delivery pipelines.'}
+            {selectedCategory === 'Scripting & Automation' && 'Proficient in multiple programming languages and automation scripting for infrastructure management and process optimization.'}
+            {selectedCategory === 'Security & Compliance' && 'Knowledge of security best practices and compliance frameworks to ensure infrastructure security and regulatory adherence.'}
+          </p>
+        </div>
+
+        {/* Key Skills Section */}
+        <div>
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.75rem',
+            marginBottom: '1rem'
+          }}>
+            <div style={{
+              fontSize: '1.2rem',
+              color: '#10b981'
+            }}>⚡</div>
+            <h3 style={{
+              fontSize: '1.1rem',
+              fontWeight: 600,
+              color: '#ffffff'
+            }}>Key Skills</h3>
+          </div>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: window.innerWidth <= 768 ? '1fr' : 'repeat(2, 1fr)',
+            gap: '0.75rem',
+            marginLeft: '2rem'
+          }}>
+            {selectedSkills.skills.map((skill, index) => (
+              <div
+                key={index}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.5rem',
+                  color: '#d1d5db',
+                  fontSize: '0.9rem'
+                }}
+              >
+                <div style={{
+                  width: '6px',
+                  height: '6px',
+                  borderRadius: '50%',
+                  background: '#10b981'
+                }}></div>
+                {skill}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
