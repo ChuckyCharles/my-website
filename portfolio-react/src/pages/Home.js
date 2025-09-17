@@ -11,6 +11,7 @@ function Home() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeExperienceTab, setActiveExperienceTab] = useState('current');
   const formRef = useRef();
   
   // Add smooth scrolling effect for anchor links
@@ -1279,84 +1280,7 @@ function Home() {
           maxWidth: '1200px',
           margin: '0 auto'
         }}>
-          <h2 style={{
-            fontSize: 'clamp(2rem, 4vw, 3rem)',
-            fontWeight: 800,
-            color: '#ffffff',
-            marginBottom: '3rem',
-            textAlign: 'center'
-          }}>Work Experience</h2>
-          
-          <div style={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '2rem'
-          }}>
-            <ExperienceTimelineItem 
-              company="Angani Limited"
-              role="Cloud Support Engineer"
-              period="Jul 2025 - Sep 2025 "
-              type="Contract"
-              location="Nairobi County, Kenya"
-              description="Delivered timely resolution of infrastructure support tickets, reducing escalations and improving service quality. Allocated and optimized compute resources based on usage patterns and client needs."
-              achievements={[
-                "Supported failover testing, hardware diagnostics, and rapid response to outages in production systems",
-                "Helped right-size server builds and deployments to match client SLAs while avoiding resource waste",
-                "Delivered timely resolution of infrastructure support tickets, reducing escalations"
-              ]}
-              technologies={['VMware', 'Proxmox', 'Hyper-V', 'Xen', 'Linux', 'Veeam', 'Grafana', 'Prometheus', 'NAS/SAN', 'VPC', 'VPN', 'Terraform']}
-            />
-            
-            <ExperienceTimelineItem 
-              company="Safaricom PLC"
-              role="Cloud Infrastructure Automation Specialist"
-              period="Oct 2024 - Apr 2025 "
-              type="Internship"
-              location="Nairobi, Kenya"
-              description="Led the development of a single-plane self-service platform for IaaS, deploying Kubernetes clusters on-prem and in public clouds."
-              achievements={[
-                "Developed Infrastructure as Code (IaC) for private and public clouds using Terraform, SDKs, and Ansible",
-                "Championed open-source adoption in cloud infrastructure (OpenStack, OpenShift, Linux)",
-                "Implemented CI/CD pipelines in hybrid cloud environments",
-                "Built reusable automation scripts and modules with Ansible and Python",
-                "Collaborated on self-service patching solutions for Linux, Windows Server OS, and VMware ESXi"
-              ]}
-              technologies={['Kubernetes', 'OpenShift', 'ROSA', 'AKS', 'EKS', 'Terraform', 'Ansible', 'Python', 'OpenStack', 'CI/CD']}
-            />
-            
-            <ExperienceTimelineItem 
-              company="ICT Authority"
-              role="IT Infrastructure Engineer"
-              period="May 2024 - Aug 2024 "
-              type="Internship"
-              location="Homabay • On-site"
-              description="Provisioned IT infrastructure based on requirements and administered servers across multiple platforms."
-              achievements={[
-                "Administered, configured and troubleshooted servers based on Windows, Linux, VMware, OpenStack and RHEV",
-                "Liaised with internal users, hardware and software vendors to fine tune systems",
-                "Gathered and analyzed end user infrastructure requirements",
-                "Performed racking and mounting of IT infrastructure including servers and storage hardware"
-              ]}
-              technologies={['Windows Server', 'Linux', 'VMware', 'OpenStack', 'RHEV', 'Hardware Setup']}
-            />
-            
-            <ExperienceTimelineItem 
-              company="RISTA Construction Limited"
-              role="IT Support Engineer"
-              period="Dec 2022 - Oct 2023"
-              type="Contract"
-              location="Nairobi County, Kenya • Hybrid"
-              description="Provided comprehensive technical support and system maintenance for the organization."
-              achievements={[
-                "Provided first-line assistance to users experiencing hardware, software and network issues",
-                "Performed regular updates, patches, and maintenance on computer systems and servers",
-                "Managed user accounts in Active Directory, email platforms, and internal applications",
-                "Enforced security protocols with tools like Wazuh for SIEM and ensured data protection measures",
-                "Installed and configured computers, printers, and other devices with proper network integration"
-              ]}
-              technologies={['Active Directory', 'Wazuh SIEM', 'Windows Server', 'Network Administration', 'Hardware Setup']}
-            />
-          </div>
+          <ModernExperienceSection activeTab={activeExperienceTab} setActiveTab={setActiveExperienceTab} />
         </div>
       </section>
 
@@ -1751,23 +1675,10 @@ function Home() {
       </section>
       
       {/* Footer */}
-      <footer style={{
-        background: '#0a0a0a',
-        borderTop: '1px solid rgba(255, 255, 255, 0.1)',
-        padding: '2rem',
-        textAlign: 'center'
-      }}>
-        <div style={{
-          color: '#6b7280',
-          fontSize: '0.875rem'
-        }}>
-          © {new Date().getFullYear()} Charles Ochieng. All rights reserved.
-        </div>
-      </footer>
+     
     </div>
   );
 }
-
 // ModernSkillBar component
 function ModernSkillBar({ label, color, percent, icon }) {
   return (
@@ -2970,6 +2881,628 @@ function SkillsShowcase() {
           </div>
         </div>
       </div>
+    </div>
+  );
+}
+
+// Modern Experience Section Component
+function ModernExperienceSection({ activeTab, setActiveTab }) {
+  const experienceData = {
+    current: {
+      title: "Experience",
+      subtitle: "My professional journey in cloud infrastructure and DevOps engineering",
+      mainRole: {
+        company: "Angani Limited",
+        role: "Cloud Support Engineer",
+        period: "Jul 2025 - Sep 2025",
+        duration: "3+ Months",
+        location: "Nairobi County, Kenya",
+        type: "Contract",
+        icon: "☁️",
+        description: "Delivered timely resolution of infrastructure support tickets, reducing escalations and improving service quality. Allocated and optimized compute resources based on usage patterns and client needs.",
+        details: [
+          {
+            icon: "",
+            title: "Infrastructure Support",
+            description: "Supported failover testing, hardware diagnostics, and rapid response to outages in production systems"
+          },
+          {
+            icon: "",
+            title: "Resource Optimization",
+            description: "Helped right-size server builds and deployments to match client SLAs while avoiding resource waste"
+          },
+          {
+            icon: "",
+            title: "Performance Monitoring",
+            description: "Delivered timely resolution of infrastructure support tickets, reducing escalations and improving service quality"
+          }
+        ]
+      }
+    },
+    previous: {
+      title: "Previous Experience",
+      subtitle: "My journey through different roles and organizations",
+      experiences: [
+        {
+          company: "Safaricom PLC",
+          role: "Cloud Infrastructure Automation Specialist",
+          period: "Oct 2024 - Apr 2025",
+          duration: "7 Months",
+          location: "Nairobi, Kenya",
+          type: "Internship",
+          icon: "🏢",
+          description: "Led the development of a single-plane self-service platform for IaaS, deploying Kubernetes clusters on-prem and in public clouds.",
+          details: [
+            {
+              icon: "",
+              title: "Infrastructure as Code",
+              description: "Developed Infrastructure as Code (IaC) for private and public clouds using Terraform, SDKs, and Ansible"
+            },
+            {
+              icon: "",
+              title: "Open Source Adoption",
+              description: "Championed open-source adoption in cloud infrastructure (OpenStack, OpenShift, Linux)"
+            },
+            {
+              icon: "",
+              title: "CI/CD Implementation",
+              description: "Implemented CI/CD pipelines in hybrid cloud environments with automated deployment workflows"
+            }
+          ]
+        },
+        {
+          company: "ICT Authority",
+          role: "IT Infrastructure Engineer",
+          period: "May 2024 - Aug 2024",
+          duration: "4 Months",
+          location: "Homabay • On-site",
+          type: "Internship",
+          icon: "🏛️",
+          description: "Provisioned IT infrastructure based on requirements and administered servers across multiple platforms.",
+          details: [
+            {
+              icon: "",
+              title: "Server Administration",
+              description: "Administered, configured and troubleshooted servers based on Windows, Linux, VMware, OpenStack and RHEV"
+            },
+            {
+              icon: "",
+              title: "Hardware Setup",
+              description: "Performed racking and mounting of IT infrastructure including servers and storage hardware"
+            },
+            {
+              icon: "",
+              title: "Stakeholder Management",
+              description: "Liaised with internal users, hardware and software vendors to fine tune systems"
+            }
+          ]
+        }
+      ]
+    },
+    achievements: {
+      title: "Key Professional Achievements",
+      subtitle: "Highlights of my impact and recognition in the industry",
+      achievements: [
+        {
+          icon: "",
+          title: "Performance Recognition",
+          description: "Top performer in recent performance reviews with consistent delivery excellence"
+        },
+        {
+          icon: "",
+          title: "Cost Optimization",
+          description: "Implemented solutions saving organizations significant operational costs through automation"
+        },
+        {
+          icon: "",
+          title: "Innovation Leadership",
+          description: "Led adoption of modern cloud technologies and DevOps practices across multiple organizations"
+        }
+      ],
+      stats: [
+        { number: "36+", label: "Months Experience" },
+        { number: "15+", label: "Technologies" },
+        { number: "9", label: "Key Responsibilities" },
+        { number: "100%", label: "Commitment" }
+      ]
+    }
+  };
+
+  const currentData = experienceData[activeTab];
+
+  return (
+    <div style={{
+      background: 'rgba(30, 41, 59, 0.8)',
+      border: '1px solid rgba(75, 85, 99, 0.3)',
+      borderRadius: '20px',
+      padding: 'clamp(2rem, 4vw, 3rem)',
+      backdropFilter: 'blur(20px)',
+      boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)'
+    }}>
+      {/* Header */}
+      <div style={{
+        textAlign: 'center',
+        marginBottom: '3rem'
+      }}>
+        <h2 style={{
+          fontSize: 'clamp(2rem, 4vw, 3rem)',
+          fontWeight: 700,
+          background: 'linear-gradient(135deg, #3b82f6 0%, #10b981 100%)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          backgroundClip: 'text',
+          marginBottom: '1rem'
+        }}>{currentData.title}</h2>
+        <p style={{
+          fontSize: 'clamp(1rem, 2vw, 1.2rem)',
+          color: '#9ca3af',
+          maxWidth: '600px',
+          margin: '0 auto',
+          lineHeight: 1.6
+        }}>{currentData.subtitle}</p>
+      </div>
+
+      {/* Navigation Tabs */}
+      <div style={{
+        display: 'flex',
+        justifyContent: 'center',
+        gap: '1rem',
+        marginBottom: '3rem',
+        flexWrap: 'wrap'
+      }}>
+        {[
+          { id: 'current', label: 'Current Role', icon: '💼' },
+          { id: 'previous', label: 'Previous Experience', icon: '🕒' },
+          { id: 'achievements', label: 'Key Achievements', icon: '🏆' }
+        ].map(tab => (
+          <button
+            key={tab.id}
+            onClick={() => setActiveTab(tab.id)}
+            style={{
+              background: activeTab === tab.id 
+                ? 'linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)'
+                : 'rgba(75, 85, 99, 0.3)',
+              border: activeTab === tab.id 
+                ? '1px solid #3b82f6'
+                : '1px solid rgba(75, 85, 99, 0.5)',
+              color: activeTab === tab.id ? '#ffffff' : '#d1d5db',
+              padding: 'clamp(0.75rem, 2vw, 1rem) clamp(1.5rem, 3vw, 2rem)',
+              borderRadius: '25px',
+              fontSize: 'clamp(0.875rem, 2vw, 1rem)',
+              fontWeight: 600,
+              cursor: 'pointer',
+              transition: 'all 0.3s ease',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              whiteSpace: 'nowrap'
+            }}
+            onMouseEnter={(e) => {
+              if (activeTab !== tab.id) {
+                e.target.style.background = 'rgba(75, 85, 99, 0.5)';
+                e.target.style.borderColor = '#3b82f6';
+              }
+            }}
+            onMouseLeave={(e) => {
+              if (activeTab !== tab.id) {
+                e.target.style.background = 'rgba(75, 85, 99, 0.3)';
+                e.target.style.borderColor = 'rgba(75, 85, 99, 0.5)';
+              }
+            }}
+          >
+            <span>{tab.icon}</span>
+            <span>{tab.label}</span>
+          </button>
+        ))}
+      </div>
+
+      {/* Content based on active tab */}
+      {activeTab === 'current' && (
+        <div>
+          {/* Main Role Card */}
+          <div style={{
+            background: 'rgba(15, 23, 42, 0.8)',
+            border: '1px solid rgba(75, 85, 99, 0.3)',
+            borderRadius: '16px',
+            padding: '2rem',
+            marginBottom: '2rem',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'flex-start',
+            flexWrap: 'wrap',
+            gap: '1rem'
+          }}>
+            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
+              <div style={{
+                width: '60px',
+                height: '60px',
+                background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+                borderRadius: '12px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontSize: '1.5rem',
+                color: '#ffffff',
+                fontWeight: 'bold'
+              }}>
+                {currentData.mainRole.icon}
+              </div>
+              <div>
+                <h3 style={{
+                  fontSize: 'clamp(1.5rem, 3vw, 2rem)',
+                  fontWeight: 700,
+                  color: '#ffffff',
+                  marginBottom: '0.5rem'
+                }}>{currentData.mainRole.role}</h3>
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.5rem',
+                  marginBottom: '0.25rem',
+                  fontSize: '1.125rem',
+                  color: '#3b82f6',
+                  fontWeight: 600
+                }}>
+                  <span>🏢</span>
+                  <span>{currentData.mainRole.company}</span>
+                </div>
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.5rem',
+                  fontSize: '0.875rem',
+                  color: '#9ca3af'
+                }}>
+                  <span>📍</span>
+                  <span>{currentData.mainRole.location}</span>
+                </div>
+              </div>
+            </div>
+            <div style={{ textAlign: 'right' }}>
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                marginBottom: '0.5rem',
+                fontSize: '0.875rem',
+                color: '#9ca3af'
+              }}>
+                <span>📅</span>
+                <span>{currentData.mainRole.period}</span>
+              </div>
+              <div style={{
+                fontSize: '1.25rem',
+                fontWeight: 700,
+                color: '#10b981'
+              }}>
+                {currentData.mainRole.duration}
+              </div>
+            </div>
+          </div>
+
+          {/* Experience Details */}
+          <div style={{ position: 'relative' }}>
+            <div style={{
+              position: 'absolute',
+              left: '20px',
+              top: '0',
+              bottom: '0',
+              width: '2px',
+              background: 'linear-gradient(180deg, #3b82f6 0%, #10b981 100%)',
+              borderRadius: '1px'
+            }}></div>
+            
+            {currentData.mainRole.details.map((detail, index) => (
+              <div key={index} style={{
+                background: 'rgba(15, 23, 42, 0.6)',
+                border: '1px solid rgba(75, 85, 99, 0.3)',
+                borderRadius: '12px',
+                padding: '1.5rem',
+                marginLeft: '3rem',
+                marginBottom: '1.5rem',
+                position: 'relative',
+                transition: 'all 0.3s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.background = 'rgba(15, 23, 42, 0.8)';
+                e.target.style.borderColor = '#3b82f6';
+                e.target.style.transform = 'translateX(8px)';
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.background = 'rgba(15, 23, 42, 0.6)';
+                e.target.style.borderColor = 'rgba(75, 85, 99, 0.3)';
+                e.target.style.transform = 'translateX(0)';
+              }}
+              >
+                <div style={{
+                  position: 'absolute',
+                  left: '-3rem',
+                  top: '1.5rem',
+                  width: '12px',
+                  height: '12px',
+                  background: '#3b82f6',
+                  borderRadius: '50%',
+                  border: '3px solid rgba(15, 23, 42, 0.8)'
+                }}></div>
+                
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'flex-start',
+                  gap: '1rem'
+                }}>
+                  <div style={{
+                    fontSize: '1.5rem',
+                    marginTop: '0.25rem'
+                  }}>{detail.icon}</div>
+                  <div style={{ flex: 1 }}>
+                    <h4 style={{
+                      fontSize: '1.125rem',
+                      fontWeight: 600,
+                      color: '#ffffff',
+                      marginBottom: '0.5rem'
+                    }}>{detail.title}</h4>
+                    <p style={{
+                      color: '#d1d5db',
+                      lineHeight: 1.6,
+                      fontSize: '0.95rem'
+                    }}>{detail.description}</p>
+                  </div>
+                  <div style={{
+                    color: '#3b82f6',
+                    fontSize: '1.2rem',
+                    cursor: 'pointer'
+                  }}>⌄</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {activeTab === 'previous' && (
+        <div>
+          {currentData.experiences.map((exp, index) => (
+            <div key={index} style={{
+              background: 'rgba(15, 23, 42, 0.8)',
+              border: '1px solid rgba(75, 85, 99, 0.3)',
+              borderRadius: '16px',
+              padding: '2rem',
+              marginBottom: '2rem'
+            }}>
+              <div style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'flex-start',
+                marginBottom: '1.5rem',
+                flexWrap: 'wrap',
+                gap: '1rem'
+              }}>
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
+                  <div style={{
+                    width: '60px',
+                    height: '60px',
+                    background: 'linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)',
+                    borderRadius: '12px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontSize: '1.5rem',
+                    color: '#ffffff'
+                  }}>
+                    {exp.icon}
+                  </div>
+                  <div>
+                    <h3 style={{
+                      fontSize: 'clamp(1.25rem, 2.5vw, 1.5rem)',
+                      fontWeight: 700,
+                      color: '#ffffff',
+                      marginBottom: '0.5rem'
+                    }}>{exp.role}</h3>
+                    <div style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '0.5rem',
+                      marginBottom: '0.25rem',
+                      fontSize: '1rem',
+                      color: '#3b82f6',
+                      fontWeight: 600
+                    }}>
+                      <span>🏢</span>
+                      <span>{exp.company}</span>
+                    </div>
+                    <div style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '0.5rem',
+                      fontSize: '0.875rem',
+                      color: '#9ca3af'
+                    }}>
+                      <span>📍</span>
+                      <span>{exp.location}</span>
+                    </div>
+                  </div>
+                </div>
+                <div style={{ textAlign: 'right' }}>
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.5rem',
+                    marginBottom: '0.5rem',
+                    fontSize: '0.875rem',
+                    color: '#9ca3af'
+                  }}>
+                    <span>📅</span>
+                    <span>{exp.period}</span>
+                  </div>
+                  <div style={{
+                    fontSize: '1.125rem',
+                    fontWeight: 700,
+                    color: '#10b981'
+                  }}>
+                    {exp.duration}
+                  </div>
+                </div>
+              </div>
+              
+              <p style={{
+                color: '#d1d5db',
+                lineHeight: 1.6,
+                marginBottom: '1.5rem',
+                fontSize: '0.95rem'
+              }}>{exp.description}</p>
+
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: window.innerWidth <= 768 ? '1fr' : 'repeat(auto-fit, minmax(300px, 1fr))',
+                gap: '1rem'
+              }}>
+                {exp.details.map((detail, detailIndex) => (
+                  <div key={detailIndex} style={{
+                    background: 'rgba(30, 41, 59, 0.6)',
+                    border: '1px solid rgba(75, 85, 99, 0.3)',
+                    borderRadius: '8px',
+                    padding: '1rem',
+                    transition: 'all 0.3s ease'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.target.style.background = 'rgba(30, 41, 59, 0.8)';
+                    e.target.style.borderColor = '#3b82f6';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.background = 'rgba(30, 41, 59, 0.6)';
+                    e.target.style.borderColor = 'rgba(75, 85, 99, 0.3)';
+                  }}
+                  >
+                    <div style={{
+                      display: 'flex',
+                      alignItems: 'flex-start',
+                      gap: '0.75rem'
+                    }}>
+                      <div style={{
+                        fontSize: '1.25rem',
+                        marginTop: '0.125rem'
+                      }}>{detail.icon}</div>
+                      <div>
+                        <h5 style={{
+                          fontSize: '1rem',
+                          fontWeight: 600,
+                          color: '#ffffff',
+                          marginBottom: '0.25rem'
+                        }}>{detail.title}</h5>
+                        <p style={{
+                          color: '#d1d5db',
+                          fontSize: '0.875rem',
+                          lineHeight: 1.5
+                        }}>{detail.description}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {activeTab === 'achievements' && (
+        <div>
+          {/* Achievement Cards */}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: window.innerWidth <= 768 ? '1fr' : 'repeat(auto-fit, minmax(300px, 1fr))',
+            gap: '1.5rem',
+            marginBottom: '3rem'
+          }}>
+            {currentData.achievements.map((achievement, index) => (
+              <div key={index} style={{
+                background: 'rgba(15, 23, 42, 0.8)',
+                border: '1px solid rgba(75, 85, 99, 0.3)',
+                borderRadius: '12px',
+                padding: '1.5rem',
+                transition: 'all 0.3s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.background = 'rgba(15, 23, 42, 0.9)';
+                e.target.style.borderColor = '#3b82f6';
+                e.target.style.transform = 'translateY(-4px)';
+                e.target.style.boxShadow = '0 8px 25px rgba(59, 130, 246, 0.2)';
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.background = 'rgba(15, 23, 42, 0.8)';
+                e.target.style.borderColor = 'rgba(75, 85, 99, 0.3)';
+                e.target.style.transform = 'translateY(0)';
+                e.target.style.boxShadow = 'none';
+              }}
+              >
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'flex-start',
+                  gap: '1rem'
+                }}>
+                  <div style={{
+                    fontSize: '2rem',
+                    marginTop: '0.25rem'
+                  }}>{achievement.icon}</div>
+                  <div>
+                    <h4 style={{
+                      fontSize: '1.125rem',
+                      fontWeight: 600,
+                      color: '#ffffff',
+                      marginBottom: '0.5rem'
+                    }}>{achievement.title}</h4>
+                    <p style={{
+                      color: '#d1d5db',
+                      fontSize: '0.95rem',
+                      lineHeight: 1.5
+                    }}>{achievement.description}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Stats */}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: window.innerWidth <= 480 ? 'repeat(2, 1fr)' : 'repeat(4, 1fr)',
+            gap: '1rem'
+          }}>
+            {currentData.stats.map((stat, index) => (
+              <div key={index} style={{
+                background: 'rgba(15, 23, 42, 0.8)',
+                border: '1px solid rgba(75, 85, 99, 0.3)',
+                borderRadius: '12px',
+                padding: '1.5rem',
+                textAlign: 'center',
+                transition: 'all 0.3s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.background = 'rgba(15, 23, 42, 0.9)';
+                e.target.style.borderColor = '#10b981';
+                e.target.style.transform = 'scale(1.05)';
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.background = 'rgba(15, 23, 42, 0.8)';
+                e.target.style.borderColor = 'rgba(75, 85, 99, 0.3)';
+                e.target.style.transform = 'scale(1)';
+              }}
+              >
+                <div style={{
+                  fontSize: 'clamp(1.5rem, 3vw, 2rem)',
+                  fontWeight: 700,
+                  color: '#10b981',
+                  marginBottom: '0.5rem'
+                }}>{stat.number}</div>
+                <div style={{
+                  fontSize: '0.875rem',
+                  color: '#9ca3af',
+                  fontWeight: 500
+                }}>{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -20,9 +20,10 @@ function Footer() {
             <h4>Quick Links</h4>
             <ul>
               <li><a href="/">Home</a></li>
-              <li><a href="/#portfolio">Portfolio</a></li>
-           
-        
+              <li><a href="/about">About</a></li>
+              <li><a href="/projects">Projects</a></li>
+              <li><a href="/services">Services</a></li>
+              <li><a href="/contact">Contact</a></li>
             </ul>
           </div>
           <div className="footer-links-section">
@@ -34,11 +35,21 @@ function Footer() {
             </ul>
           </div>
           <div className="footer-links-section">
+            <h4>Skills</h4>
+            <ul>
+              <li><a href="/#skills">Cloud Platforms</a></li>
+              <li><a href="/#skills">DevOps & CI/CD</a></li>
+              <li><a href="/#skills">Infrastructure as Code</a></li>
+              <li><a href="/#skills">Containerization</a></li>
+            </ul>
+          </div>
+          <div className="footer-links-section">
             <h4>Social</h4>
             <ul>
               <li><a href="https://x.com/CharlesO21441" target="_blank" rel="noopener noreferrer">Twitter</a></li>
-              <li><a href="https://www.linkedin.com/in/charles-ochieng-177ba3253" target="_blank" rel="noopener eehnoreferrer">LinkedIn</a></li>
+              <li><a href="https://www.linkedin.com/in/charles-ochieng-177ba3253" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
               <li><a href="https://github.com/ChuckyCharles" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+              <li><a href="https://gitlab.com/cloudchuck/" target="_blank" rel="noopener noreferrer">GitLab</a></li>
             </ul>
           </div>
         </div>
