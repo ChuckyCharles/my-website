@@ -392,70 +392,56 @@ function Home() {
               alignItems: 'center',
               marginLeft: '1rem'
             }}>
-               <a href="https://gitlab.com/CloudChuck"
+               <a href="https://github.com/ChuckyCharles" 
                  target="_blank" 
                  rel="noopener noreferrer"
                  style={{
-                   color: 'rgba(255, 255, 255, 0.8)',
+                   color: 'rgba(255, 255, 255, 0.7)',
                    fontSize: '1.2rem',
                    transition: 'color 0.3s ease'
                  }}
-                 onMouseEnter={(e) => e.target.style.color = '#00f5ff'}
-                 onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.8)'}
-                 title="GitLab"
+                 onMouseEnter={(e) => e.target.style.color = '#60a5fa'}
+                 onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.7)'}
+                 title="GitHub"
               >
-                <i className="fab fa-gitlab"></i>
+                <i className="fab fa-github"></i>
               </a>
               <a href="https://www.linkedin.com/in/charles-ochieng-177ba3253" 
                  target="_blank" 
                  rel="noopener noreferrer"
                  style={{
-                   color: 'rgba(255, 255, 255, 0.8)',
+                   color: 'rgba(255, 255, 255, 0.7)',
                    fontSize: '1.2rem',
                    transition: 'color 0.3s ease'
                  }}
-                 onMouseEnter={(e) => e.target.style.color = '#00f5ff'}
-                 onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.8)'}
+                 onMouseEnter={(e) => e.target.style.color = '#60a5fa'}
+                 onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.7)'}
                  title="LinkedIn"
               >
                 <i className="fab fa-linkedin"></i>
-              </a>
-                 <a href="https://github.com/ChuckyCharles" 
-                 target="_blank" 
-                 rel="noopener noreferrer"
-                 style={{
-                   color: 'rgba(255, 255, 255, 0.8)',
-                   fontSize: '1.2rem',
-                   transition: 'color 0.3s ease'
-                 }}
-                 onMouseEnter={(e) => e.target.style.color = '#00f5ff'}
-                 onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.8)'}
-                 title="GitHub"
-              >
-                <i className="fab fa-github"></i>
               </a>
               <a href="https://x.com/CharlesO21441" 
                  target="_blank" 
                  rel="noopener noreferrer"
                  style={{
-                   color: 'rgba(255, 255, 255, 0.8)',
+                   color: 'rgba(255, 255, 255, 0.7)',
                    fontSize: '1.2rem',
                    transition: 'color 0.3s ease'
                  }}
-                 onMouseEnter={(e) => e.target.style.color = '#00f5ff'}
-                 onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.8)'}
+                 onMouseEnter={(e) => e.target.style.color = '#60a5fa'}
+                 onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.7)'}
                  title="Twitter"
               >
                 <i className="fab fa-twitter"></i>
               </a>
               <a href="mailto:ochiengcharles531@gmail.com" 
                  style={{
-                   color: 'rgba(255, 255, 255, 0.8)',
+                   color: 'rgba(255, 255, 255, 0.7)',
                    fontSize: '1.2rem',
                    transition: 'color 0.3s ease'
                  }}
-                 onMouseEnter={(e) => e.target.style.color = '#00f5ff'}
-                 onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.8)'}
+                 onMouseEnter={(e) => e.target.style.color = '#60a5fa'}
+                 onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.7)'}
                  title="Email"
               >
                 <i className="fas fa-envelope"></i>
@@ -466,7 +452,7 @@ function Home() {
                target="_blank" 
                rel="noopener noreferrer"
                style={{
-                 background: 'linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)',
+                 background: '#3b82f6',
                  color: '#ffffff',
                  padding: 'clamp(0.5rem, 2vw, 0.75rem) clamp(1rem, 3vw, 1.5rem)',
                  borderRadius: '25px',
@@ -474,8 +460,8 @@ function Home() {
                  fontSize: 'clamp(0.8rem, 2vw, 0.95rem)',
                  fontWeight: 600,
                  transition: 'all 0.3s ease',
-                 boxShadow: '0 4px 15px rgba(59, 130, 246, 0.4)',
-                 border: '1px solid rgba(255, 255, 255, 0.2)',
+                 boxShadow: '0 4px 15px rgba(59, 130, 246, 0.3)',
+                 border: 'none',
                  display: 'flex',
                  alignItems: 'center',
                  gap: '0.5rem',
@@ -483,11 +469,13 @@ function Home() {
                }}
                onMouseEnter={(e) => {
                  e.target.style.transform = 'translateY(-2px)';
-                 e.target.style.boxShadow = '0 8px 25px rgba(59, 130, 246, 0.6)';
+                 e.target.style.boxShadow = '0 8px 25px rgba(59, 130, 246, 0.5)';
+                 e.target.style.background = '#2563eb';
                }}
                onMouseLeave={(e) => {
                  e.target.style.transform = 'translateY(0)';
-                 e.target.style.boxShadow = '0 4px 15px rgba(59, 130, 246, 0.4)';
+                 e.target.style.boxShadow = '0 4px 15px rgba(59, 130, 246, 0.3)';
+                 e.target.style.background = '#3b82f6';
                }}
             >
               <i className="fas fa-download"></i>
@@ -503,8 +491,9 @@ function Home() {
           left: 0,
           right: 0,
           bottom: 0,
-          background: 'rgba(10, 22, 35, 0.98)',
+          background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.98) 0%, rgba(30, 41, 59, 0.95) 100%)',
           backdropFilter: 'blur(20px)',
+          WebkitBackdropFilter: 'blur(20px)',
           display: window.innerWidth <= 768 && mobileMenuOpen ? 'flex' : 'none',
           flexDirection: 'column',
           justifyContent: 'center',
@@ -668,7 +657,7 @@ function Home() {
         display: 'flex',
         alignItems: 'center',
         padding: '0 clamp(1rem, 3vw, 2rem)',
-        paddingTop: 'clamp(80px, 12vw, 120px)',
+        paddingTop: 'clamp(100px, 15vw, 140px)',
         background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(30, 41, 59, 0.75) 50%, rgba(51, 65, 85, 0.65) 100%)',
         backdropFilter: 'blur(15px)',
         borderBottom: '1px solid rgba(255, 255, 255, 0.1)'
