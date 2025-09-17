@@ -392,6 +392,20 @@ function Home() {
               alignItems: 'center',
               marginLeft: '1rem'
             }}>
+                <a href="https://gitlab.com/CloudChuck" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 style={{
+                   color: 'rgba(255, 255, 255, 0.7)',
+                   fontSize: '1.2rem',
+                   transition: 'color 0.3s ease'
+                 }}
+                 onMouseEnter={(e) => e.target.style.color = '#60a5fa'}
+                 onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.7)'}
+                 title="GitHub"
+              >
+                <i className="fab fa-gitlab"></i>
+              </a>
                <a href="https://github.com/ChuckyCharles" 
                  target="_blank" 
                  rel="noopener noreferrer"
@@ -2536,7 +2550,7 @@ function SkillsShowcase() {
       gradient: 'linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)'
     },
     'Containerization': {
-      icon: '🐳',
+      icon: '📦',
       description: 'Container orchestration and management technologies',
       skills: ['Docker', 'Kubernetes', 'OpenShift', 'Podman', 'Docker Compose', 'Helm', 'Kustomize'],
       gradient: 'linear-gradient(135deg, #10b981 0%, #059669 100%)'
@@ -2554,7 +2568,7 @@ function SkillsShowcase() {
       gradient: 'linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)'
     },
     'Monitoring & Observability': {
-      icon: '📊',
+      icon: '🔍',
       description: 'System monitoring, logging, and observability tools',
       skills: ['Prometheus', 'Grafana', 'ELK Stack', 'Jaeger', 'New Relic', 'Datadog', 'Zabbix'],
       gradient: 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)'
@@ -2691,8 +2705,8 @@ function SkillsShowcase() {
 
         {/* Category List */}
         <div style={{
-          display: 'flex',
-          flexDirection: 'column',
+          display: 'grid',
+          gridTemplateColumns: window.innerWidth <= 768 ? '1fr' : 'repeat(2, 1fr)',
           gap: '0.75rem'
         }}>
           {filteredCategories.map(category => {
