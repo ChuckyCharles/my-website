@@ -1092,15 +1092,15 @@ function Home() {
                 <div style={{
                   width: '60px',
                   height: '60px',
-                  background: 'linear-gradient(135deg, #ec4899 0%, #be185d 100%)',
+                  background: 'linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)',
                   borderRadius: '12px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   fontSize: '1.5rem',
-                  border: '1px solid rgba(236, 72, 153, 0.3)'
+                  border: '1px solid rgba(59, 130, 246, 0.3)'
                 }}>
-                  💖
+                  ✍️
                 </div>
                 <div style={{ flex: 1 }}>
                   <h3 style={{
@@ -2469,7 +2469,7 @@ function SkillsShowcase() {
     'Infrastructure as Code': {
       icon: '🏗️',
       description: 'Infrastructure automation and configuration management',
-      skills: ['Terraform', 'Ansible', 'Pulumi', 'CloudFormation', 'ARM Templates', 'Chef', 'Puppet'],
+      skills: ['Terraform', 'Ansible', 'Pulumi', 'Crossplane', 'Chef', 'Puppet'],
       gradient: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)'
     },
     'Virtualization': {
@@ -2481,25 +2481,25 @@ function SkillsShowcase() {
     'Monitoring & Observability': {
       icon: '🔍',
       description: 'System monitoring, logging, and observability tools',
-      skills: ['Prometheus', 'Grafana', 'ELK Stack', 'Jaeger', 'New Relic', 'Datadog', 'Zabbix'],
+      skills: ['Prometheus', 'Grafana', 'OTel','ELK Stack', 'Jaeger', 'Datadog', 'Zabbix'],
       gradient: 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)'
     },
     'CI/CD & DevOps': {
       icon: '⚙️',
       description: 'Continuous integration, deployment, and DevOps practices',
-      skills: ['Jenkins', 'GitLab CI', 'GitHub Actions', 'Azure DevOps', 'CircleCI', 'ArgoCD', 'Tekton'],
+      skills: ['Jenkins', 'GitLab CI', 'GitHub Actions', 'Azure DevOps', 'CircleCI', 'ArgoCD', 'FluxCD'],
       gradient: 'linear-gradient(135deg, #06b6d4 0%, #0891b2 100%)'
     },
     'Scripting & Automation': {
       icon: '🐍',
       description: 'Programming languages and automation scripting',
-      skills: ['Python', 'Bash', 'PowerShell', 'Go', 'Ruby', 'YAML', 'JSON'],
+      skills: ['Python', 'Bash', 'YAML',],
       gradient: 'linear-gradient(135deg, #ec4899 0%, #be185d 100%)'
     },
     'Security & Compliance': {
       icon: '🔒',
       description: 'Security tools and compliance frameworks',
-      skills: ['Vault', 'Wazuh', 'OWASP', 'CIS Benchmarks', 'NIST', 'SOC 2', 'ISO 27001'],
+      skills: ['Vault', 'Wazuh', 'CIS Benchmarks', 'NIST', ],
       gradient: 'linear-gradient(135deg, #84cc16 0%, #65a30d 100%)'
     }
   };
@@ -2899,6 +2899,7 @@ function ModernExperienceSection({ activeTab, setActiveTab }) {
         location: "Nairobi County, Kenya",
         type: "Contract",
         icon: "☁️",
+        website: "https://angani.co.ke",
         description: "Delivered timely resolution of infrastructure support tickets, reducing escalations and improving service quality. Allocated and optimized compute resources based on usage patterns and client needs.",
         details: [
           {
@@ -2931,6 +2932,7 @@ function ModernExperienceSection({ activeTab, setActiveTab }) {
           location: "Nairobi, Kenya",
           type: "Internship",
           icon: "🏢",
+          website: "https://www.safaricom.co.ke",
           description: "Led the development of a single-plane self-service platform for IaaS, deploying Kubernetes clusters on-prem and in public clouds.",
           details: [
             {
@@ -2958,6 +2960,7 @@ function ModernExperienceSection({ activeTab, setActiveTab }) {
           location: "Homabay • On-site",
           type: "Internship",
           icon: "🏛️",
+          website: "https://www.icta.go.ke",
           description: "Provisioned IT infrastructure based on requirements and administered servers across multiple platforms.",
           details: [
             {
@@ -3256,6 +3259,52 @@ function ModernExperienceSection({ activeTab, setActiveTab }) {
               </div>
             ))}
           </div>
+
+          {/* Visit Company Website Button */}
+          <div style={{
+            display: 'flex',
+            justifyContent: 'center',
+            marginTop: '2rem'
+          }}>
+            <a
+              href={currentData.mainRole.website}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                background: 'rgba(15, 23, 42, 0.8)',
+                border: '1px solid rgba(59, 130, 246, 0.3)',
+                borderRadius: '25px',
+                padding: 'clamp(0.75rem, 2vw, 1rem) clamp(1.5rem, 3vw, 2rem)',
+                color: '#d1d5db',
+                textDecoration: 'none',
+                fontSize: 'clamp(0.875rem, 2vw, 1rem)',
+                fontWeight: 600,
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.75rem',
+                transition: 'all 0.3s ease',
+                backdropFilter: 'blur(10px)',
+                boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)'
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.background = 'rgba(59, 130, 246, 0.1)';
+                e.target.style.borderColor = '#3b82f6';
+                e.target.style.color = '#60a5fa';
+                e.target.style.transform = 'translateY(-2px)';
+                e.target.style.boxShadow = '0 8px 25px rgba(59, 130, 246, 0.3)';
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.background = 'rgba(15, 23, 42, 0.8)';
+                e.target.style.borderColor = 'rgba(59, 130, 246, 0.3)';
+                e.target.style.color = '#d1d5db';
+                e.target.style.transform = 'translateY(0)';
+                e.target.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.2)';
+              }}
+            >
+              <span style={{ fontSize: '1.1rem' }}>↗</span>
+              <span>Visit Company Website</span>
+            </a>
+          </div>
         </div>
       )}
 
@@ -3398,6 +3447,52 @@ function ModernExperienceSection({ activeTab, setActiveTab }) {
                     </div>
                   </div>
                 ))}
+              </div>
+
+              {/* Visit Company Website Button */}
+              <div style={{
+                display: 'flex',
+                justifyContent: 'center',
+                marginTop: '1.5rem'
+              }}>
+                <a
+                  href={exp.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    background: 'rgba(15, 23, 42, 0.8)',
+                    border: '1px solid rgba(59, 130, 246, 0.3)',
+                    borderRadius: '25px',
+                    padding: 'clamp(0.75rem, 2vw, 1rem) clamp(1.5rem, 3vw, 2rem)',
+                    color: '#d1d5db',
+                    textDecoration: 'none',
+                    fontSize: 'clamp(0.875rem, 2vw, 1rem)',
+                    fontWeight: 600,
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.75rem',
+                    transition: 'all 0.3s ease',
+                    backdropFilter: 'blur(10px)',
+                    boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.target.style.background = 'rgba(59, 130, 246, 0.1)';
+                    e.target.style.borderColor = '#3b82f6';
+                    e.target.style.color = '#60a5fa';
+                    e.target.style.transform = 'translateY(-2px)';
+                    e.target.style.boxShadow = '0 8px 25px rgba(59, 130, 246, 0.3)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.background = 'rgba(15, 23, 42, 0.8)';
+                    e.target.style.borderColor = 'rgba(59, 130, 246, 0.3)';
+                    e.target.style.color = '#d1d5db';
+                    e.target.style.transform = 'translateY(0)';
+                    e.target.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.2)';
+                  }}
+                >
+                  <span style={{ fontSize: '1.1rem' }}>↗</span>
+                  <span>Visit Company Website</span>
+                </a>
               </div>
             </div>
           ))}
