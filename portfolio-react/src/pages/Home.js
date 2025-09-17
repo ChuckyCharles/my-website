@@ -251,32 +251,34 @@ function Home() {
       {/* Navigation */}
       <nav style={{
         position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
-        background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #334155 50%, #475569 75%, #64748b 100%)',
+        top: '20px',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        width: 'calc(100% - 40px)',
+        maxWidth: '1200px',
+        background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(30, 41, 59, 0.9) 50%, rgba(51, 65, 85, 0.8) 100%)',
         backdropFilter: 'blur(20px)',
-        borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+        WebkitBackdropFilter: 'blur(20px)',
+        border: '1px solid rgba(255, 255, 255, 0.1)',
+        borderRadius: '20px',
         zIndex: 1000,
-        padding: 'clamp(0.75rem, 2vw, 1rem) 0',
-        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)'
+        padding: 'clamp(0.75rem, 2vw, 1rem) clamp(1.5rem, 4vw, 2rem)',
+        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.05)'
       }}>
         <div style={{
-          maxWidth: '1200px',
-          margin: '0 auto',
-          padding: '0 clamp(1rem, 3vw, 2rem)',
           display: 'flex',
           justifyContent: 'space-between',
-          alignItems: 'center'
+          alignItems: 'center',
+          width: '100%'
         }}>
           <div style={{
             fontSize: 'clamp(1.25rem, 3vw, 1.5rem)',
             fontWeight: 800,
-            color: '#ffffff',
-            background: 'linear-gradient(135deg, #60a5fa 0%, #3b82f6 50%, #2563eb 100%)',
+            background: 'linear-gradient(135deg, #3b82f6 0%, #10b981 100%)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text'
+            backgroundClip: 'text',
+            letterSpacing: '-0.02em'
           }}>Charles Ochieng</div>
           
           {/* Mobile Menu Button */}
@@ -328,10 +330,10 @@ function Home() {
             alignItems: 'center'
           }}>
             <a href="#home" 
-               onMouseEnter={(e) => e.target.style.color = '#00f5ff'}
-               onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.9)'}
+               onMouseEnter={(e) => e.target.style.color = '#60a5fa'}
+               onMouseLeave={(e) => e.target.style.color = '#60a5fa'}
                style={{
-              color: 'rgba(255, 255, 255, 0.9)', 
+              color: '#60a5fa', 
               textDecoration: 'none', 
               fontSize: 'clamp(0.875rem, 2vw, 1rem)',
               fontWeight: 500,
@@ -339,10 +341,10 @@ function Home() {
               transition: 'color 0.3s ease'
             }}>Home</a>
             <a href="#about" 
-               onMouseEnter={(e) => e.target.style.color = '#00f5ff'}
-               onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.9)'}
+               onMouseEnter={(e) => e.target.style.color = '#60a5fa'}
+               onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.7)'}
                style={{
-              color: 'rgba(255, 255, 255, 0.9)', 
+              color: 'rgba(255, 255, 255, 0.7)', 
               textDecoration: 'none', 
               fontSize: 'clamp(0.875rem, 2vw, 1rem)',
               fontWeight: 500,
@@ -350,10 +352,10 @@ function Home() {
               transition: 'color 0.3s ease'
             }}>About</a>
             <a href="#experience" 
-               onMouseEnter={(e) => e.target.style.color = '#00f5ff'}
-               onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.9)'}
+               onMouseEnter={(e) => e.target.style.color = '#60a5fa'}
+               onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.7)'}
                style={{
-              color: 'rgba(255, 255, 255, 0.9)', 
+              color: 'rgba(255, 255, 255, 0.7)', 
               textDecoration: 'none', 
               fontSize: 'clamp(0.875rem, 2vw, 1rem)',
               fontWeight: 500,
@@ -361,10 +363,10 @@ function Home() {
               transition: 'color 0.3s ease'
             }}>Experience</a>
             <a href="#projects" 
-               onMouseEnter={(e) => e.target.style.color = '#00f5ff'}
-               onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.9)'}
+               onMouseEnter={(e) => e.target.style.color = '#60a5fa'}
+               onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.7)'}
                style={{
-              color: 'rgba(255, 255, 255, 0.9)', 
+              color: 'rgba(255, 255, 255, 0.7)', 
               textDecoration: 'none', 
               fontSize: 'clamp(0.875rem, 2vw, 1rem)',
               fontWeight: 500,
@@ -372,10 +374,10 @@ function Home() {
               transition: 'color 0.3s ease'
             }}>Projects</a>
             <a href="#contact" 
-               onMouseEnter={(e) => e.target.style.color = '#00f5ff'}
-               onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.9)'}
+               onMouseEnter={(e) => e.target.style.color = '#60a5fa'}
+               onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.7)'}
                style={{
-              color: 'rgba(255, 255, 255, 0.9)', 
+              color: 'rgba(255, 255, 255, 0.7)', 
               textDecoration: 'none', 
               fontSize: 'clamp(0.875rem, 2vw, 1rem)',
               fontWeight: 500,
@@ -1389,17 +1391,17 @@ function Home() {
               backgroundImage="/assets/images/projects/hypervisor-bg.jpg"
             />
             <SimpleProjectCard 
-              title="Multi-Cloud Management Platform"
+              title="Multi/Hybrid-Cloud Management Platform"
               description="Unified platform for hybrid cloud infrastructure management"
               technologies={['AWS', 'Azure', 'Python', 'Docker']}
-              link="https://github.com/ChuckyCharles/Multi-Huybrid_Cloud_Manager.git"
+              link="https://gitlab.com/cloudchuck/cloud_manager_stack.git"
               backgroundImage="/assets/images/projects/multicloud-bg.jpg"
             />
             <SimpleProjectCard 
               title="Terraform VM Deployment"
               description="Infrastructure as Code for automated VM provisioning"
               technologies={['Terraform', 'vSphere', 'HashiCorp']}
-              link="https://github.com/ChuckyCharles/Multi-Huybrid_Cloud_Manager.git"
+              link="https://gitlab.com/cloudchuck/terraform_vm_deployment.git"
               backgroundImage="/assets/images/projects/terraform-bg.jpg"
             />
             <SimpleProjectCard 
