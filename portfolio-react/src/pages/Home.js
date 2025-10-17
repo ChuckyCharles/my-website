@@ -462,40 +462,6 @@ function Home() {
                 <i className="fas fa-envelope"></i>
               </a>
             </div>
-            
-            <a href="https://1drv.ms/w/c/e69819c0d7c33828/EWlz9mH6g5JGhNcwaanH3H4BLMGsFg3Cne2t0KL4MMC0Qg?e=XmCYXp" 
-               target="_blank" 
-               rel="noopener noreferrer"
-               style={{
-                 background: '#3b82f6',
-                 color: '#ffffff',
-                 padding: 'clamp(0.5rem, 2vw, 0.75rem) clamp(1rem, 3vw, 1.5rem)',
-                 borderRadius: '25px',
-                 textDecoration: 'none',
-                 fontSize: 'clamp(0.8rem, 2vw, 0.95rem)',
-                 fontWeight: 600,
-                 transition: 'all 0.3s ease',
-                 boxShadow: '0 4px 15px rgba(59, 130, 246, 0.3)',
-                 border: 'none',
-                 display: 'flex',
-                 alignItems: 'center',
-                 gap: '0.5rem',
-                 whiteSpace: 'nowrap'
-               }}
-               onMouseEnter={(e) => {
-                 e.target.style.transform = 'translateY(-2px)';
-                 e.target.style.boxShadow = '0 8px 25px rgba(59, 130, 246, 0.5)';
-                 e.target.style.background = '#2563eb';
-               }}
-               onMouseLeave={(e) => {
-                 e.target.style.transform = 'translateY(0)';
-                 e.target.style.boxShadow = '0 4px 15px rgba(59, 130, 246, 0.3)';
-                 e.target.style.background = '#3b82f6';
-               }}
-            >
-              <i className="fas fa-download"></i>
-              <span style={{ display: window.innerWidth <= 480 ? 'none' : 'inline' }}>Download CV</span>
-            </a>
           </div>
         </div>
         
@@ -638,31 +604,6 @@ function Home() {
               <i className="fas fa-envelope"></i>
             </a>
           </div>
-          
-          <a href="https://1drv.ms/w/c/e69819c0d7c33828/EWlz9mH6g5JGhNcwaanH3H4BLMGsFg3Cne2t0KL4MMC0Qg?e=XmCYXp" 
-             target="_blank" 
-             rel="noopener noreferrer"
-             onClick={() => setMobileMenuOpen(false)}
-             style={{
-               background: 'linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)',
-               color: '#ffffff',
-               padding: '0.75rem 1.5rem',
-               borderRadius: '25px',
-               textDecoration: 'none',
-               fontSize: '1rem',
-               fontWeight: 600,
-               transition: 'all 0.3s ease',
-               boxShadow: '0 4px 15px rgba(59, 130, 246, 0.4)',
-               border: '1px solid rgba(255, 255, 255, 0.2)',
-               display: 'flex',
-               alignItems: 'center',
-               gap: '0.5rem',
-               marginTop: '1rem'
-             }}
-          >
-            <i className="fas fa-download"></i>
-            Download CV
-          </a>
         </div>
       </nav>
 
