@@ -14,7 +14,7 @@ function Home() {
   const [activeExperienceTab, setActiveExperienceTab] = useState('current');
   const formRef = useRef();
   
-  // Add smooth scrolling effect for anchor links
+  // Add smooth scrolling effect for anchor links to each section and Intersection Observer for animations
   useEffect(() => {
     const handleSmoothScroll = (e) => {
       const target = e.target.closest('a');
