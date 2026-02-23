@@ -18,7 +18,7 @@ function About() {
             <img src="/assets/images/charles_ochieng_profile.png" alt="Charles Ochieng" className="profile-image" />
           </div>
           <div className="about-text">
-            <h2>Cloud Solutions Architect & DevOps Engineer</h2>
+            <h2> DevOps Engineer</h2>
             <p>
               I am a passionate Cloud Solutions Architect and DevOps Engineer with extensive experience in designing and implementing cloud infrastructure solutions. My expertise spans across major cloud platforms including AWS, Azure, and Google Cloud.
             </p>
