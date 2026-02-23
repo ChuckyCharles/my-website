@@ -652,7 +652,7 @@ function Home() {
               color: '#64748b',
               marginBottom: '0.5rem',
               fontWeight: 500
-            }}>Cloud Infrastructure / DevOps </div>
+            }}>DevOps Engineering</div>
             
             <h1 style={{
               fontSize: 'clamp(2rem, 6vw, 4rem)',
@@ -667,14 +667,14 @@ function Home() {
               color: '#3b82f6',
               fontWeight: 600,
               marginBottom: '0.5rem'
-            }}>Cloud Infrastructure & DevOps Engineer</div>
+            }}>DevOps Engineer</div>
             
             <div style={{
               fontSize: 'clamp(0.9rem, 2.5vw, 1rem)',
               color: '#64748b',
               marginBottom: 'clamp(1.5rem, 4vw, 2rem)',
               lineHeight: 1.6
-            }}>Specializing in hybrid cloud architectures, containerization, and infrastructure automation. Passionate about optimizing cloud costs and enhancing system reliability through DevOps practices.</div>
+            }}>Specializing in cloud architectures, containerization, and infrastructure automation. Passionate about optimizing cloud costs and enhancing system reliability through DevOps practices.</div>
             
             <div style={{
               display: 'flex',
@@ -802,11 +802,10 @@ function Home() {
             }}>
               <CodeLine number="01">const engineer = {'{'};</CodeLine>
               <CodeLine number="02">  name: <span style={{color: '#10b981'}}>'Charles Ochieng'</span>,</CodeLine>
-              <CodeLine number="03">  role: <span style={{color: '#10b981'}}>'Cloud Infrastructure & DevOps Engineer'</span>,</CodeLine>
-              <CodeLine number="04">  company: <span style={{color: '#10b981'}}>'Angani Limited'</span>,</CodeLine>
+              <CodeLine number="03">  role: <span style={{color: '#10b981'}}>'DevOps Engineer'</span>,</CodeLine>
               <CodeLine number="05">  experience: <span style={{color: '#10b981'}}>'3+ years'</span>,</CodeLine>
               <CodeLine number="06">  skills: [</CodeLine>
-              <CodeLine number="07">    <span style={{color: '#10b981'}}>'VMware'</span>, <span style={{color: '#10b981'}}>'Kubernetes'</span>, <span style={{color: '#10b981'}}>'OpenShift'</span>,</CodeLine>
+              <CodeLine number="07">    <span style={{color: '#10b981'}}>'Cloud'</span>, <span style={{color: '#10b981'}}>'Kubernetes'</span>, <span style={{color: '#10b981'}}>'OpenShift'</span>,</CodeLine>
               <CodeLine number="08">    <span style={{color: '#10b981'}}>'Terraform'</span>, <span style={{color: '#10b981'}}>'Ansible'</span>, <span style={{color: '#10b981'}}>'Python'</span></CodeLine>
               <CodeLine number="09">  ],</CodeLine>
               <CodeLine number="10">  infrastructure: () =&gt; manageCloudResources(),</CodeLine>
@@ -968,7 +967,7 @@ function Home() {
                     alignItems: 'center',
                     gap: '0.5rem'
                   }}>
-                    <span>⏰</span> October 2023 - Present
+                    <span>⏰</span> October 2022 - Present
                   </div>
                 </div>
               </div>
@@ -1152,7 +1151,7 @@ function Home() {
             fontWeight: 800,
             color: '#3b82f6',
             marginBottom: '1rem'
-          }}>Cloud Infrastructure & DevOps Engineering</h3>
+          }}>DevOps Engineering</h3>
           <div style={{
             display: 'flex',
             justifyContent: 'center',
@@ -1204,7 +1203,7 @@ function Home() {
             margin: '0 auto 3rem auto',
             lineHeight: 1.7
           }}>
-            Cloud Infrastructure Engineer and DevOps specialist, building solutions that impact thousands of users across Kenya. 
+            DevOps specialist, building solutions that impact thousands of users across Kenya. 
             Part of the growing tech talent ecosystem, passionate about continuous learning, community building, and sharing knowledge through technical presentations and mentorship.
           </p>
         </div>
@@ -1330,7 +1329,7 @@ function Home() {
             maxWidth: '600px',
             margin: '0 auto 3rem auto'
           }}>
-            Have a project in mind or want to discuss cloud infrastructure solutions? Let's connect and build something amazing together.
+            Have a project in mind or want to discuss DevOps solutions? Let's connect and build something amazing together.
           </p>
           
           <div style={{
@@ -1465,7 +1464,7 @@ function Home() {
                 color: '#9ca3af',
                 fontSize: '0.875rem',
                 marginBottom: '1.5rem'
-              }}>Let's discuss your cloud infrastructure needs</p>              
+              }}>Let's discuss your DevOps needs</p>              
               <form ref={formRef} onSubmit={handleSubmit} style={{
                 display: 'flex',
                 flexDirection: 'column',
@@ -1552,7 +1551,7 @@ function Home() {
                     borderRadius: '6px',
                     border: '1px solid rgba(16, 185, 129, 0.2)'
                   }}>
-                     Message sent successfully! I'll get back to you in a short while.
+                     Message sent successfully! I'll get back to you soon.
                   </div>
                 )}
                 
@@ -2867,7 +2866,7 @@ function ModernExperienceSection({ activeTab, setActiveTab }) {
       experiences: [
         {
           company: "Safaricom PLC",
-          role: "Cloud Infrastructure Automation Specialist",
+          role: "Infrastructure Automation Specialist",
           period: "Oct 2024 - Apr 2025",
           duration: "7 Months",
           location: "Nairobi, Kenya",
