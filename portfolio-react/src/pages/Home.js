@@ -652,7 +652,7 @@ function Home() {
               color: '#64748b',
               marginBottom: '0.5rem',
               fontWeight: 500
-            }}>DevOps Engineering</div>
+            }}>DevOps & Infrastructure Engineering</div>
             
             <h1 style={{
               fontSize: 'clamp(2rem, 6vw, 4rem)',
@@ -667,7 +667,7 @@ function Home() {
               color: '#3b82f6',
               fontWeight: 600,
               marginBottom: '0.5rem'
-            }}>DevOps Engineer</div>
+            }}>DevOps & Infrastructure Engineer</div>
             
             <div style={{
               fontSize: 'clamp(0.9rem, 2.5vw, 1rem)',
